@@ -94,7 +94,7 @@ var AreaModel = function( routes, delegate ) {
     // read area type from data attribute of first element
     var outerNode = $(data)[0];
     var pageType = outerNode.getAttribute('data-area-type');
-    
+    _delegate.preprocessHtml(outerNode);
     // set content, rewrite links, and hide it
     if( replaceContent == true ) {
       _contentEl.innerHTML = data;

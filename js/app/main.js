@@ -2,7 +2,7 @@
 var routes = {
   "": "page",
   "/": "page",
-  "collection/:index": "page",
+  "collection/:index": "page",  // do we ever actually need this ID in javascript? (maybe for sub-nav updates?)
   "*notFound": "page"
 };
 
@@ -10,6 +10,10 @@ var delegate = {
   hashChanged: function( curPath, index ) {
     // show loader?
     console.log('hashChanged', curPath, index);
+  },
+  preprocessHtml: function( node ) {
+    // lazy-load images, etc
+    console.log('preprocessHtml', node);
   },
   contentLoaded: function( path, node ) {
     // updateNavs( path );

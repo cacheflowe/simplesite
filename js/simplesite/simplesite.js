@@ -4,7 +4,6 @@ var Site = function( data ) {
 
   var init = function() {
     initSite();
-    document.addEventListener('touchstart', function(e){});
   };
 
 
@@ -31,8 +30,6 @@ var Site = function( data ) {
       page('/home/:section/:id', index);
       page('/about', index);
       page('/contact', index);
-      page('/store', index);
-      page('/store/:id', index);
       page('/collection', index);
       page('/collection/:id', index);
       page('/music', function(){ page.redirect('/music/discography'); });
@@ -47,9 +44,8 @@ var Site = function( data ) {
       page('/art/:id', index);
       page('/art/:section', index);
       page('/art/:section/:id', index);
-      // page('/video', index);
-      // page('/about', function(){ page.redirect('/about/bio'); });
-      // page('/about/:section', index);
+      page('/test/feed', index);
+      page('/test/feed/:id', index);
       // page('*', notfound);
       page();
     };
@@ -58,6 +54,7 @@ var Site = function( data ) {
 
   var setActiveMainNavButton = function(section) {
     // add body class for section
+    console.warn('dynamic remove current class - just use the last path in history before adding new one');
     document.body.classList.remove('section-news', 'section-music', 'section-code', 'section-art', 'section-store', 'section-about', 'section-contact');
     document.body.classList.add('section-'+section.replace('/', ''));
   };

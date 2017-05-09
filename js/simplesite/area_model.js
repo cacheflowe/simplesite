@@ -86,14 +86,14 @@ var AreaModel = function(delegate, initRoutes) {
       }).then((data) => {
         sectionDataLoaded(data, path);
       }).catch(function(ex) {
-        console.log('Ajax failed', ex);
+        console.warn('Fetch failed', ex);
       });
   };
 
   var sectionDataLoaded = function(data, path) {
     cachedResponses[path] = data;
     createMainContentObj( data, true );
-    showAjaxContent();
+    showNewContent();
   };
 
   var createMainContentObj = function( data, replaceContent ) {
@@ -122,7 +122,7 @@ var AreaModel = function(delegate, initRoutes) {
     return div.firstChild;
   };
 
-  var showAjaxContent = function(){
+  var showNewContent = function(){
     // fade it in
     _contentEl.classList.remove('hiding');
     window.scrollTo(0,0);
@@ -239,7 +239,7 @@ class AreaModel
       url: path,
       success: (data) =>
         @createMainContentObj(data, true)
-        @showAjaxContent()
+        @showNewContent()
 
 
   createMainContentObj: (data, replaceContent) ->
@@ -258,7 +258,7 @@ class AreaModel
     @curAreaObj = new ViewCommon( @contentEl, isInitialLoad )
 
 
-  showAjaxContent: ->
+  showNewContent: ->
     # fade it in
     @contentEl.classList.remove('hiding')
     # window.scrollTo(0,0)

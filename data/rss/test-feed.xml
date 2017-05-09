@@ -1,0 +1,325 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+  <channel>
+    <title>CacheFlowe / Art / Physical</title>
+    <link>http://cacheflowe.com/art/physical</link>
+    <image>http://cacheflowe.com/images/art/physical/hyperpeace.jpg</image>
+    <description>Physical Art from CacheFlowe</description>
+    <pageHeader><![CDATA[
+      <h1><span>Physical Art</span></h1>
+    ]]></pageHeader>
+    <language>en-us</language>
+
+    <item>
+      <date>06.03.2016</date>
+			<title>A Map of the Internet</title>
+      <image>https://i.vimeocdn.com/video/577581637_640.jpg</image>
+			<description><![CDATA[
+        <div class="embetter" data-vimeo-id="171988875"><a href="https://vimeo.com/171988875" target="_blank"><img src="https://i.vimeocdn.com/video/577581637_640.jpg"></a></div>
+        <p>An interactive installation collaboration between JDP, CacheFlowe and The Internet. Use your mental forces to drive the movement of the entire internet. Thanks for playing.</p>
+        <p>Concept &amp; art direction by <a href="http://www.jareddavidpaul.com">Jared David Paul Anderson</a><br/>
+        Programming, design &amp; audio by CacheFlowe</p>
+        <p>
+          Shown at DATELINE 027<br>
+          Video by <a href="http://cargocollective.com/latenightweeknight">Latenight Weeknight</a><br>
+          Created with Processing
+        </p>
+        <div class="row">
+          <div class="six columns"><img class="imagexpander" src="http://cacheflowe.com/images/art/physical/jdpa-a-map-of-the-internet-1.jpg"></div>
+          <div class="six columns"><img class="imagexpander" src="http://cacheflowe.com/images/art/physical/jdpa-a-map-of-the-internet-2.jpg"></div>
+        </div>
+      ]]></description>
+      <technologies><![CDATA[
+        <ul>
+          <li>Processing</li>
+          <li>Gamepad</li>
+        </ul>
+      ]]></technologies>
+		</item>
+
+    <item>
+      <date>10.02.2015</date>
+			<title>Nightlines T-Shirt</title>
+      <image>http://cacheflowe.com/images/art/physical/nightlines-t-shirt-leslie-van-stelten.jpg</image>
+			<description><![CDATA[
+        <img class="imagexpander" src="http://cacheflowe.com/images/art/physical/nightlines-t-shirt-leslie-van-stelten.jpg">
+        <div class="caption"><span>Image courtesy of <a href="https://www.facebook.com/castle.searcy/media_set?set=a.10154092182636494.1073741860.582391493&type=3">Leslie Van Stelten</a></span></div>
+        <div class="row">
+          <div class="six columns"><img class="imagexpander" src="http://cacheflowe.com/images/art/physical/nightlines-t-shirt-1.png"></div>
+          <div class="six columns"><img class="imagexpander" src="http://cacheflowe.com/images/art/physical/nightlines-t-shirt-2.png"></div>
+        </div>
+        <p>Designed for Cotton Blend 2015, "Nightlines" was generated with original code and parameterized with a simple UI to arrive at the desired Perlin Noise-based mountain curvature and moon position. White ink on a black shirt.</p>
+        <img class="imagexpander" src="http://cacheflowe.com/images/art/physical/nightlines-configuration.gif">
+      ]]></description>
+      <technologies><![CDATA[
+        <ul>
+          <li>Processing</li>
+          <li>Screen Print</li>
+        </ul>
+      ]]></technologies>
+      <buyLinks><![CDATA[
+        <ul>
+          <li><a data-cachecart-buy-link="NIGHTLINES_XS" href="#NIGHTLINES_XS">Men's XS</a> <span class="inventory"><span data-cachecart-inventory="NIGHTLINES_XS"></span> left</span></li>
+          <li><a data-cachecart-buy-link="NIGHTLINES_S" href="#NIGHTLINES_S">Men's S</a> <span class="inventory"><span data-cachecart-inventory="NIGHTLINES_S"></span> left</span></li>
+          <li><a data-cachecart-buy-link="NIGHTLINES_M" href="#NIGHTLINES_M">Men's M</a> <span class="inventory"><span data-cachecart-inventory="NIGHTLINES_M"></span> left</span></li>
+          <li><a data-cachecart-buy-link="NIGHTLINES_L" href="#NIGHTLINES_L">Men's L</a> <span class="inventory"><span data-cachecart-inventory="NIGHTLINES_L"></span> left</span></li>
+          <li><a data-cachecart-buy-link="NIGHTLINES_XL" href="#NIGHTLINES_XL">Men's XL</a> <span class="inventory"><span data-cachecart-inventory="NIGHTLINES_XL"></span> left</span></li>
+        </ul>
+      ]]></buyLinks>
+		</item>
+
+    <item>
+      <date>3.20.2015</date>
+			<title>Hyperpeace</title>
+      <image>http://cacheflowe.com/images/art/physical/hyperpeace.jpg</image>
+			<description><![CDATA[
+        <img class="imagexpander" src="http://cacheflowe.com/images/art/physical/hyperpeace.jpg">
+        <img class="imagexpander" src="http://cacheflowe.com/images/art/physical/hyperpeace-2.jpg">
+        <p><strong>Hyperpeace</strong></p>
+        <p><i>Point towards your future, and you will receive peace.</i></p>
+        <p>Hyperpeace is an algorithmically-generated fractal, laser cut, painted, and stacked to create a 4-dimensional peace-seeking talisman.</p>
+      ]]></description>
+      <technologies><![CDATA[
+        <ul>
+          <li>Processing</li>
+          <li>Laser Cutter</li>
+        </ul>
+      ]]></technologies>
+		</item>
+
+    <item>
+      <date>12.21.2014</date>
+			<title>Chaircuterie</title>
+      <image>https://i.vimeocdn.com/video/501040143_640.jpg</image>
+			<description><![CDATA[
+        <div class="embetter" data-vimeo-id="115112886"><a href="https://vimeo.com/115112886" target="_blank"><img src="https://i.vimeocdn.com/video/501040143_640.jpg"></a></div>
+        <p>A series of chair-themed gifs were curated for AIGA's Chaircuterie event on November 13th, 2014 to correspond with AIGA's 100th anniversary. Gifs were displayed on an Audiopixel Pixelplane LED screen, and were integrated into a ballet performance by Wunderbound. This is my entry in action - over 50 chair silhouettes shown in a never-ending sequence. Created with Imagemagick and Processing.</p>
+        <p><img src="http://cacheflowe.com/images/art/physical/cacheflowe-chaircuterie.gif"></p>
+        <p>See my original .gif above, and find more information about the event over at the <a href="http://colorado.aiga.org/event/chaircuterie-an-aiga-colorado-design-council-event/">Colorado AIGA website</a>.</p>
+      ]]></description>
+      <technologies><![CDATA[
+        <ul>
+          <li>Processing</li>
+          <li>GIF</li>
+        </ul>
+      ]]></technologies>
+		</item>
+
+    <item>
+      <date>12.17.2014</date>
+			<title>Ello Token</title>
+      <image>http://cacheflowe.com/images/art/physical/ello-token.jpg</image>
+			<description><![CDATA[
+        <img class="imagexpander" src="http://cacheflowe.com/images/art/physical/ello-token.jpg">
+      ]]></description>
+      <technologies><![CDATA[
+        <ul>
+          <li>Processing</li>
+          <li>Laser Cutter</li>
+        </ul>
+      ]]></technologies>
+		</item>
+
+    <item>
+      <date>10.17.2014</date>
+			<title>Fraxademic T-Shirt</title>
+      <image>http://cacheflowe.com/images/art/physical/fraxademic-t-shirt.jpg</image>
+			<description><![CDATA[
+        <img class="imagexpander" src="http://cacheflowe.com/images/art/physical/fraxademic-t-shirt.jpg">
+      ]]></description>
+      <technologies><![CDATA[
+        <ul>
+          <li>Processing</li>
+          <li>Screen Print</li>
+        </ul>
+      ]]></technologies>
+      <buyLinks><![CDATA[
+        <ul>
+          <li><a data-cachecart-buy-link="FRAXADEMIC_XS" href="#FRAXADEMIC_XS">Men's XS</a> <span class="inventory"><span data-cachecart-inventory="FRAXADEMIC_XS"></span> left</span></li>
+          <li><a data-cachecart-buy-link="FRAXADEMIC_S" href="#FRAXADEMIC_S">Men's S</a> <span class="inventory"><span data-cachecart-inventory="FRAXADEMIC_S"></span> left</span></li>
+          <li><a data-cachecart-buy-link="FRAXADEMIC_M" href="#FRAXADEMIC_M">Men's M</a> <span class="inventory"><span data-cachecart-inventory="FRAXADEMIC_M"></span> left</span></li>
+          <li><a data-cachecart-buy-link="FRAXADEMIC_L" href="#FRAXADEMIC_L">Men's L</a> <span class="inventory"><span data-cachecart-inventory="FRAXADEMIC_L"></span> left</span></li>
+          <li><a data-cachecart-buy-link="FRAXADEMIC_XL" href="#FRAXADEMIC_XL">Men's XL</a> <span class="inventory"><span data-cachecart-inventory="FRAXADEMIC_XL"></span> left</span></li>
+        </ul>
+      ]]></buyLinks>
+		</item>
+
+    <item>
+      <date>06.18.2014</date>
+			<title><![CDATA[Fractal T-Shirt]]></title>
+      <image>http://cacheflowe.com/images/art/physical/fractal-t-shirt.jpg</image>
+			<description><![CDATA[
+        <img class="imagexpander" src="http://cacheflowe.com/images/art/physical/fractal-t-shirt.jpg">
+        <img class="imagexpander" src="http://cacheflowe.com/images/art/physical/fractal-sculpture.jpg">
+        <p>An algorithmic, open source t-shirt design by yours truly. A series of companion acrylic sculptures were created, but are now sold out.</p>
+        <p>Each shirt comes with a free fractal sticker pack, but additional packs can be added to any order.</p>
+      ]]></description>
+      <technologies><![CDATA[
+        <ul>
+          <li>Processing</li>
+          <li>Screen Print</li>
+        </ul>
+      ]]></technologies>
+      <buyLinks><![CDATA[
+        <ul>
+          <li><a data-cachecart-buy-link="FRACTAL_S" href="#FRACTAL_S">Men's S</a> <span class="inventory"><span data-cachecart-inventory="FRACTAL_S"></span> left</span></li>
+          <li><a data-cachecart-buy-link="FRACTAL_M" href="#FRACTAL_M">Men's M</a> <span class="inventory"><span data-cachecart-inventory="FRACTAL_M"></span> left</span></li>
+          <li><a data-cachecart-buy-link="FRACTAL_L" href="#FRACTAL_L">Men's L</a> <span class="inventory"><span data-cachecart-inventory="FRACTAL_L"></span> left</span></li>
+          <li><a data-cachecart-buy-link="FRACTAL_XL" href="#FRACTAL_XL">Men's XL</a> <span class="inventory"><span data-cachecart-inventory="FRACTAL_XL"></span> left</span></li>
+          <li><a data-cachecart-buy-link="FRACTAL_STICKER_PACK" href="#FRACTAL_STICKER_PACK">Fractal Sticker Pack</a> <span class="inventory"><span data-cachecart-inventory="FRACTAL_STICKER_PACK"></span> left</span></li>
+          <li><a data-cachecart-buy-link="FRACTAL_ACRYLIC" href="#FRACTAL_ACRYLIC">Fractal Acrylic Sculpture</a> <span class="inventory"><span data-cachecart-inventory="FRACTAL_ACRYLIC"></span> left</span></li>
+        </ul>
+      ]]></buyLinks>
+		</item>
+
+    <item>
+      <date>06.18.2014</date>
+			<title>Fractal Stickers</title>
+      <image>http://cacheflowe.com/images/art/physical/fractal-sticker-pack.jpg</image>
+			<description><![CDATA[
+        <img class="imagexpander" src="http://cacheflowe.com/images/art/physical/fractal-sticker-pack.jpg">
+      ]]></description>
+      <technologies><![CDATA[
+        <ul>
+          <li>Processing</li>
+        </ul>
+      ]]></technologies>
+      <buyLinks><![CDATA[
+        <ul>
+          <li><a data-cachecart-buy-link="FRACTAL_STICKER_PACK" href="#FRACTAL_STICKER_PACK">Fractal Sticker Pack</a> <span class="inventory"><span data-cachecart-inventory="FRACTAL_STICKER_PACK"></span> left</span></li>
+        </ul>
+      ]]></buyLinks>
+		</item>
+
+    <item>
+      <title><![CDATA[Fractal Polygons]]></title>
+      <image>https://instagram.com/p/qJ744wwY9t/media/?size=m</image>
+      <description><![CDATA[
+        <div class="row">
+          <div class="six columns"><img src="https://instagram.com/p/qJ744wwY9t/media/?size=l"></div>
+          <div class="six columns"><img src="https://instagram.com/p/ev5C18QY45/media/?size=l"></div>
+        </div>
+        <img src="http://cacheflowe.com/images/art/digital/cacheflowe-fractal-polygons-01.gif">
+        <div class="row">
+          <div class="six columns"><img src="https://instagram.com/p/eux4fnwY9A/media/?size=l"></div>
+          <div class="six columns"><img src="https://instagram.com/p/eY60Q_QYwv/media/?size=l"></div>
+        </div>
+        <img src="http://cacheflowe.com/images/art/digital/cacheflowe-fractal-polygons-02.gif">
+        <div class="row">
+          <div class="six columns"><img src="https://instagram.com/p/eTjAJPQY3O/media/?size=l"></div>
+          <div class="six columns"><img src="https://instagram.com/p/eQA9GbwYxF/media/?size=l"></div>
+        </div>
+        <img src="http://cacheflowe.com/images/art/digital/cacheflowe-fractal-polygons-03.gif">
+        <div class="row">
+          <div class="six columns"><img src="https://instagram.com/p/Wz3mTiwYwL/media/?size=l"></div>
+          <div class="six columns"><img src="https://instagram.com/p/RwJmpWwYzm/media/?size=l"></div>
+        </div>
+        <img src="https://instagram.com/p/R_9Tb4QYxH/media/?size=l">
+      ]]></description>
+      <technologies><![CDATA[
+        <ul>
+          <li>Processing</li>
+          <li>Sunflow</li>
+          <li>Laser Cutting</li>
+        </ul>
+      ]]></technologies>
+    </item>
+
+    <item>
+      <date>02.13.2014</date>
+			<title>Mode Set Logo</title>
+      <image>http://cacheflowe.com/images/art/physical/mode-set-triangulated-logo.jpg</image>
+			<description><![CDATA[
+        <img class="imagexpander" src="http://cacheflowe.com/images/art/physical/mode-set-triangulated-logo.jpg">
+      ]]></description>
+      <technologies><![CDATA[
+        <ul>
+          <li>Processing</li>
+          <li>Laser Cutter</li>
+        </ul>
+      ]]></technologies>
+		</item>
+
+    <item>
+      <date>10.03.2013</date>
+			<title><![CDATA[Kelly Monico - Bitches n' Hoes]]></title>
+      <image>http://cacheflowe.com/images/art/physical/kelly-monico-bitches-hoes-preview.jpg</image>
+			<description><![CDATA[
+        <img class="imagexpander" src="http://cacheflowe.com/images/art/physical/kelly-monico-bitches-hoes-BMOCA-Fem-Technology-47_o.jpg">
+        <div class="caption"><span>Image courtesy of Richard Peterson</span></div>
+        <p>"Bitches n' Hoes" was a collaboration in which I helped artist and friend Kelly Monico generate data for a commissioned gallery series. For my part, I was tasked to analyze the lyrical each song's content based on a custom set of rules that Kelly gave me. To accomplish this, I loaded each song's words into a custom Processing app and gamified the categorization of each word in a human-assisted process. The resulting images were built from the sorted word counts derived from the custom rules. Concepts like: good bitch/bad bitch, searching for specific, self-referencing, aggressive, and neutral words all contributed to the final result sets.</p>
+        <blockquote>
+          <p>This series visually analyzes language used in three contemporary songs by female rappers -- "Stupd Hoe" by Nicki Minaj, "212" by Azealia Banks, and "Das Me" by Brooke Candy. Each time a a target word is used (in most cases derogatorily) a specific shape with applied color appears. Each shape within the work corresponds to a specific term or instance. This also includes first person words I, me, mine and my, and words that have no significance or measurable meaning. Screen-printed patterns in the series are inspired by the elaborate fingernails of the rappers.</p>
+          <p>This series was commissioned by <a href="http://www.bmoca.org/">Boulder Museum of Contemporary Art</a> for the <a href="http://bmoca.org/exhibitions/2013/fall/craft-tech-coded-media-women-art-and-technology">Craft Tech/Coded Media Exhibition</a> in 2013. It was also exhibited at the "Rhythm Nations" exhibition at the <a href="https://sites.coloradocollege.edu/ideaspace/">IDEA space at Colorado College</a> in Colorado Springs in 2014. The animation representing the mixed-media print for "212" was included in <a href="http://www.monkeytown4.com/">Monkeytown 4</a> in Denver, Colorado.</p>
+          <p><strong>via <a href="http://www.kellymonico.com/Bitches-n-Hoes">KellyMonico.com</a></strong></p>
+        </blockquote>
+        <div class="row">
+          <div class="four columns"><img class="imagexpander" src="http://cacheflowe.com/images/art/physical/kelly-monico-bitches-hoes-212_o.jpg"></div>
+          <div class="four columns"><img class="imagexpander" src="http://cacheflowe.com/images/art/physical/kelly-monico-bitches-hoes-dasme_8_o.jpg"></div>
+          <div class="four columns"><img class="imagexpander" src="http://cacheflowe.com/images/art/physical/kelly-monico-bitches-hoes-shhoe_web_o.jpg"></div>
+        </div>
+        <blockquote>
+          <p>"212", "Das Me", and "Stupid Hoe". Each 60 x 40 inches, mixed media, 2013. Images courtesy of Kelly Monico.</p>
+        </blockquote>
+        <div class="row">
+          <div class="six columns"><div class="embetter" data-vimeo-id="90363643"><a href="https://vimeo.com/90363643" target="_blank"><img src="https://i.vimeocdn.com/video/469473513_640.jpg"></a></div></div>
+          <div class="six columns"><img class="imagexpander" src="http://cacheflowe.com/images/art/physical/kelly-monico-bitches-hoes-212-lyrics-process.gif"></div>
+        </div>
+        <blockquote>
+          <p>Looping animation representing the lyrics for "212", by Kelly Monico, and a process shot of parsing the lyrics to "212", via my processing app.</p>
+        </blockquote>
+        <div class="row">
+          <div class="six columns"><img class="imagexpander" src="http://cacheflowe.com/images/art/physical/kelly-monico-bitches-hoes-1375218_10151750923019542_117834173_n_o.jpg"></div>
+          <div class="six columns"><img class="imagexpander" src="http://cacheflowe.com/images/art/physical/kelly-monico-bitches-hoes-1391446_10151751002989542_344222258_n_o.jpg"></div>
+        </div>
+        <blockquote>
+          <p>Images courtesy of Julia Vandenoever</p>
+        </blockquote>
+      ]]></description>
+      <technologies><![CDATA[
+        <ul>
+          <li>Processing</li>
+          <li>Data visualization</li>
+        </ul>
+      ]]></technologies>
+		</item>
+
+    <item>
+      <date>02.06.2012</date>
+      <image>http://cacheflowe.com/images/art/physical/bnc-love-in-the-digital-age.jpg</image>
+			<title>Ballet Nouveau Colorado: Love in the Digital Age</title>
+			<description><![CDATA[
+        <img class="imagexpander" src="http://cacheflowe.com/images/art/physical/bnc-love-in-the-digital-age.jpg">
+        <div class="caption"><span>Image courtesy of <a href="http://www.kokorophotography.com/bnc-love-in-the-digital-age/">Kokoro Photography</a></span></div>
+        <p>I was invited by my good friend <a href="http://rgb.nu/">Kris Collins</a>, aka Movax to generate audio-reactive visuals for one of the segments of the "Love in the Digital Age" performance by Ballet Nouveau Colorado, now known as <a href="http://wonderbound.com/">Wonderbound</a>. I generated a series of audioreactive algorithmic animations, which were then edited down to a single video backdrop for the dancers. The show itself was incredible, and I'm happy to have had a very small hand in the production.</p>
+      ]]></description>
+      <technologies><![CDATA[
+        <ul>
+          <li>Processing</li>
+        </ul>
+      ]]></technologies>
+      <press><![CDATA[
+        <ul>
+          <li><a href="http://styledenver.com/love-or-something-like-that-is-in-the-ai">Style Denver</a></li>
+          <li><a href="http://303magazine.com/2012/02/ballet-nouveau-colorado-shows-us-how-to-love/">303 Magazine</a></li>
+        </ul>
+      ]]></press>
+		</item>
+
+    <item>
+      <date>07.07.2011</date>
+      <image>https://i.vimeocdn.com/video/539757438_640.jpg</image>
+			<title>Create Denver 2011 Projection Mapped Animation</title>
+			<description><![CDATA[
+        <div class="embetter" data-vimeo-id="142460204"><a href="https://vimeo.com/142460204" target="_blank"><img src="https://i.vimeocdn.com/video/539757438_640.jpg"></a></div>
+        <p>I'm decidedly *not* a designer or an animator, but given the chance to contribute a short animation to Denver's biggest projection mapping event at the time, I jumped on the opportunity. This piece was a collaboration between myself, Jon Traister and Elsa Carenbauer. I animated and sequenced the visuals, syncing it to a recent song of mine. The event had several thousand attendees by some accounts, and paved the way for bigger and better projects on the streets of Denver in subsequent years.</p>
+      ]]></description>
+      <technologies><![CDATA[
+        <ul>
+          <li>Flash</li>
+        </ul>
+      ]]></technologies>
+		</item>
+
+  </channel>
+</rss>

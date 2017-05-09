@@ -140,7 +140,7 @@ var AreaCommon = function(el, isInitialLoad) {
       submitButton.addEventListener('click', submitForm);
       // populate email link
       var emailLink = el.querySelector('#cacheflowe-email');
-      var emailAddy = 'cacheflowe'+'@'+'cacheflowe'+'.'+'com';
+      var emailAddy = 'test'+'@'+'user'+'.'+'com';
       emailLink.href = 'mailto:'+emailAddy;
       emailLink.innerHTML = emailAddy;
     }

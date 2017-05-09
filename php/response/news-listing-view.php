@@ -210,7 +210,7 @@ class NewsListingView {
     if($infoListCells % 2 == 1) $html .= '</div>';
 
     // add share links
-    $html .= file_get_contents('share-links.php', true);
+    // $html .= file_get_contents('share-links.php', true);
     $html .= '</div>';
     return $html;
   }

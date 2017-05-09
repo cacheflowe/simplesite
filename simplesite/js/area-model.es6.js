@@ -77,7 +77,7 @@ class AreaModel {
   }
 
   fetchPage(path) {
-    fetch(path, {method: "POST", body: {}})
+    fetch(path, {method: "POST"})
       .then(function(response) {
         return response.text();
       }).then((data) => {

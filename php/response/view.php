@@ -14,9 +14,10 @@ class View {
 		global $request;
 
 		// get basic path
-		$pagesRoot = './php/views';
+		$dataRoot = './data/xml/';
+		$pagesRoot = './php/views/';
 		$path = $request->path();
-		if($path == '/') $path = '/home';
+		if($path == '' || $path == '/') $path = '/home';
 		$pathParams = '';
 
 		// if route is found in current path, send the params along to the view and reassign the path as the route, with the params sent along to find the detail view or
@@ -30,8 +31,8 @@ class View {
 
 		// check for deeper pages and re-split pathComponents since it may have changed
 		$pathComponents = explode( '/', substr( $path, 1 ) );
-		$deepPathPage = "/" . implode("-", $pathComponents) . '.php';
-		$deepPathData = "./data/xml/" . implode("-", $pathComponents) . '.xml';
+		$deepPathPage = implode("-", $pathComponents) . '.php';
+		$deepPathData = $dataRoot . implode("-", $pathComponents) . '.xml';
 
 		// load a subview, a view, go home, or show a 404
 		$xmlFile = '';
@@ -44,10 +45,8 @@ class View {
 			$htmlStr = '<div'.$squarePreviewClass.' data-area-type="AreaCommon">' . $this->news_listing_view->html . '</div>';
 		} else if( file_exists( $pagesRoot . $deepPathPage ) == true ) {
 			$includeFile = $pagesRoot . $deepPathPage;
-		} else if( $path == '' || $path == '/' ) {
-			$includeFile = $pagesRoot . '/home.php';
 		} else {
-			$includeFile = $pagesRoot . '/404.php';
+			$includeFile = $pagesRoot . '404.php';
 		}
 
     // pull in include file if there is one

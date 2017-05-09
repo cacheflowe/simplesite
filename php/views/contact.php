@@ -1,3 +1,7 @@
+<?php
+global $metadata;
+$metadata->set_pageTitle('Cacheflowe / Contact');
+?>
 <div data-area-type="AreaCommon">
 	<div id="content">
 		<h1>Contact</h1>

@@ -66,13 +66,13 @@
     <?php } ?>
 
     <?php if( $request->isDev() == true ) { ?>
-<link rel="stylesheet" href="/simplesite/css/simplesite-vendor/normalize.css">
-    <link rel="stylesheet" href="/simplesite/css/simplesite-vendor/skeleton.css">
-    <link rel="stylesheet" href="/simplesite/css/simplesite-vendor/main.css">
-    <link rel="stylesheet" href="/simplesite/css/simplesite-vendor/embetter.css">
+<link rel="stylesheet" href="/simplesite/css/vendor/normalize.css">
+    <link rel="stylesheet" href="/simplesite/css/vendor/skeleton.css">
+    <link rel="stylesheet" href="/simplesite/css/vendor/main.css">
+    <link rel="stylesheet" href="/simplesite/css/vendor/embetter.css">
     <link rel="stylesheet" href="/css/app/app.css">
     <?php } else { ?>
-    <link rel="stylesheet" href="/css/style-min.css" type="text/css" media="all" title="interface" />
+    <link rel="stylesheet" href="/css/app.min.css" type="text/css" media="all" title="interface" />
     <?php } ?>
 
   </head>
@@ -80,15 +80,15 @@
     <?php include './php/views/layout.php'; ?>
     <?php if( $request->isDev() == true ) { ?>
     <!-- vendor / simplesite -->
-    <script src="/simplesite/js/simplesite-vendor/embetter.js"></script>
-    <script src="/simplesite/js/simplesite-vendor/easy-scroll.js"></script>
-    <script src="/simplesite/js/simplesite-vendor/page.js"></script>
-    <script src="/simplesite/js/simplesite/area-model.es6.js"></script>
-    <script src="/simplesite/js/simplesite/base-view.es6.js"></script>
+    <script src="/simplesite/js/vendor/embetter.js"></script>
+    <script src="/simplesite/js/vendor/easy-scroll.js"></script>
+    <script src="/simplesite/js/vendor/page.js"></script>
+    <script src="/simplesite/js/area-model.es6.js"></script>
+    <script src="/simplesite/js/base-view.es6.js"></script>
     <script src="/js/app/views/area-common.es6.js"></script>
     <script src="/js/app/app.es6.js"></script>
     <?php } else { ?>
-    <script src="/js/app-min.js"></script>
+    <script src="/js/app.min.js"></script>
     <?php } ?>
   </body>
 </html>

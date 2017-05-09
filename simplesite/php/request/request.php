@@ -27,6 +27,7 @@ class Request {
     $this->_pathComponents = explode( '/', substr( $this->_query, 1 ) );	// strip first slash and get array of path components
 
     if(strpos($_SERVER["SERVER_NAME"], "localhost") === 0) $this->isDev = true;
+    if(isset( $_REQUEST['notDev'] )) $this->isDev = false;
   }
 
   function setOutputType() {

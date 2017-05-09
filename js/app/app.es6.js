@@ -1,4 +1,4 @@
-var areaModel = new AreaModel(function(index) {
+let areaModel = new AreaModel(function(index) {
   page('', index);
   page('/', index);
   page('/:section', index);

@@ -12,7 +12,8 @@ include('./php/response/response.php');
 // init ---------------------------------------------------------------------------------------------------
 $string_utils = new StringUtils();
 $request = new Request($routes);
-$metadata = ($metadata == null) ? new Metadata() : $metadata;
+$metadataProps = ($metadataProps != null) ? $metadataProps : [];
+$metadata = new Metadata($metadataProps);
 $response = new Response($request);
 $response->renderPageRequest();  // defer so html.php has access to response obj
 

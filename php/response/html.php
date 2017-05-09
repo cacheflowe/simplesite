@@ -2,8 +2,6 @@
   global $request;
   global $response;
   global $metadata;
-  $isDev = (strpos($_SERVER["SERVER_NAME"], "localhost") !== 0) ? false : true;
-
 ?>
 <html>
   <head>
@@ -12,6 +10,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
     <meta content="no" name="imagetoolbar" />
     <?php // <!-- <link rel="alternate" type="application/rss+xml"  href="http://cacheflowe.com/data/xml/news.xml" title="CacheFlowe RSS Feed"> --> ?>
+
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3" />
     <link rel="apple-touch-icon-precomposed" href="<?php echo $metadata->get_favicon(); ?>">
     <link rel="apple-touch-startup-image" href="<?php echo $metadata->get_favicon(); ?>">
@@ -35,37 +34,39 @@
     <meta property="og:type" content="<?php echo $metadata->get_pageType(); ?>"/>
     <meta property="og:url" content="<?php echo $metadata->get_pageURL(); ?>"/>
     <meta property="og:image" content="<?php echo $metadata->get_pageImage(); ?>"/>
-    <?php if(isset($pageVideo) == true) { ?>
+    <?php if($metadata->get_pageVideo() !== null) { ?>
+
     <meta property="og:video:url" content="<?php echo $metadata->get_pageVideo(); ?>"/>
     <meta property="og:video:secure_url" content="<?php echo $metadata->get_pageVideo(); ?>"/>
     <meta property="og:video:type" content="text/html">
     <?php } ?>
 
     <!-- <meta name="twitter:card" content="summary"> -->
-    <meta name="twitter:site" content="@cacheflowe">
+    <meta name="twitter:site" content="<?php echo $metadata->get_twitterUser(); ?>">
     <meta name="twitter:title" content="<?php echo $metadata->get_pageTitle(); ?>">
     <meta name="twitter:description" content="<?php echo $metadata->get_pageDescription(); ?>">
     <meta name="twitter:image" content="<?php echo $metadata->get_pageImage(); ?>">
     <meta name="twitter:image:src" content="<?php echo $metadata->get_pageImage(); ?>">
     <meta name="twitter:domain" content="<?php echo $metadata->get_pageDomain(); ?>">
-    <?php if(isset($pageVideo) == true) { ?>
-<meta name="twitter:player" content="<?php echo $metadata->get_pageVideo(); ?>"/>
+    <?php if($metadata->get_pageVideo() !== null) { ?>
+
+    <meta name="twitter:player" content="<?php echo $metadata->get_pageVideo(); ?>"/>
     <meta name="twitter:player:width" content="1280">
     <meta name="twitter:player:height" content="720">
     <meta name="twitter:card" value="player">
     <?php } ?>
     <?php if($isGif == true) { ?>
-<meta name="twitter:player" content="<?php echo $metadata->get_pageImage(); ?>"/>
-<!-- <meta name="twitter:player" content="<?php echo preg_replace("/^http:/i", "https:", $pageImage); ?>"/> -->
+
+    <meta name="twitter:player" content="<?php echo $metadata->get_pageImage(); ?>"/>
+    <!-- <meta name="twitter:player" content="<?php echo preg_replace("/^http:/i", "https:", $metadata->get_pageImage()); ?>"/> -->
     <meta name="twitter:player:width" content="720">
     <meta name="twitter:player:height" content="720">
     <meta name="twitter:card" value="summary_large_image">
     <!-- <meta name="twitter:card" value="player"> -->
     <?php } ?>
 
-
-    <?php if( $isDev == true ) { ?>
-    <link rel="stylesheet" href="/css/simplesite-vendor/normalize.css">
+    <?php if( $request->isDev() == true ) { ?>
+<link rel="stylesheet" href="/css/simplesite-vendor/normalize.css">
     <link rel="stylesheet" href="/css/simplesite-vendor/skeleton.css">
     <link rel="stylesheet" href="/css/simplesite-vendor/main.css">
     <link rel="stylesheet" href="/css/simplesite-vendor/embetter.css">
@@ -73,32 +74,11 @@
     <?php } else { ?>
     <link rel="stylesheet" href="/css/style-min.css" type="text/css" media="all" title="interface" />
     <?php } ?>
+
   </head>
   <body>
-    <div id="main">
-      <header>SimpleSite</header>
-      <nav id="main-nav">
-        <div class="nav_item">
-          <a href="/">Home</a>
-        </div>
-        <div class="nav_item">
-          <a href="/collection">Collection</a>
-        </div>
-        <div class="nav_item">
-          <a href="/about">About</a>
-        </div>
-        <div class="nav_item">
-          <a href="/contact">Contact</a>
-        </div>
-        <div class="nav_item">
-          <a href="/test/feed">RSS feed</a>
-        </div>
-      </nav>
-      <section id="content-holder"><?php echo $response->view->html(); // insert ajax content on first page load ?></section>
-      <footer id="content-footer">Copyright &copy; simplesite <?php echo date("Y"); ?></footer>
-    </div>
-
-    <?php if( $isDev == true ) { ?>
+    <?php include './php/views/layout.php'; ?>
+    <?php if( $request->isDev() == true ) { ?>
     <!-- vendor / simplesite -->
     <script src="/js/simplesite-vendor/embetter.js"></script>
     <script src="/js/simplesite-vendor/page.js"></script>

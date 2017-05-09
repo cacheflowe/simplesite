@@ -5,6 +5,7 @@ class Request {
     $this->routes = $routes;
     $this->_query = '';
     $this->_isAjax = false;
+    $this->isDev = false;
 
     $this->getPath();
     $this->setOutputType();
@@ -15,6 +16,7 @@ class Request {
   function path() { return $this->_query; }
   function pathComponents() { return $this->_pathComponents; }
   function isAjax() { return $this->_isAjax; }
+  function isDev() { return $this->isDev; }
 
   function getPath() {
     global $string_utils;
@@ -23,6 +25,8 @@ class Request {
     $this->_serverPath = $string_utils->protectYaText( $serverPath[0] );
     $this->_query = $this->_serverPath; // protectYaText( $_SERVER['QUERY_STRING'] ); //substr(, 1); // $_REQUEST['path'];
     $this->_pathComponents = explode( '/', substr( $this->_query, 1 ) );	// strip first slash and get array of path components
+
+    if(strpos($_SERVER["SERVER_NAME"], "localhost") === 0) $this->isDev = true;
   }
 
   function setOutputType() {

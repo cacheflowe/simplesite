@@ -29,14 +29,7 @@ class View {
     $includeFile = '';
     $htmlStr = '';
 
-		// if route is found in current path, send the params along to the view and reassign the path as the route, with the params sent along to find the detail view or
-		// foreach( $request->routes() as $route ) {
-		//   if( strpos( $path, $route ) !== false ) {
-		//   	$pathParams = str_replace( $route, "", $path );
-		//   	$path = $route;
-		//   	break;
-		//   }
-		// }
+    // helper vars to check paths
     $foundPage = false;
     $numPathComponents = count($pathComponentsCopy);
     $pathLastIndex = $numPathComponents - 1;
@@ -91,7 +84,7 @@ class View {
     }
 
     // nothing found: 404
-    if($foundPage == false) { // $includeFile == ''
+    if($foundPage == false) {
       $includeFile = $pagesRoot . '404.php';
     }
 
@@ -102,7 +95,7 @@ class View {
 			$htmlStr = ob_get_clean();
 		}
 
-		$this->htmlStr = $htmlStr; // . $path . ", " . $dashedFilePath . ", " . $foundPage . ", " . $pathLastIndexOrig . ", " . $checkPagePath . ", includeFile:" . $includeFile;
+		$this->htmlStr = $htmlStr;
   }
 
   function __destruct() {

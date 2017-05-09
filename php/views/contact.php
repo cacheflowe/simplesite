@@ -2,7 +2,7 @@
 global $metadata;
 $metadata->set_pageTitle('Cacheflowe / Contact');
 ?>
-<div data-area-type="AreaCommon">
+<div data-view-type="AreaCommon">
 	<div id="content">
 		<h1>Contact</h1>
 		<p>You can <a href="#email" id="email-button">send me an email</a> or use the form below.</p>

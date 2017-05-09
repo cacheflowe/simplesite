@@ -208,4 +208,6 @@ class BaseView {
     // window.cacheCart.disposeLinks(this.el);
 	};
 
-};
+}
+
+window.BaseView = BaseView;

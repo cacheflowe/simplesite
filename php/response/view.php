@@ -73,7 +73,7 @@ class View {
         $xmlFile = $dataRoot . implode("-", $pathComponents) . ".xml";
         $newsListingView = new NewsListingView($checkDataPath, $path, $pathParams, $pathComponents);
         $squarePreviewClass = (strpos( $route, '/music/discography' ) !== false || strpos( $route, '/art/' ) !== false || strpos( $route, '/store' ) !== false) ? ' class="content-square-previews"' : '';  // add special class for square previews
-        $htmlStr = '<div'.$squarePreviewClass.' data-area-type="AreaCommon">' . $newsListingView->html . '</div>';
+        $htmlStr = '<div'.$squarePreviewClass.'>' . $newsListingView->html . '</div>';
 
       }
       // move on to next path attempt

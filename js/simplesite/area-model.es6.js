@@ -23,7 +23,7 @@ class AreaModel {
           document.body.classList.add(this.pathToClass(this.curPath));
         }
         if (window.scrollY > 20) {
-          this.easyScroll.scrollByY(600, window.scrollY);
+          this.easyScroll.scrollByY(300, window.scrollY);
         }
         this.exitCurSection();
         return document.title = this.formatDocumentTitle();
@@ -68,14 +68,6 @@ class AreaModel {
     } else {
       this.fetchPage(path);
     }
-
-    // return window.reqwest({
-    //   url: path,
-    //   success: ((_this => data => {
-    //     _this.createMainContentObj(data, true);
-    //     _this.showNewContent();
-    //   }))(this)
-    // });
   }
 
   fetchPage(path) {
@@ -97,17 +89,16 @@ class AreaModel {
 
   createMainContentObj(data, replaceContent) {
     var newContentEl;
-    let pageType;
     if (typeof data === "string") {
       newContentEl = this.stringToDomElement(data);
     } else {
       newContentEl = data;
     }
-    pageType = newContentEl.getAttribute('data-area-type');
+    let pageType = newContentEl.getAttribute('data-view-type') || 'BaseView';
     if (replaceContent === true) {
       this.contentEl.innerHTML = data;
     }
-    return this.curAreaObj = new BaseView(this.contentEl);
+    this.curAreaObj = new window[pageType](this.contentEl);
   }
 
   showNewContent() {

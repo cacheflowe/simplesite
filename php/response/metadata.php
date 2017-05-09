@@ -1,5 +1,6 @@
 <?php
 
+
 class Metadata {
 
   function __construct($options) {
@@ -29,7 +30,7 @@ class Metadata {
   }
 
   function get_pageSite() { return $this->pageSite; }
-  function get_pageTitle() { return $this->pageTitle; }
+  function get_pageTitle() { global $request; return $this->pageTitle . ucwords(implode(' | ', explode('/', $request->path()))); }
   function get_appTitle() { return $this->appTitle; }
   function get_pageURL() { return $this->pageURL; }
   function get_pageDomain() { return $this->pageDomain; }

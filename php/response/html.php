@@ -85,6 +85,7 @@
     <script src="/js/simplesite-vendor/page.js"></script>
     <script src="/js/simplesite/area-model.es6.js"></script>
     <script src="/js/simplesite/base-view.es6.js"></script>
+    <script src="/js/app/views/area-common.es6.js"></script>
     <script src="/js/app/app.es6.js"></script>
     <?php } else { ?>
     <script src="/js/app-min.js"></script>

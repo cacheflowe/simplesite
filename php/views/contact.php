@@ -1,4 +1,4 @@
-<div data-area-type="AreaContact">
+<div data-area-type="AreaCommon">
 	<div id="content">
 		<h1>Contact</h1>
 		<p>You can <a href="#email" id="email_button">send me an email</a> or use the form below.</p>

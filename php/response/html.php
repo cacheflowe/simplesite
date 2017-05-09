@@ -1,42 +1,82 @@
-<?php global $request_props; ?><!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<?php
+  global $request;
+  global $response;
+  global $metadata;
+  $isDev = (strpos($_SERVER["SERVER_NAME"], "localhost") !== 0) ? false : true;
+
+?>
+<html>
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Site Starter</title>
-    <meta name="description" content="">
-    <meta name="author" content="sitestarter <?php echo date("Y"); ?>">
-    <meta name="viewport" content="width=device-width">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <meta content="no" name="imagetoolbar" />
+    <?php // <!-- <link rel="alternate" type="application/rss+xml"  href="http://cacheflowe.com/data/xml/news.xml" title="CacheFlowe RSS Feed"> --> ?>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3" />
+    <link rel="apple-touch-icon-precomposed" href="<?php echo $metadata->get_favicon(); ?>">
+    <link rel="apple-touch-startup-image" href="<?php echo $metadata->get_favicon(); ?>">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="<?php echo $metadata->get_appTitle(); ?>"> <!-- Make the app title different than the page title. -->
+    <meta name="format-detection" content="telephone=no"> <!-- Disable automatic phone number detection. -->
 
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo $metadata->get_favicon(); ?>">
 
-    <!-- facebook open graph data --> 
-    <meta property="og:site_name" content="Site Starter"/> 
-    <meta property="og:title" content="Site Starter"/> 
-    <meta property="og:description" content="The official site of Site Starter."/> 
-    <meta property="og:type" content="website"/> 
-    <meta property="og:url" content="http://www.sitestarter.com"/> 
-    <meta property="og:image" content="http://farm7.static.flickr.com/6110/6343268416_a29b0bf36d_m.jpg"/> 
-    <link rel="image_src" href="http://farm7.static.flickr.com/6110/6343268416_a29b0bf36d_m.jpg" /> 
+    <title><?php echo $metadata->get_pageTitle(); ?></title>
+    <meta name="keywords" content="<?php echo $metadata->get_pageKeywords(); ?>" />
 
-    <!-- css -->
-    <?php if( !isset( $_REQUEST['dev'] ) ) { ?>
-    <link rel="stylesheet" href="/css/reset/normalize.css">
-    <link rel="stylesheet" href="/css/reset/main.css">
+    <meta name="description" content="<?php echo $metadata->get_pageDescription(); ?>" />
+    <meta name="author" content="CacheFlowe <?php echo date("Y"); ?>" />
+    <meta name="copyright" content="<?php echo $metadata->get_pageSite(); ?>" />
+
+    <meta property="og:site_name" content="<?php echo $metadata->get_pageSite(); ?>"/>
+    <meta property="og:title" content="<?php echo $metadata->get_pageTitle(); ?>"/>
+    <meta property="og:description" content=""/>
+    <meta property="og:type" content="<?php echo $metadata->get_pageType(); ?>"/>
+    <meta property="og:url" content="<?php echo $metadata->get_pageURL(); ?>"/>
+    <meta property="og:image" content="<?php echo $metadata->get_pageImage(); ?>"/>
+    <?php if(isset($pageVideo) == true) { ?>
+    <meta property="og:video:url" content="<?php echo $metadata->get_pageVideo(); ?>"/>
+    <meta property="og:video:secure_url" content="<?php echo $metadata->get_pageVideo(); ?>"/>
+    <meta property="og:video:type" content="text/html">
+    <?php } ?>
+
+    <!-- <meta name="twitter:card" content="summary"> -->
+    <meta name="twitter:site" content="@cacheflowe">
+    <meta name="twitter:title" content="<?php echo $metadata->get_pageTitle(); ?>">
+    <meta name="twitter:description" content="<?php echo $metadata->get_pageDescription(); ?>">
+    <meta name="twitter:image" content="<?php echo $metadata->get_pageImage(); ?>">
+    <meta name="twitter:image:src" content="<?php echo $metadata->get_pageImage(); ?>">
+    <meta name="twitter:domain" content="<?php echo $metadata->get_pageDomain(); ?>">
+    <?php if(isset($pageVideo) == true) { ?>
+<meta name="twitter:player" content="<?php echo $metadata->get_pageVideo(); ?>"/>
+    <meta name="twitter:player:width" content="1280">
+    <meta name="twitter:player:height" content="720">
+    <meta name="twitter:card" value="player">
+    <?php } ?>
+    <?php if($isGif == true) { ?>
+<meta name="twitter:player" content="<?php echo $metadata->get_pageImage(); ?>"/>
+<!-- <meta name="twitter:player" content="<?php echo preg_replace("/^http:/i", "https:", $pageImage); ?>"/> -->
+    <meta name="twitter:player:width" content="720">
+    <meta name="twitter:player:height" content="720">
+    <meta name="twitter:card" value="summary_large_image">
+    <!-- <meta name="twitter:card" value="player"> -->
+    <?php } ?>
+
+
+    <?php if( $isDev == true ) { ?>
+    <link rel="stylesheet" href="/css/simplesite-vendor/normalize.css">
+    <link rel="stylesheet" href="/css/simplesite-vendor/skeleton.css">
+    <link rel="stylesheet" href="/css/simplesite-vendor/main.css">
+    <link rel="stylesheet" href="/css/simplesite-vendor/embetter.css">
     <link rel="stylesheet" href="/css/app/app.css">
     <?php } else { ?>
-    <link rel="stylesheet" href="/css/style-min.css" type="text/css" media="all" title="interface" />    
+    <link rel="stylesheet" href="/css/style-min.css" type="text/css" media="all" title="interface" />
     <?php } ?>
   </head>
   <body>
     <div id="main">
-      <header>sitestarter</header>
-      <!--[if lt IE 7]>
-          <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-      <![endif]-->
+      <header>SimpleSite</header>
       <nav id="main-nav">
         <div class="nav_item">
           <a href="/">Home</a>
@@ -51,24 +91,17 @@
           <a href="/contact">Contact</a>
         </div>
       </nav>
-      <section id="content_holder"><?php include './php/response/data.php'; ?></section>
-      <footer id="content_footer">Copyright &copy; sitestarter <?php echo date("Y"); ?></footer>
+      <section id="content-holder"><?php echo $response->view->html(); // insert ajax content on first page load ?></section>
+      <footer id="content-footer">Copyright &copy; simplesite <?php echo date("Y"); ?></footer>
     </div>
 
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-
-    <?php if( !isset( $_REQUEST['dev'] ) ) { ?>
-    <!-- libs -->
-    <script src="/js/vendor/underscore.js"></script>
-    <script src="/js/vendor/backbone.js"></script>
-    <!-- sitestarter -->
-    <script src="/js/ss/area_model.js"></script>
-    <script src="/js/ss/tracking.js"></script>
-    <!-- custom -->
-    <script src="/js/app/views/area_home.js"></script>
-    <script src="/js/app/main.js"></script>
+    <?php if( $isDev == true ) { ?>
+    <!-- vendor / simplesite -->
+    <script src="/js/simplesite-vendor/embetter.js"></script>
+    <script src="/js/simplesite-vendor/page.js"></script>
+    <script src="/js/simplesite/area_model.js"></script>
+    <script src="/js/simplesite/area_common.js"></script>
+    <script src="/js/simplesite/simplesite.js"></script>
     <?php } else { ?>
     <script src="/js/app-min.js"></script>
     <?php } ?>

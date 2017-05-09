@@ -1,4 +1,4 @@
-<div data-area-type="AreaHome">
+<div>
   <div id="content">
     <h1>Collection</h1>
     <?php if( $pathParams == '' ) { ?>

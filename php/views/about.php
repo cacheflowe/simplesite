@@ -1,4 +1,4 @@
-<div data-area-type="AreaHome">
+<div>
 	<div id="content">
 		<h1>About</h1>
 		<p>This is an about page.</p>

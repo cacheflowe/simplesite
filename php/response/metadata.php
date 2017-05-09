@@ -2,19 +2,19 @@
 
 class Metadata {
 
-  function __construct($hash) {
-    $this->pageSite = (isset($hash['pageSite'])) ? $hash['pageSite'] : "### Page Site Name Here ### CacheFlowe.com";
-    $this->pageTitle = (isset($hash['pageTitle'])) ? $hash['pageTitle'] : "### Page Title Here ### CacheFlowe";
-    $this->appTitle = (isset($hash['appTitle'])) ? $hash['appTitle'] : "### Homescreen app title here ### CacheFlowe";
-    $this->pageURL = (isset($hash['pageURL'])) ? $hash['pageURL'] : "### Page URL Here ### http://cacheflowe.com";
-    $this->pageDomain = (isset($hash['pageDomain'])) ? $hash['pageDomain'] : "### Page Domain Here ###http://cacheflowe.com";
-    $this->pageDescription = (isset($hash['pageDescription'])) ? $hash['pageDescription'] : "### Page Description Here ###";
-    $this->pageImage = (isset($hash['pageImage'])) ? $hash['pageImage'] : "http://cacheflowe.com/images/bio2_crop.jpg";
-    $this->favicon = (isset($hash['favicon'])) ? $hash['favicon'] : "/images/icon.png";
-    $this->pageKeywords = (isset($hash['pageKeywords'])) ? $hash['pageKeywords'] : "### Keywords Here ###";
-    $this->pageVideo = (isset($hash['pageVideo'])) ? $hash['pageVideo'] : null;
-    $this->pageType = (isset($hash['pageType'])) ? $hash['pageType'] : "website";
-    $this->twitterUser = (isset($hash['twitterUser'])) ? $hash['twitterUser'] : "@twitterUser";
+  function __construct($options) {
+    $this->pageSite = (isset($options['pageSite'])) ? $options['pageSite'] : "### Page Site Name Here ### CacheFlowe.com";
+    $this->pageTitle = (isset($options['pageTitle'])) ? $options['pageTitle'] : "### Page Title Here ### CacheFlowe";
+    $this->appTitle = (isset($options['appTitle'])) ? $options['appTitle'] : "### Homescreen app title here ### CacheFlowe";
+    $this->pageURL = (isset($options['pageURL'])) ? $options['pageURL'] : "### Page URL Here ### http://cacheflowe.com";
+    $this->pageDomain = (isset($options['pageDomain'])) ? $options['pageDomain'] : "### Page Domain Here ###http://cacheflowe.com";
+    $this->pageDescription = (isset($options['pageDescription'])) ? $options['pageDescription'] : "### Page Description Here ###";
+    $this->pageImage = (isset($options['pageImage'])) ? $options['pageImage'] : "http://cacheflowe.com/images/bio2_crop.jpg";
+    $this->favicon = (isset($options['favicon'])) ? $options['favicon'] : "/images/icon.png";
+    $this->pageKeywords = (isset($options['pageKeywords'])) ? $options['pageKeywords'] : "### Keywords Here ###";
+    $this->pageVideo = (isset($options['pageVideo'])) ? $options['pageVideo'] : null;
+    $this->pageType = (isset($options['pageType'])) ? $options['pageType'] : "website";
+    $this->twitterUser = (isset($options['twitterUser'])) ? $options['twitterUser'] : "@twitterUser";
     $this->isGif = false;
     $this->checkGif();
   }

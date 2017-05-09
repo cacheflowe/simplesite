@@ -81,10 +81,11 @@
     <?php if( $request->isDev() == true ) { ?>
     <!-- vendor / simplesite -->
     <script src="/js/simplesite-vendor/embetter.js"></script>
+    <script src="/js/simplesite-vendor/easy-scroll.js"></script>
     <script src="/js/simplesite-vendor/page.js"></script>
-    <script src="/js/simplesite/area_model.js"></script>
-    <script src="/js/simplesite/area_common.js"></script>
-    <script src="/js/simplesite/simplesite.js"></script>
+    <script src="/js/simplesite/area-model.es6.js"></script>
+    <script src="/js/simplesite/base-view.es6.js"></script>
+    <script src="/js/app/app.es6.js"></script>
     <?php } else { ?>
     <script src="/js/app-min.js"></script>
     <?php } ?>

@@ -82,6 +82,7 @@
     <!-- vendor / simplesite -->
     <script src="/simplesite/js/vendor/embetter.js"></script>
     <script src="/simplesite/js/vendor/easy-scroll.js"></script>
+    <script src="/simplesite/js/vendor/fetch.js"></script>
     <script src="/simplesite/js/vendor/page.js"></script>
     <script src="/simplesite/js/area-model.es6.js"></script>
     <script src="/simplesite/js/base-view.es6.js"></script>

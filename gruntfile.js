@@ -59,6 +59,7 @@ module.exports = function(grunt) {
           'js/app.min.js': [
               "simplesite/js/vendor/embetter.js",
               "simplesite/js/vendor/easy-scroll.js",
+              "simplesite/js/vendor/fetch.js",
               "simplesite/js/vendor/page.js",
               "js/min/simplesite/js/area-model.js",
               "js/min/simplesite/js/base-view.js",

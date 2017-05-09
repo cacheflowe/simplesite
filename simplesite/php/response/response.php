@@ -32,7 +32,7 @@ class Response {
     if( $this->request->isAjax() == true ) {
       echo $this->view->html();
     } else {
-      include './php/response/html.php';
+      include './simplesite/php/response/html.php';
     }
   }
 

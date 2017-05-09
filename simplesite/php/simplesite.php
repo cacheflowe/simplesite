@@ -1,12 +1,12 @@
 <?php
 
-include('./php/request/redirects.php');
-include('./php/request/request.php');
-include('./php/util/string-utils.php');
-include './php/response/metadata.php';
-include './php/response/view.php';
-include('./php/response/news-listing-view.php');
-include('./php/response/response.php');
+include('./simplesite/php/request/redirects.php');
+include('./simplesite/php/request/request.php');
+include('./simplesite/php/util/string-utils.php');
+include './simplesite/php/response/metadata.php';
+include './simplesite/php/response/view.php';
+include('./simplesite/php/response/news-listing-view.php');
+include('./simplesite/php/response/response.php');
 
 
 // init ---------------------------------------------------------------------------------------------------

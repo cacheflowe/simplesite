@@ -12,5 +12,5 @@ $metadataProps = [
   // "pageVideo" => "",
   // "pageType" => "website",
 ];
-include('./php/simplesite.php');
+include('./simplesite/php/simplesite.php');
 ?>

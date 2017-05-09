@@ -1,12 +1,12 @@
-<p class="contactFormResponse">Thanks for your email. I'll get back to you soon.</p>
-<? 
+<span><b>Thanks for your email. I'll get back to you ASAP.</b></span>
+<?
   // include the PEAR mail class
   include 'Mail.php';
 
   // set up the recipient and necessary headers
-  $recipients = 'Firstname Lastname <test@user.com>';
+  $recipients = 'Justin Gitlin <cacheflowe@cacheflowe.com>';
   $headers['From']    = $_POST['email'];
-  $headers['To']      = 'Firstname Lastname';
+  $headers['To']      = 'Justin Gitlin';
   $headers['Subject'] = $_POST['about'];
 
   // piece together the body message

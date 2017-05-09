@@ -3,6 +3,7 @@ class AreaModel {
     this.contentEl = document.getElementById('content-holder');
     this.pageTitle = document.title.split(' | ')[0];
     this.curPath = null;
+    this.prevPath = null;
     this.queuedPath = null;
     this.curAreaObj = null;
     this.cachedResponses = {};
@@ -15,12 +16,17 @@ class AreaModel {
   index() {
     if (!this.isTransitioning) {
       this.curPath = page.current;
+      if (this.curPath == '' || this.curPath == '/') this.curPath = '/home';
       if (this.curPath !== this.prevPath) {
-        if (this.prevPath.length > 1) {
-          document.body.classList.remove(this.pathToClass(this.prevPath));
+        if (this.prevPath && this.prevPath.length > 1) {
+          let pathSplit = this.prevPath.substr(1).split('/');
+          if(pathSplit.length > 0) document.body.classList.remove('section-' + pathSplit[0]);
+          if(pathSplit.length > 1) document.body.classList.remove('subsection-' + pathSplit[1]);
         }
         if (this.curPath.length > 1) {
-          document.body.classList.add(this.pathToClass(this.curPath));
+          let pathSplit = this.curPath.substr(1).split('/');
+          if(pathSplit.length > 0) document.body.classList.add('section-' + pathSplit[0]);
+          if(pathSplit.length > 1) document.body.classList.add('subsection-' + pathSplit[1]);
         }
         if (window.scrollY > 20) {
           this.easyScroll.scrollByY(300, window.scrollY);
@@ -34,7 +40,7 @@ class AreaModel {
   }
 
   initFirstSection() {
-    this.prevPath = document.location.href.replace(document.location.origin, '');
+    // this.prevPath = document.location.href.replace(document.location.origin, '');
     return this.createMainContentObj(this.contentEl.children[0], false);
   }
 
@@ -145,10 +151,4 @@ class AreaModel {
     return str.substr(0, 1).toUpperCase() + str.substr(1).toLowerCase();
   }
 
-  pathToClass(path) {
-    if (path.indexOf('/') === 0) {
-      path = path.substr(1);
-    }
-    return path;
-  }
 }

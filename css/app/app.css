@@ -36,3 +36,12 @@ body {
   margin: 0 auto;
   background: #ccc;
 }
+
+.section-home a[href="/"],
+.section-home a[href="/home"],
+.section-about a[href="/about"],
+.section-contact a[href="/contact"],
+.section-test a[href="/test/feed"],
+.section-collection a[href="/collection"] {
+  color: #000;
+}

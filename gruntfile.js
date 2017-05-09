@@ -77,6 +77,7 @@ module.exports = function(grunt) {
       combine: {
         files: {
           'css/app.min.css': [
+            'simplesite/css/vendor/normalize.css',
             'simplesite/css/vendor/skeleton.css',
             'simplesite/css/vendor/main.css',
             'simplesite/css/vendor/embetter.css',

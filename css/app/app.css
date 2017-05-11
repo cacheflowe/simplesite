@@ -26,6 +26,8 @@ body {
   width: 100vw;
   height: 100vh;
   overflow-x: hidden;
+  opacity: 1;
+  transition: opacity 0.3s linear;
 }
 
 @media (min-width: 370px) {
@@ -39,6 +41,10 @@ body {
     font-size: 2.2rem;
     line-height: 1.6;
   }
+}
+
+body.page-loading {
+  opacity: 0.2;
 }
 
 h1, h2, h3, h4, h5, h6 {

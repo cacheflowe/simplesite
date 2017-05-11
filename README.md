@@ -24,12 +24,3 @@ A boilerplate php (I know) site starter with friendly URLs, pushState support an
 * `git push heroku master`
 * Manually set php buildpack: `heroku config:add BUILDPACK_URL=https://github.com/heroku/heroku-buildpack-php` - Maybe not needed?
 * Add index.php
-
-
-TODO
-============
-
-* Initial page loud shouldn't load first BaseView object twice..
-* Fixi initial page load <title> - it has double pipes: | |
-* Loading indicator
-* Configuration object w/email for contact form

@@ -4,8 +4,10 @@
 class Metadata {
 
   function __construct($options) {
+    global $request;
     $this->pageSite = (isset($options['pageSite'])) ? $options['pageSite'] : "### Page Site Name Here ### CacheFlowe.com";
-    $this->pageTitle = (isset($options['pageTitle'])) ? $options['pageTitle'] : "### Page Title Here ### CacheFlowe";
+    $this->pageTitleBase = (isset($options['pageTitle'])) ? $options['pageTitle'] : "### Page Title Here ### CacheFlowe";
+    $this->pageTitle = $this->pageTitleBase . ucwords(implode(' | ', explode('/', $request->path())));
     $this->appTitle = (isset($options['appTitle'])) ? $options['appTitle'] : "### Homescreen app title here ### CacheFlowe";
     $this->pageURL = (isset($options['pageURL'])) ? $options['pageURL'] : "### Page URL Here ### http://cacheflowe.com";
     $this->pageDomain = (isset($options['pageDomain'])) ? $options['pageDomain'] : "### Page Domain Here ###http://cacheflowe.com";
@@ -30,7 +32,7 @@ class Metadata {
   }
 
   function get_pageSite() { return $this->pageSite; }
-  function get_pageTitle() { global $request; return $this->pageTitle . ucwords(implode(' | ', explode('/', $request->path()))); }
+  function get_pageTitle() { return $this->pageTitle; }
   function get_appTitle() { return $this->appTitle; }
   function get_pageURL() { return $this->pageURL; }
   function get_pageDomain() { return $this->pageDomain; }

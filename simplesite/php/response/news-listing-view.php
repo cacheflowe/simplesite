@@ -42,6 +42,8 @@ class NewsListingView {
   }
 
   function parseXmlData() {
+    global $metadata;
+
     // loop through RSS content and write html
     if( $this->pathParams == '' ) {
       $this->html = $this->feedHeader;
@@ -56,6 +58,8 @@ class NewsListingView {
     else {
       $this->html = '';
       $this->showPost();
+      // update page title if detail view. feedTitle was updated in showPost() - add to title here
+      $metadata->set_pageTitle($metadata->get_pageTitle() . ' | ' . $this->feedTitle);
     }
     return $this->html;
   }

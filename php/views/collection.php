@@ -1,4 +1,4 @@
-<div>
+<div data-page-title="<?php global $metadata; echo $metadata->get_pageTitle(); ?>">
   <div id="content">
     <h1>Collection</h1>
     <?php if( $pathParams == '' ) { ?>

@@ -12,6 +12,7 @@ class View {
   function buildHtmlData() {
 		// get path array and decide how to include the proper ajax page
 		global $request;
+		global $metadata;
 
     // set locations
 		$dataRoot = './data/rss/';
@@ -73,7 +74,7 @@ class View {
         $xmlFile = $dataRoot . implode("-", $pathComponents) . ".xml";
         $newsListingView = new NewsListingView($checkDataPath, $path, $pathParams, $pathComponents);
         $squarePreviewClass = (strpos( $route, '/music/discography' ) !== false || strpos( $route, '/art/' ) !== false || strpos( $route, '/store' ) !== false) ? ' class="content-square-previews"' : '';  // add special class for square previews
-        $htmlStr = '<div'.$squarePreviewClass.'>' . $newsListingView->html . '</div>';
+        $htmlStr = '<div'.$squarePreviewClass.' data-page-title="' . $metadata->get_pageTitle() . '">' . $newsListingView->html . '</div>';
 
       }
       // move on to next path attempt

@@ -1,8 +1,8 @@
 <?php
 global $metadata;
-$metadata->set_pageTitle('Cacheflowe / Contact');
+$metadata->set_pageTitle('Simplesite | Contact');
 ?>
-<div data-view-type="AreaCommon">
+<div data-view-type="AreaCommon" data-page-title="<?php echo $metadata->get_pageTitle(); ?>">
 	<div id="content">
 		<h1>Contact</h1>
 		<p>You can email <a href="#email" id="email-button" data-username="cacheflowe" data-domain="cacheflowe.com"></a> or use the form below.</p>

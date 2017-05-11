@@ -1,7 +1,7 @@
 class AreaModel {
   constructor(initRoutes) {
     this.contentEl = document.getElementById('content-holder');
-    this.pageTitle = document.title.split(' | ')[0];
+    this.pageTitleBase = document.title.split(' | ')[0];
     this.curPath = null;
     this.prevPath = null;
     this.queuedPath = null;
@@ -31,10 +31,9 @@ class AreaModel {
           this.easyScroll.scrollByY(300, window.scrollY);
         }
         this.exitCurSection();
-        return document.title = this.formatDocumentTitle();
       }
     } else {
-      return this.queuedPath = page.current;
+      this.queuedPath = page.current;
     }
   }
 
@@ -44,7 +43,7 @@ class AreaModel {
     } else {
       this.isTransitioning = true;
       if (this.contentEl.children.length > 0) {
-        document.body.classList.add('hiding-content');
+        document.body.classList.add('page-loading');
         return setTimeout(() => this.contentHidden(), 300);
       } else {
         return this.contentHidden();
@@ -86,26 +85,29 @@ class AreaModel {
 
   sectionDataLoaded(data, path) {
     this.cachedResponses[path] = data;
-    this.createMainContentObj( data, true );
+    this.createMainContentObj(data);
     this.showNewContent();
   }
 
-  createMainContentObj(data, replaceContent) {
+  createMainContentObj(data) {
+    // create new content element
     var newContentEl;
     if (typeof data === "string") {
       newContentEl = this.stringToDomElement(data);
     } else {
       newContentEl = data;
     }
+    // update title
+    let pageTitle = newContentEl.getAttribute('data-page-title') || null;
+    this.formatDocumentTitle(pageTitle);
+    // create page object
     let pageType = newContentEl.getAttribute('data-view-type') || 'BaseView';
-    if (replaceContent === true) {
-      this.contentEl.innerHTML = data;
-    }
+    this.contentEl.innerHTML = data;
     this.curAreaObj = new window[pageType](this.contentEl);
   }
 
   showNewContent() {
-    document.body.classList.remove('hiding-content');
+    document.body.classList.remove('page-loading');
     this.prevPath = this.curPath;
     this.isTransitioning = false;
     if (this.queuedPath) {
@@ -125,24 +127,8 @@ class AreaModel {
     return div.children[0];
   }
 
-  formatDocumentTitle() {
-    let titleParts = this.curPath.split('/');
-    let i = 0;
-    while (i < titleParts.length) {
-      let subParts = titleParts[i].split('-');
-      let j = 0;
-      while (j < subParts.length) {
-        subParts[j] = this.toTitleCase(subParts[j]);
-        j++;
-      }
-      titleParts[i] = subParts.join(' ');
-      i++;
-    }
-    if (this.curPath !== '/') {
-      return `${this.pageTitle} ${titleParts.join(' | ')}`;
-    } else {
-      return this.pageTitle;
-    }
+  formatDocumentTitle(newTitle) {
+    document.title = (newTitle != null) ? newTitle : this.pageTitleBase;
   }
 
   toTitleCase(str) {

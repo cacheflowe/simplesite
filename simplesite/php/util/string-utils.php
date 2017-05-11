@@ -7,7 +7,8 @@ class StringUtils {
     // security against naughty foreign or local includes. limit to alphanumeric + '/'?
     $text = str_replace( "http", " ", $text );
     $text = str_replace( "../", " ", $text );
-    $text = preg_replace("/[^a-zA-Z0-9-+.\/\s]/", "", $text );
+    $text = str_replace( "./", " ", $text );
+    $text = preg_replace("/[^a-zA-Z0-9-+@.\/\s]/", "", $text );
     return $text;
   }
 

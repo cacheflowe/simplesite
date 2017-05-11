@@ -9,7 +9,6 @@ class AreaModel {
     this.cachedResponses = {};
     this.isTransitioning = false;
     this.easyScroll = new EasyScroll();
-    this.initFirstSection();
     initRoutes(this.index.bind(this));
   }
 
@@ -39,25 +38,23 @@ class AreaModel {
     }
   }
 
-  initFirstSection() {
-    // this.prevPath = document.location.href.replace(document.location.origin, '');
-    return this.createMainContentObj(this.contentEl.children[0], false);
-  }
-
   exitCurSection() {
-    this.isTransitioning = true;
-    if (this.contentEl.children.length > 0) {
-      document.body.classList.add('hiding-content');
-      return setTimeout(() => this.contentHidden(), 300);
+    if(this.prevPath == null) { // first load!
+      this.sectionDataLoaded(this.contentEl.innerHTML, this.curPath);
     } else {
-      return this.contentHidden();
+      this.isTransitioning = true;
+      if (this.contentEl.children.length > 0) {
+        document.body.classList.add('hiding-content');
+        return setTimeout(() => this.contentHidden(), 300);
+      } else {
+        return this.contentHidden();
+      }
     }
   }
 
   contentHidden() {
-    let ref;
-    if ((ref = this.curAreaObj) != null) {
-      ref.dispose();
+    if (this.curAreaObj != null) {
+      this.curAreaObj.dispose();
     }
     this.curAreaObj = null;
     return this.loadAjaxContent(this.curPath);
@@ -115,6 +112,7 @@ class AreaModel {
       this.queuedPath = null;
       this.index();
     }
+
     // return setTimeout(((_this => () => ga('send', {
     //   hitType: 'pageview',
     //   page: location.pathname

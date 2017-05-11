@@ -1,4 +1,4 @@
-Site Starter
+Simplesite
 ============
 
 A boilerplate php (I know) site starter with friendly URLs, pushState support and SEO-friendliness
@@ -18,7 +18,7 @@ A boilerplate php (I know) site starter with friendly URLs, pushState support an
 * `npm i grunt-contrib-copy --save-dev`
 
 
-**Create the Heroku app**
+**Create the Heroku php app**
 
 * `heroku create`
 * `git push heroku master`
@@ -28,3 +28,8 @@ A boilerplate php (I know) site starter with friendly URLs, pushState support an
 
 TODO
 ============
+
+* Initial page loud shouldn't load first BaseView object twice..
+* Fixi initial page load <title> - it has double pipes: | |
+* Loading indicator
+* Configuration object w/email for contact form

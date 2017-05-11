@@ -134,15 +134,15 @@ class BaseView {
     this.contactForm = this.el.querySelector('#contactform');
     if(this.contactForm !== null) {
       // grab elements
-      this.emailInput = document.getElementById("email");
-      this.aboutInput = document.getElementById("about");
-      this.messageInput = document.getElementById("message");
-      this.submitButton = this.el.querySelector('#contact-submit');
+      this.emailInput = document.getElementById("email-input");
+      this.aboutInput = document.getElementById("about-input");
+      this.messageInput = document.getElementById("message-input");
+      this.submitButton = document.getElementById("contact-submit");
       // listen to submit button
       this.submitButton.addEventListener('click', (e) => this.submitForm(e));
       // populate email link
       var emailLink = document.getElementById('email-button');
-      var emailAddy = 'test'+'@'+'user'+'.'+'com';
+      var emailAddy = emailLink.getAttribute('data-username')+'@'+emailLink.getAttribute('data-domain');
       emailLink.href = 'mailto:'+emailAddy;
       emailLink.innerHTML = emailAddy;
     }
@@ -152,17 +152,16 @@ class BaseView {
     if(this.validateForm() === true) {
       this.submitButton.setAttribute('disabled', 'disabled');
       document.body.classList.add('loading');
-      window.reqwest({
-        url: 'php/'+'mail/cachemail.'+'p'+'hp',
-        method: 'post',
-        data: { email: this.emailInput.value, about: this.aboutInput.value, message: this.messageInput.value },
-        success: function(data){
+      // fetch('/contact/submit', {method: "POST", body:{email: this.emailInput.value, about: this.aboutInput.value, message: this.messageInput.value}})
+      fetch('/contact/submit', {method: "POST", body: new FormData(this.contactForm)})
+        .then((response) => {
+          return response.text();
+        }).then((data) => {
           this.insertContactResponse(data);
-        },
-        complete: function(data){
           document.body.classList.remove('loading');
-        }
-      });
+        }).catch(function(ex) {
+          console.warn('Submit failed', ex);
+        });
     }
   };
 
@@ -181,7 +180,7 @@ class BaseView {
   		this.emailInput.focus();
   		return false;
   	}
-  	if (document.getElementById("message").value.length === 0) {
+    if (this.messageInput.value.length === 0) {
   		alert('Please enter a message');
   		this.messageInput.focus();
   		return false;

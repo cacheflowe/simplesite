@@ -30,7 +30,7 @@
 
     <meta property="og:site_name" content="<?php echo $metadata->get_pageSite(); ?>"/>
     <meta property="og:title" content="<?php echo $metadata->get_pageTitle(); ?>"/>
-    <meta property="og:description" content=""/>
+    <meta property="og:description" content="<?php echo $metadata->get_pageDescription(); ?>"/>
     <meta property="og:type" content="<?php echo $metadata->get_pageType(); ?>"/>
     <meta property="og:url" content="<?php echo $metadata->get_pageURL(); ?>"/>
     <meta property="og:image" content="<?php echo $metadata->get_pageImage(); ?>"/>

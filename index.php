@@ -12,5 +12,9 @@ $metadataProps = [
   // "pageVideo" => "",
   // "pageType" => "website",
 ];
+$emailConfig = [
+  "recipientEmail" => "cacheflowe@cacheflowe.com",
+  "recipientName" => "Justin Gitlin"
+];
 include('./simplesite/php/simplesite.php');
 ?>

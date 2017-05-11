@@ -71,6 +71,7 @@
     <link rel="stylesheet" href="/simplesite/css/vendor/main.css">
     <link rel="stylesheet" href="/simplesite/css/vendor/embetter.css">
     <link rel="stylesheet" href="/css/app/app.css">
+    <?php include './php/includes/css.php'; ?>
     <?php } else { ?>
     <link rel="stylesheet" href="/css/app.min.css" type="text/css" media="all" title="interface" />
     <?php } ?>
@@ -87,6 +88,7 @@
     <script src="/simplesite/js/area-model.es6.js"></script>
     <script src="/simplesite/js/base-view.es6.js"></script>
     <script src="/js/app/views/area-common.es6.js"></script>
+    <?php include './php/includes/js.php'; ?>
     <script src="/js/app/app.es6.js"></script>
     <?php } else { ?>
     <script src="/js/app.min.js"></script>

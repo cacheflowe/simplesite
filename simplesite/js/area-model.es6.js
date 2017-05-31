@@ -97,12 +97,12 @@ class AreaModel {
     } else {
       newContentEl = data;
     }
-    // update title
+    // update <title>
     let pageTitle = newContentEl.getAttribute('data-page-title') || null;
     this.formatDocumentTitle(pageTitle);
     // create page object
     let pageType = newContentEl.getAttribute('data-view-type') || 'BaseView';
-    this.contentEl.innerHTML = data;
+    if(this.prevPath != null) this.contentEl.innerHTML = data;  // don't replace initial html
     this.curAreaObj = new window[pageType](this.contentEl);
   }
 

@@ -72,8 +72,10 @@
     <link rel="stylesheet" href="/simplesite/css/vendor/embetter.css">
     <link rel="stylesheet" href="/css/app/app.css">
     <?php include './php/includes/css.php'; ?>
+    <?php include './php/includes/js-head.php'; ?>
     <?php } else { ?>
     <link rel="stylesheet" href="/css/app.min.css" type="text/css" media="all" title="interface" />
+    <?php include './php/includes/js-head.php'; ?>
     <?php } ?>
 
   </head>

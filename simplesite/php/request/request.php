@@ -24,6 +24,7 @@ class Request {
     $serverPath = explode( "?", $_SERVER["REQUEST_URI"] );
     $this->_serverPath = $string_utils->protectYaText( $serverPath[0] );
     $this->_query = $this->_serverPath; // protectYaText( $_SERVER['QUERY_STRING'] ); //substr(, 1); // $_REQUEST['path'];
+    if($this->_query == '' || $this->_query == '/') $this->_query = '/home';
     $this->_pathComponents = explode( '/', substr( $this->_query, 1 ) );	// strip first slash and get array of path components
 
     if(strpos($_SERVER["SERVER_NAME"], "localhost") === 0) $this->isDev = true;

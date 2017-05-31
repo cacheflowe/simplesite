@@ -19,10 +19,9 @@ class View {
 		$pagesRoot = './php/views/';
     // get basic path
 		$path = $request->path();
-		if($path == '' || $path == '/') $path = '/home';
 
 		$pathParams = '';
-    $pathComponents = explode( '/', substr( $path, 1 ) );
+    $pathComponents = $request->pathComponents();
     $pathComponentsCopy = explode( '/', substr( $path, 1 ) );
 
     // init empty values

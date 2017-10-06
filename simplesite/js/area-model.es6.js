@@ -1,5 +1,5 @@
 class AreaModel {
-  constructor(initRoutes) {
+  constructor(initRoutes, pathUpdatedCallback) {
     this.contentEl = document.getElementById('content-holder');
     this.pageTitleBase = document.title.split(' | ')[0];
     this.curPath = null;
@@ -9,6 +9,7 @@ class AreaModel {
     this.cachedResponses = {};
     this.isTransitioning = false;
     this.easyScroll = new EasyScroll();
+    this.pathUpdatedCallback = pathUpdatedCallback;
     initRoutes(this.index.bind(this));
   }
 
@@ -114,7 +115,7 @@ class AreaModel {
       this.queuedPath = null;
       this.index();
     }
-
+    if(this.pathUpdatedCallback) this.pathUpdatedCallback(this.curPath);
     // return setTimeout(((_this => () => ga('send', {
     //   hitType: 'pageview',
     //   page: location.pathname

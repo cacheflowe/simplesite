@@ -5,15 +5,17 @@ class Metadata {
 
   function __construct($options) {
     global $request;
-    $this->pageSite = (isset($options['pageSite'])) ? $options['pageSite'] : "### Page Site Name Here ### CacheFlowe.com";
-    $this->pageTitleBase = (isset($options['pageTitle'])) ? $options['pageTitle'] : "### Page Title Here ### CacheFlowe";
-    $this->pageTitle = $this->pageTitleBase . ucwords(implode(' | ', explode('/', $request->path())));
-    $this->appTitle = (isset($options['appTitle'])) ? $options['appTitle'] : "### Homescreen app title here ### CacheFlowe";
+    $this->pageSite = (isset($options['pageSite'])) ? $options['pageSite'] : "### Page Site Name Here ###";
+    $this->pageTitleBase = (isset($options['pageTitle'])) ? $options['pageTitle'] : "### Page Title Here ###";
+    $this->pageTitle = $this->pageTitleBase;
+    if($request->path() != "/home") $this->pageTitle .=  ucwords(implode(' | ', explode('/', $request->path())));
+    $this->appTitle = (isset($options['appTitle'])) ? $options['appTitle'] : "### Homescreen app title here ###";
     $this->pageURL = (isset($options['pageURL'])) ? $options['pageURL'] : "### Page URL Here ### http://cacheflowe.com";
     $this->pageDomain = (isset($options['pageDomain'])) ? $options['pageDomain'] : "### Page Domain Here ###http://cacheflowe.com";
     $this->pageDescription = (isset($options['pageDescription'])) ? $options['pageDescription'] : "### Page Description Here ###";
     $this->pageImage = (isset($options['pageImage'])) ? $options['pageImage'] : "http://cacheflowe.com/images/bio2_crop.jpg";
     $this->favicon = (isset($options['favicon'])) ? $options['favicon'] : "/images/icon.png";
+    $this->viewport = (isset($options['viewport'])) ? $options['viewport'] : "width=device-width, initial-scale=1, maximum-scale=3";
     $this->pageKeywords = (isset($options['pageKeywords'])) ? $options['pageKeywords'] : "### Keywords Here ###";
     $this->pageVideo = (isset($options['pageVideo'])) ? $options['pageVideo'] : null;
     $this->pageType = (isset($options['pageType'])) ? $options['pageType'] : "website";
@@ -39,6 +41,7 @@ class Metadata {
   function get_pageDescription() { return $this->pageDescription; }
   function get_pageImage() { return $this->pageImage; }
   function get_favicon() { return $this->favicon; }
+  function get_viewport() { return $this->viewport; }
   function get_pageKeywords() { return $this->pageKeywords; }
   function get_pageVideo() { return $this->pageVideo; }
   function get_pageType() { return $this->pageType; }
@@ -52,6 +55,7 @@ class Metadata {
   function set_pageDescription($val) { $this->pageDescription = $val; }
   function set_pageImage($val) { $this->pageImage = $val; $this->checkGif(); }
   function set_favicon($val) { $this->favicon = $val; }
+  function set_viewport($val) { $this->viewport = $val; }
   function set_pageKeywords($val) { $this->pageKeywords = $val; }
   function set_pageVideo($val) { $this->pageVideo = $val; }
   function set_pageType($val) { $this->pageType = $val; }

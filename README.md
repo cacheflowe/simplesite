@@ -5,7 +5,7 @@ A boilerplate php (I know) site starter with friendly URLs, pushState support an
 
 # Setup
 
-**NPM + Packages**
+**NPM + Packages for Grunt build**
 
 * `npm init`
 * `npm i grunt --save-dev`
@@ -18,9 +18,20 @@ A boilerplate php (I know) site starter with friendly URLs, pushState support an
 * `npm i grunt-contrib-copy --save-dev`
 
 
+**Special functions**
+
+* Add `?notDev` to load production js/css
+
 **Create the Heroku php app**
 
 * `heroku create`
 * `git push heroku master`
 * Manually set php buildpack: `heroku config:add BUILDPACK_URL=https://github.com/heroku/heroku-buildpack-php` - Maybe not needed?
 * Add index.php
+
+
+
+# TODO
+
+* support multiple layouts?
+* make BaseArea way more simple. use composition to include embetter, imagexpander, etc

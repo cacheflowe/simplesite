@@ -1,6 +1,6 @@
 
     <div id="main">
-      <header>SimpleSite</header>
+      <header><h1>SimpleSite</h1></header>
       <nav id="main-nav">
         <div class="nav_item">
           <a href="/">Home</a>

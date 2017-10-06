@@ -57,14 +57,19 @@ module.exports = function(grunt) {
       build_site: {
         files: {
           'js/app.min.js': [
-              "simplesite/js/vendor/embetter.js",
-              "simplesite/js/vendor/easy-scroll.js",
               "simplesite/js/vendor/fetch.js",
               "simplesite/js/vendor/page.js",
+              "simplesite/js/vendor/embetter.js",
+              "js/min/simplesite/js/haxademic/app-store.js",
+              "js/min/simplesite/js/haxademic/dom-util.js",
+              "js/min/simplesite/js/haxademic/easy-scroll.js",
               "js/min/simplesite/js/area-model.js",
               "js/min/simplesite/js/base-view.js",
-              "js/min/app/views/area-common.js",
-              "js/min/app/app.js"
+
+              "js/min/vendor/embetter.js",
+              "js/min/views/fancy-view.js",
+              "js/min/app/tracking.js",
+              "js/min/app.js"
             ]
         }
       }

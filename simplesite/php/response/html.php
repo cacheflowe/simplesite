@@ -2,6 +2,7 @@
   global $request;
   global $response;
   global $metadata;
+  global $serverConfig;
 ?>
 <html>
   <head>
@@ -9,21 +10,16 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
     <meta content="no" name="imagetoolbar" />
-    <?php // <!-- <link rel="alternate" type="application/rss+xml"  href="http://cacheflowe.com/data/xml/news.xml" title="CacheFlowe RSS Feed"> --> ?>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3" />
+    <meta name="viewport" content="<?php echo $metadata->get_viewport(); ?>" />
     <link rel="apple-touch-icon-precomposed" href="<?php echo $metadata->get_favicon(); ?>">
     <link rel="apple-touch-startup-image" href="<?php echo $metadata->get_favicon(); ?>">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="<?php echo $metadata->get_appTitle(); ?>"> <!-- Make the app title different than the page title. -->
-    <meta name="format-detection" content="telephone=no"> <!-- Disable automatic phone number detection. -->
-
+    <meta name="apple-mobile-web-app-title" content="<?php echo $metadata->get_appTitle(); ?>">
+    <meta name="format-detection" content="telephone=no">
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo $metadata->get_favicon(); ?>">
-
     <title><?php echo $metadata->get_pageTitle(); ?></title>
     <meta name="keywords" content="<?php echo $metadata->get_pageKeywords(); ?>" />
-
     <meta name="description" content="<?php echo $metadata->get_pageDescription(); ?>" />
     <meta name="author" content="CacheFlowe <?php echo date("Y"); ?>" />
     <meta name="copyright" content="<?php echo $metadata->get_pageSite(); ?>" />
@@ -34,23 +30,22 @@
     <meta property="og:type" content="<?php echo $metadata->get_pageType(); ?>"/>
     <meta property="og:url" content="<?php echo $metadata->get_pageURL(); ?>"/>
     <meta property="og:image" content="<?php echo $metadata->get_pageImage(); ?>"/>
-    <?php if($metadata->get_pageVideo() !== null) { ?>
-
-    <meta property="og:video:url" content="<?php echo $metadata->get_pageVideo(); ?>"/>
+    <?php if($metadata->get_pageVideo() !== null) {
+    ?><meta property="og:video:url" content="<?php echo $metadata->get_pageVideo(); ?>"/>
     <meta property="og:video:secure_url" content="<?php echo $metadata->get_pageVideo(); ?>"/>
     <meta property="og:video:type" content="text/html">
-    <?php } ?>
+    <?php } ?><?php //<!-- <meta name="twitter:card" content="summary"> -->
+    ?>
 
-    <!-- <meta name="twitter:card" content="summary"> -->
-    <meta name="twitter:site" content="<?php echo $metadata->get_twitterUser(); ?>">
+    <?php if($metadata->get_twitterUser() != null) { ?><meta name="twitter:site" content="@<?php echo($metadata->get_twitterUser()); ?>"><?php }?>
+
     <meta name="twitter:title" content="<?php echo $metadata->get_pageTitle(); ?>">
     <meta name="twitter:description" content="<?php echo $metadata->get_pageDescription(); ?>">
     <meta name="twitter:image" content="<?php echo $metadata->get_pageImage(); ?>">
     <meta name="twitter:image:src" content="<?php echo $metadata->get_pageImage(); ?>">
     <meta name="twitter:domain" content="<?php echo $metadata->get_pageDomain(); ?>">
-    <?php if($metadata->get_pageVideo() !== null) { ?>
-
-    <meta name="twitter:player" content="<?php echo $metadata->get_pageVideo(); ?>"/>
+    <?php if($metadata->get_pageVideo() !== null) {
+    ?><meta name="twitter:player" content="<?php echo $metadata->get_pageVideo(); ?>"/>
     <meta name="twitter:player:width" content="1280">
     <meta name="twitter:player:height" content="720">
     <meta name="twitter:card" value="player">
@@ -58,40 +53,54 @@
     <?php if($isGif == true) { ?>
 
     <meta name="twitter:player" content="<?php echo $metadata->get_pageImage(); ?>"/>
-    <!-- <meta name="twitter:player" content="<?php echo preg_replace("/^http:/i", "https:", $metadata->get_pageImage()); ?>"/> -->
+    <?php //<!-- <meta name="twitter:player" content="<?php echo preg_replace("/^http:/i", "https:", $metadata->get_pageImage()); ?/>"/> --> ?>
     <meta name="twitter:player:width" content="720">
     <meta name="twitter:player:height" content="720">
     <meta name="twitter:card" value="summary_large_image">
-    <!-- <meta name="twitter:card" value="player"> -->
+    <?php //<!-- <meta name="twitter:card" value="player"> --> ?>
     <?php } ?>
 
-    <?php if( $request->isDev() == true ) { ?>
-<link rel="stylesheet" href="/simplesite/css/vendor/normalize.css">
+    <?php if(isset($serverConfig["forceHttpsUrlMatch"])) { ?><script>
+      if (location.protocol != 'https:' && location.href.match(/<?php echo($serverConfig["forceHttpsUrlMatch"]); ?>/i) && !location.href.match('localhost')) location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+    </script><?php } ?>
+
+    <?php if( $request->isDev() == true ) {
+    ?><link rel="stylesheet" href="/simplesite/css/vendor/normalize.css">
     <link rel="stylesheet" href="/simplesite/css/vendor/skeleton.css">
     <link rel="stylesheet" href="/simplesite/css/vendor/main.css">
     <link rel="stylesheet" href="/simplesite/css/vendor/embetter.css">
     <link rel="stylesheet" href="/css/app/app.css">
     <?php include './php/includes/css.php'; ?>
-    <?php include './php/includes/js-head.php'; ?>
+    <?php include './php/includes/head.php'; ?>
     <?php } else { ?>
     <link rel="stylesheet" href="/css/app.min.css" type="text/css" media="all" title="interface" />
-    <?php include './php/includes/js-head.php'; ?>
+    <?php include './php/includes/head.php'; ?>
     <?php } ?>
+
+    <?php if(isset($serverConfig["gaID"])) { ?><script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', '<?php echo($serverConfig["gaID"]); ?>', 'auto');
+      ga('send', 'pageview');
+    </script><?php } ?>
 
   </head>
   <body>
-    <?php include './php/views/layout.php'; ?>
+    <?php include './php/layouts/layout.php'; ?>
     <?php if( $request->isDev() == true ) { ?>
     <!-- vendor / simplesite -->
-    <script src="/simplesite/js/vendor/embetter.js"></script>
-    <script src="/simplesite/js/vendor/easy-scroll.js"></script>
     <script src="/simplesite/js/vendor/fetch.js"></script>
     <script src="/simplesite/js/vendor/page.js"></script>
+    <script src="/simplesite/js/haxademic/app-store.es6.js"></script>
+    <script src="/simplesite/js/haxademic/dom-util.es6.js"></script>
+    <script src="/simplesite/js/haxademic/easy-scroll.es6.js"></script>
     <script src="/simplesite/js/area-model.es6.js"></script>
     <script src="/simplesite/js/base-view.es6.js"></script>
-    <script src="/js/app/views/area-common.es6.js"></script>
+    <script src="/js/app/tracking.es6.js"></script>
     <?php include './php/includes/js.php'; ?>
-    <script src="/js/app/app.es6.js"></script>
+    <script src="/js/app.es6.js"></script>
     <?php } else { ?>
     <script src="/js/app.min.js"></script>
     <?php } ?>

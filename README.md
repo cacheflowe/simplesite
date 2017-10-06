@@ -17,17 +17,29 @@ A boilerplate php (I know) site starter with friendly URLs, pushState support an
 * `npm i grunt-contrib-clean --save-dev`
 * `npm i grunt-contrib-copy --save-dev`
 
-
-**Special functions**
-
-* Add `?notDev` to load production js/css
-
 **Create the Heroku php app**
 
 * `heroku create`
 * `git push heroku master`
 * Manually set php buildpack: `heroku config:add BUILDPACK_URL=https://github.com/heroku/heroku-buildpack-php` - Maybe not needed?
 * Add index.php
+
+**Setup Apache**
+
+Add to hosts:
+`127.0.0.1 localhost.simplesite.com`
+
+Add to vhosts:
+```
+<VirtualHost *:80>
+    ServerName localhost.simplesite.com
+    DocumentRoot /Users/user/Documents/local_path/simplesite
+</VirtualHost>
+```
+
+# Special functions
+
+* Add `?notDev` to load production js/css
 
 
 

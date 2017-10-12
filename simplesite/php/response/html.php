@@ -68,8 +68,6 @@
     ?><link rel="stylesheet" href="/simplesite/css/vendor/normalize.css">
     <link rel="stylesheet" href="/simplesite/css/vendor/skeleton.css">
     <link rel="stylesheet" href="/simplesite/css/vendor/main.css">
-    <link rel="stylesheet" href="/simplesite/css/vendor/embetter.css">
-    <link rel="stylesheet" href="/css/app/app.css">
     <?php include './php/includes/css.php'; ?>
     <?php include './php/includes/head.php'; ?>
     <?php } else { ?>

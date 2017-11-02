@@ -12,7 +12,7 @@ A boilerplate php (I know) site starter with friendly URLs, pushState support an
 * `npm i -g grunt-cli --save-dev`
 * `npm i grunt-contrib-uglify --save-dev`
 * `npm i grunt-contrib-cssmin --save-dev`
-* `npm i grunt-postcss pixrem autoprefixer cssnano --save-dev`
+* `npm i grunt-postcss pixrem autoprefixer cssnano postcss-import postcss-url postcss-cssnext postcss-browser-reporter postcss-reporter --save-dev`
 * `npm i grunt-babel babel-preset-es2015 --save-dev`
 * `npm i grunt-contrib-clean --save-dev`
 * `npm i grunt-contrib-copy --save-dev`
@@ -71,3 +71,4 @@ SSL w/Cloudflare
 * Remove Mail.php
 * support multiple layouts?
 * make BaseArea way more simple. use composition to include embetter, imagexpander, etc
+* Check <head> entires: https://github.com/joshbuchea/HEAD?utm_source=frontendfocus&utm_medium=email

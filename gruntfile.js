@@ -103,8 +103,20 @@ module.exports = function(grunt) {
     postcss: {
       options: {
         map: false, // inline sourcemaps
-        processors: [
+        /*processors: [
           require('autoprefixer')({browsers: 'last 2 versions'}), // add vendor prefixes
+        ],*/
+        processors: [
+          require("postcss-import")(),
+          require("postcss-url")(),
+          require("postcss-cssnext")(),
+          // add your "plugins" here
+          // ...
+          // and if you want to compress
+          // Disable autoprefixer, because it's already included in cssnext
+          // require("cssnano")({ autoprefixer: false }),
+          require("postcss-browser-reporter")(),
+          require("postcss-reporter")(),
         ]
       },
       dist: {

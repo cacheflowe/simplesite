@@ -7,7 +7,14 @@ class View {
 
 	function html() { return $this->htmlStr . $this->pageJsFix(); }
 
-  function pageJsFix() { return "<script>if(document.querySelector('head meta') == null) document.location.reload();</script>"; }
+  function pageJsFix() {
+    global $request;
+    if($request->isAPI()) {
+      return "";
+    } else {
+      return "<script>if(document.querySelector('head meta') == null) document.location.reload();</script>";
+    }
+  }
 
   function buildHtmlData() {
 		// get path array and decide how to include the proper ajax page

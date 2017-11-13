@@ -60,13 +60,12 @@
     <?php //<!-- <meta name="twitter:card" value="player"> --> ?>
     <?php } ?>
 
-    <?php if(isset($serverConfig["forceHttpsUrlMatch"])) { ?><script>
+    <?php if($serverConfig["forceHttps"] == true && isset($serverConfig["forceHttpsUrlMatch"])) { ?><script>
       if (location.protocol != 'https:' && location.href.match(/<?php echo($serverConfig["forceHttpsUrlMatch"]); ?>/i) && !location.href.match('localhost')) location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
     </script><?php } ?>
 
     <?php if( $request->isDev() == true ) {
     ?><link rel="stylesheet" href="/simplesite/css/vendor/normalize.css">
-    <link rel="stylesheet" href="/simplesite/css/vendor/skeleton.css">
     <link rel="stylesheet" href="/simplesite/css/vendor/main.css">
     <?php include './php/includes/css.php'; ?>
     <?php include './php/includes/head.php'; ?>

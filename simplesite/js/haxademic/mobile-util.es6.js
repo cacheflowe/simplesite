@@ -9,6 +9,11 @@ class MobileUtil {
     document.addEventListener("touchstart", function(){}, false);
   }
 
+  static setDeviceInputClass() {
+    const deviceClass = (MobileUtil.isMobileBrowser()) ? 'mobile' : 'desktop';
+    document.body.classList.add(deviceClass);
+  }
+
   static lockTouchScreen( isLocked ) {
     if( isLocked == false ) {
       document.ontouchmove = null;

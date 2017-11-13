@@ -5,11 +5,15 @@ class ArrayUtil {
     if (index !== -1) array.splice(index, 1);
   }
 
-  static shuffleArray(array) {
+  static clear(array) {
+    array.splice(0, array.length);
+  }
+
+  static shuffle(array) {
     array.sort(() => {return 0.5 - Math.random()});
   }
 
-  static randomElementFromArr(array) {
+  static randomElement(array) {
     return array[MathUtil.randRange(0, array.length - 1)];
   }
 

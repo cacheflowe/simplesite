@@ -68,7 +68,10 @@ SSL w/Cloudflare
 
 # TODO
 
+* Move skeleton.css into css.php (also move in gruntfile.js defaults)
+* Move grunt-includes to simplesite/php ?
 * Remove Mail.php
+* Add ability to create cached responses in AreaModel so we can get pushState and content swapping without hitting the server again
 * support multiple layouts?
 * make BaseArea way more simple. use composition to include embetter, imagexpander, etc
 * Check <head> entires: https://github.com/joshbuchea/HEAD?utm_source=frontendfocus&utm_medium=email

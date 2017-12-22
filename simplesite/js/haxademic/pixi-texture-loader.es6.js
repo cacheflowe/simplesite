@@ -1,8 +1,7 @@
 class PixiTextureLoader {
 
-  constructor(assetsLoadedCallback, keepFinalCallback=false) {
+  constructor(assetsLoadedCallback) {
     this.assetsLoadedCallback = assetsLoadedCallback;
-    this.keepFinalCallback = keepFinalCallback;
     this.numTextures = 0;
     this.numLoaded = 0;
   }
@@ -20,7 +19,7 @@ class PixiTextureLoader {
         this.numLoaded++
         if(this.numLoaded == this.numTextures) {
           if(this.assetsLoadedCallback) this.assetsLoadedCallback();
-          if(this.keepFinalCallback == false) this.assetsLoadedCallback = null;
+          this.assetsLoadedCallback = null;
         }
       });
     }

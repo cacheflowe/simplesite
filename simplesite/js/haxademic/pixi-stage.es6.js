@@ -3,7 +3,6 @@ class PixiStage {
   constructor(el, bgColor, id) {
     this.el = el;
     this.devicePixelRatio = window.devicePixelRatio;
-    // if(MobileUtil.isMobileBrowser() == true) this.devicePixelRatio = 1;
     this.renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight, {
       backgroundColor: bgColor,
       resolution: this.devicePixelRatio

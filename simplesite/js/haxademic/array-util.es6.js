@@ -1,6 +1,6 @@
 class ArrayUtil {
 
-  static remove(array, element) {
+  static removeElement(array, element) {
     const index = array.indexOf(element);
     if (index !== -1) array.splice(index, 1);
   }
@@ -17,7 +17,7 @@ class ArrayUtil {
     return array[MathUtil.randRange(0, array.length - 1)];
   }
 
-  static uniqueArray(array) {
+  static uniqueArrayCopy(array) {
     return array.filter((el, i, arr) => {
       return arr.indexOf(el) === i;   // only return the first instance of an element
     });

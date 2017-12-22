@@ -24,6 +24,15 @@ class MobileUtil {
     }
   }
 
+  static disableZoom() {
+    document.addEventListener('touchmove', function(event) {
+      event = event.originalEvent || event;
+      if(event.scale != 1) {
+        event.preventDefault();
+      }
+    }, false);
+  }
+
   static hideSoftKeyboard() {
     if(document.activeElement && document.activeElement.blur) document.activeElement.blur()
     var inputs = document.querySelectorAll('input');
@@ -79,6 +88,10 @@ class MobileUtil {
     var isChrome = (userAgent.match(/chrome/i)) ? true : false;
     var isSafari = (userAgent.match(/safari/i)) ? true : false;
     return (isSafari == true && isChrome == false) ? true : false;
+  }
+
+  static isIE11() {
+    return !!window.MSInputMethodContext && !!document.documentMode;
   }
 
   // MOBILE HELPERS

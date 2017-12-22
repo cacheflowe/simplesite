@@ -36,7 +36,7 @@ class DOMUtil {
     window.addEventListener('load', (e) => {
       setTimeout(() => {
         document.body.classList.add('ready');
-      }, 100);
+      }, 1000);
     });
   }
 

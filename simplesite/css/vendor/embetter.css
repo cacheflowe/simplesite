@@ -50,6 +50,11 @@
   transform: none;
 }
 
+.embetter.embetter-static .embetter-loading,
+.embetter.embetter-static .embetter-play-button {
+  pointer-events: none;
+}
+
 .embetter.embetter-playing img {
   opacity: 0;
 }

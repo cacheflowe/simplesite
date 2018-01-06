@@ -1,0 +1,36 @@
+/*
+Wireframe boxes.
+From: https://meyerweb.com/eric/thoughts/2017/11/27/generating-wireframe-boxes-with-css-and-html5/?utm_source=frontendfocus&utm_medium=email
+ */
+
+[data-wf] {
+  outline: 2px solid gray;
+  position: relative; z-index: 1;
+}
+[data-wf]::before {
+  pointer-events: none;
+   position: absolute; z-index: 8675309;
+   top: 0; bottom: 0; right: 0; left: 0;
+   background:
+      linear-gradient(to top right,
+         transparent calc(50% - 1px), gray calc(50% - 1px),
+         gray calc(50% + 1px), transparent calc(50% + 1px)),
+      linear-gradient(to bottom right,
+         transparent calc(50% - 1px), gray calc(50% - 1px),
+         gray calc(50% + 1px), transparent calc(50% + 1px)),
+      #FFF9;
+      content: attr(data-wf);
+      font: bold 2em Jubilat, Georgia, serif;
+      color: gray;
+      text-shadow:
+         0 0 0.25em #FFF9, 0 0 0.25em #FFF9,
+         0 0 0.25em #FFF9, 0 0 0.25em #FFF9,
+         0 0 0.25em #FFF9;
+      display: flex; justify-content: center; align-items: center;
+}
+
+/* Show images without alt attributes */
+
+img:not([alt]) {
+ border: 5px dashed #f00;
+}

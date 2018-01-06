@@ -7,8 +7,8 @@ class NewsListingView {
     $this->pathParams = $pathParams;
     $this->pathComponents = $pathComponents;
     $this->loadXmlData();
-    $this->updateMetaData();
     $this->parseXmlData();
+    $this->updateMetaData();
   }
 
   function loadXmlData() {
@@ -65,23 +65,35 @@ class NewsListingView {
   }
 
   function showListing() {
-    if(strcmp($this->path, "/newsNoMore") === 0) {
-      // show full posts as landing page
+      // remove column logic - switching to css grid
+      $this->html .= '<div class="listing-previews">' . "\n";
       for ( $i = 0; $i < count($this->postItems); $i++ ) {
-        $this->html .= $this->displayNewsItem( $this->postItems[$i], $this->path );
-      }
-    } else {
-      // show thumbnails on landing page
-      for ( $i = 0; $i < count($this->postItems); $i++ ) {
-        if($i % 2 == 0) {
-          $this->html .= '<div class="row"><div class="six columns">' . $this->displayNewsItemPreview( $this->postItems[$i], $this->path ) . '</div>';
-        } else {
-          $this->html .= '<div class="six columns">' . $this->displayNewsItemPreview( $this->postItems[$i], $this->path ) . '</div></div>';
+        if(empty($this->postItems[$i]->hide)) {
+          $this->html .= $this->displayNewsItemPreview( $this->postItems[$i], $this->path ) . "\n";
         }
       }
-      if($i % 2 == 1) {
-        $this->html .= '<div class="six columns"></div></div>';
-      }
+      $this->html .= '</div>' . "\n";
+  }
+
+  function metaTagSafeString($str) {
+    $str = strip_tags($str);
+    $str = str_replace(array("\r", "\n"), '', $str);
+    $str = str_replace('"', "'", $str);
+    return trim($str);
+  }
+
+  function extractVideoLinksFromContent($htmlStr) {
+    // youtube
+    $pos = strrpos($htmlStr, "youtube.com/watch?v=");
+    if ($pos !== false) {
+      preg_match("/watch\?v=([a-zA-Z0-9-_]+)/i", $htmlStr, $output_array);
+      $this->feedVideo = "https://www.youtube.com/embed/".$output_array[1]."?autoplay=true";
+    }
+    // vimeo
+    $pos = strrpos($htmlStr, "vimeo.com/");
+    if ($pos !== false) {
+      preg_match("/vimeo.com\/([a-zA-Z0-9]+)/i", $htmlStr, $output_array);
+      $this->feedVideo = "https://player.vimeo.com/video/".$output_array[1]."?autoplay=1";
     }
   }
 
@@ -94,32 +106,15 @@ class NewsListingView {
       if( $friendlyUrl == $this->postItems[$i]->friendlyUrl ) {
         $this->html .= $this->displayNewsItem( $this->postItems[$i], $this->path );
         // add metadata for single post
-        $this->feedTitle = $this->postItems[$i]->title;
+        $this->feedTitle = $this->feedTitle . ' | ' . $this->postItems[$i]->title;
         $this->feedLink = "http://cacheflowe.com".$this->path.'/'.$this->postItems[$i]->friendlyUrl;
         $this->feedLink = "https://cacheflowe.com".$this->path.'/'.$this->postItems[$i]->friendlyUrl;
         $this->feedImage = $this->postItems[$i]->image;
         if(isset($this->postItems[$i]->metaimage) == true) $this->feedImage = $this->postItems[$i]->metaimage; // override meta image if it exists. useful for gif previews
-        if(isset($this->postItems[$i]->description) == true) {
-          // make metatag-safe description
-          $desc = strip_tags($this->postItems[$i]->description);
-          $desc = str_replace(array("\r", "\n"), '', $desc);
-          $desc = str_replace('"', "'", $desc);
-          $desc = trim($desc);
-          $this->feedDescription = $desc;
-        }
+        if(isset($this->postItems[$i]->description) == true) $this->feedDescription = $this->metaTagSafeString($this->postItems[$i]->description);
         // add video metadata if we find one
-        // youtube
-        $pos = strrpos($this->postItems[$i]->description, "youtube.com/watch?v=");
-        if ($pos !== false) {
-          preg_match("/watch\?v=([a-zA-Z0-9-_]+)/i", $this->postItems[$i]->description, $output_array);
-          $this->feedVideo = "https://www.youtube.com/embed/".$output_array[1]."?autoplay=true";
-        }
-        // vimeo
-        $pos = strrpos($this->postItems[$i]->description, "vimeo.com/");
-        if ($pos !== false) {
-          preg_match("/vimeo.com\/([a-zA-Z0-9]+)/i", $this->postItems[$i]->description, $output_array);
-          $this->feedVideo = "https://player.vimeo.com/video/".$output_array[1]."?autoplay=1";
-        }
+        $this->extractVideoLinksFromContent($this->postItems[$i]->description);
+        $this->extractVideoLinksFromContent($this->postItems[$i]->embeds);
         /*
         // soundcloud
         $pos = strrpos($this->postItems[$i]->description, "soundcloud.com/");
@@ -158,14 +153,13 @@ class NewsListingView {
     // create friendlyUrl from title if one doesn't exist in xml
     $this->fillEmptyFriendlyUrl($item);
 
-    // render types
+    // special render types
     $isMusicLayout = (strcmp($path, "/music/discography") === 0 || strcmp($path, "/music/mixes") === 0) ? true : false;
 
     // render item
     $html = '';
     $html .= '<div class="content-post" itemscope itemtype="http://schema.org/Article">';
-    $html .= '<h2><span itemprop="name">'.$item->title.'</span></h2>'; // echo '<h1><a href="'.$pageURL."#".$item->friendlyUrl.'">'.$item->title.'</a></h1>';
-    // $html .= '<h2><a href="'.$path.'/'.$item->friendlyUrl.'" itemprop="name">'.$item->title.'</a></h2>'; // echo '<h1><a href="'.$pageURL."#".$item->friendlyUrl.'">'.$item->title.'</a></h1>';
+    $html .= '<h2><span itemprop="name">'.$item->title.'</span></h2>';
 
     // if( !empty( $item->description ) ) $html .= '<section itemprop="articleBody">' . $item->description . '</section>';
     if($isMusicLayout == false) {
@@ -186,6 +180,7 @@ class NewsListingView {
       if( !empty( $item->image ) ) {
         $html .= '<img class="content-album-art" src="'.$item->image.'" itemprop="image">';
       }
+      $html .= '<div class="release-info">';
       if( !empty( $item->purchase ) ) $html .= '<div class="content-purchase">'.$item->purchase.'</div>';
       if( !empty( $item->downloadLink ) ) $html .= '<div class="content-purchase">';
       if( !empty( $item->downloadLink ) ) $html .= '<a class="button button-primary" href="'.$item->downloadLink.'">Download</a>';
@@ -196,6 +191,8 @@ class NewsListingView {
       if( !empty( $item->format ) ) $html .= '<div class="content-format">Format: '.$item->format.'</div>';
       $html .= '</div>';
 
+      $html .= '</div>';  // end five columns
+
       $html .= '<div class="seven columns">';
       if( !empty( $item->description ) ) $html .= '<div class="content-description">'.$item->description.'</div>';
       if( !empty( $item->tracklist ) ) $html .= '<h5>Tracklist:</h5>'.str_replace( "<ul>", "<ul class=\"content-tracklist\">", $item->tracklist ).'';
@@ -204,35 +201,47 @@ class NewsListingView {
       $html .= '</div>';
     }
 
-    // create grid columns here - keep track of number created and mod for 2 columns
-    $infoListCells = 0;
-    if(isset($item->buyLinks)) {      $html .= $this->formatListContent($item->buyLinks, "Buy", "content-buy-links content-infolist", $infoListCells); $infoListCells++; }
-    if(isset($item->technologies)) {  $html .= $this->formatListContent($item->technologies, "Key Technologies", "content-infolist", $infoListCells); $infoListCells++; }
-    if(isset($item->partners)) {      $html .= $this->formatListContent($item->partners, "Partners", "content-infolist", $infoListCells); $infoListCells++; }
-    if(isset($item->awards)) {        $html .= $this->formatListContent($item->awards, "Awards", "content-infolist", $infoListCells); $infoListCells++; }
-    if(isset($item->press)) {         $html .= $this->formatListContent($item->press, "Press", "content-infolist", $infoListCells); $infoListCells++; }
-    if($infoListCells % 2 == 1) $html .= '</div>';
+    // create project info grid columns here - keep track of number created and mod for 2 columns
+    $projectInfoHTML = "";
+    if(isset($item->buyLinks))        $projectInfoHTML .= $this->formatListContent($item->buyLinks, "Buy", "content-buy-links content-infolist", true );
+    if(isset($item->partners) || isset($item->technologies)) {
+      $projectInfoHTML .= '<div class="row">';
+      if(isset($item->partners))        $projectInfoHTML .= '<div class="six columns">' . $this->formatListContent($item->partners, "Partners", "content-infolist", false ) . '</div>';
+      if(isset($item->technologies))    $projectInfoHTML .= '<div class="six columns">' . $this->formatListContent($item->technologies, "Key Technologies", "content-infolist", false ) . '</div>';
+      $projectInfoHTML .= '</div>';
+    }
+    if(isset($item->awards))          $projectInfoHTML .= $this->formatListContent($item->awards, "Awards", "content-infolist", false );
+    if(isset($item->press))           $projectInfoHTML .= $this->formatListContent($item->press, "Press", "content-infolist", false );
+    if(strlen($projectInfoHTML) > 0) {
+      $html .= '<div class="project-info">' . $projectInfoHTML . '</div>' . "\n";
+    }
 
     // add share links
-    // $html .= file_get_contents('share-links.php', true);
+    $html .= '<div class="share-out-links">';
+    $html .= '  <span>Share this:</span>';
+    $html .= '    <a href="#" class="icon-link" data-network="email">' . file_get_contents('./simplesite/images/icons/mail.svg', true) . '</a>';
+    $html .= '    <a href="#" class="icon-link" data-network="facebook">' . file_get_contents('./simplesite/images/icons/facebook.svg', true) . '</a>';
+    $html .= '    <a href="#" class="icon-link" data-network="twitter">' . file_get_contents('./simplesite/images/icons/twitter.svg', true) . '</a>';
+    $html .= '    <a href="#" class="icon-link" data-network="pinterest">' . file_get_contents('./simplesite/images/icons/pinterest.svg', true) . '</a>';
+    $html .= '    <a href="#" class="icon-link" data-network="tumblr">' . file_get_contents('./simplesite/images/icons/tumblr.svg', true) . '</a>';
+    $html .= '    <a href="#" class="icon-link" data-network="linkedin">' . file_get_contents('./simplesite/images/icons/linkedin.svg', true) . '</a>';
+    $html .= '</div>';
+
+    // close it up
     $html .= '</div>';
     return $html;
   }
 
-  function formatListContent( $itemData, $listTitle, $listClass, $cellIndex ) {
+  function formatListContent( $itemData, $listTitle, $listClass, $buttonPrimary ) {
     if( !empty( $itemData ) ) {
       // TODO: probably can get rid of $listClass ?
       $listContent = '<h5>' . $listTitle . ':</h5>';
       $listContent .= str_replace( '<ul>', '<ul class="' . $listClass . '">', $itemData );
-      $listContent = str_replace( '<li><a', '<li><a class="button"', $listContent );
+      if($buttonPrimary == true) $listContent = str_replace( '<li><a', '<li><a class="button button-primary"', $listContent );
       // $listContent = str_replace( '<li>', '<li class="tag">', $listContent );
       // $listContent = str_replace( '<li class="tag"><a class="button"', '<li><a class="button"', $listContent );
       // $listContent = str_replace( '<a class="button"', '<a class="button button-primary"', $listContent );
       // $listContent = str_replace( $listClass . '">', $listClass . '"><li class="list-title"><h5>' . $listTitle . ':</h5></li>', $listContent );
-      // add grid wrapper
-      $listContent = '<div class="six columns">'.$listContent.'</div>';
-      if($cellIndex % 2 == 0) $listContent = '<div class="row">'.$listContent;
-      if($cellIndex % 2 == 1) $listContent = $listContent.'</div>';
       return $listContent;
     }
     return '';

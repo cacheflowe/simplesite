@@ -4,7 +4,8 @@
   global $metadata;
   global $serverConfig;
 ?>
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
@@ -64,15 +65,15 @@
       if (location.protocol != 'https:' && location.href.match(/<?php echo($serverConfig["forceHttpsUrlMatch"]); ?>/i) && !location.href.match('localhost')) location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
     </script><?php } ?>
 
-    <?php if( $request->isDev() == true ) {
-    ?><link rel="stylesheet" href="/simplesite/css/vendor/normalize.css">
-    <link rel="stylesheet" href="/simplesite/css/vendor/main.css">
-    <?php include './php/includes/css.php'; ?>
+    <?php
+    // include javascripts
+    if( $request->isDev() == true ) {
+      include './php/includes/css.php';
+    } else {
+      print('<link rel="stylesheet" href="/css/app.min.css" type="text/css" media="all" title="interface" />');
+    }
+    ?>
     <?php include './php/includes/head.php'; ?>
-    <?php } else { ?>
-    <link rel="stylesheet" href="/css/app.min.css" type="text/css" media="all" title="interface" />
-    <?php include './php/includes/head.php'; ?>
-    <?php } ?>
 
     <?php if(isset($serverConfig["gaID"])) { ?><script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -86,20 +87,13 @@
   </head>
   <body>
     <?php include './php/layouts/layout.php'; ?>
-    <?php if( $request->isDev() == true ) { ?>
-    <!-- vendor / simplesite -->
-    <script src="/simplesite/js/vendor/fetch.js"></script>
-    <script src="/simplesite/js/vendor/page.js"></script>
-    <script src="/simplesite/js/haxademic/app-store.es6.js"></script>
-    <script src="/simplesite/js/haxademic/dom-util.es6.js"></script>
-    <script src="/simplesite/js/haxademic/easy-scroll.es6.js"></script>
-    <script src="/simplesite/js/area-model.es6.js"></script>
-    <script src="/simplesite/js/base-view.es6.js"></script>
-    <script src="/js/app/tracking.es6.js"></script>
-    <?php include './php/includes/js.php'; ?>
-    <script src="/js/app.es6.js"></script>
-    <?php } else { ?>
-    <script src="/js/app.min.js"></script>
-    <?php } ?>
+    <?php
+    // include javascripts
+    if( $request->isDev() == true ) {
+      include './php/includes/js.php';
+    } else {
+      print('<script src="/js/app.min.js"></script>');
+    }
+    ?>
   </body>
 </html>

@@ -1,5 +1,5 @@
 class AreaModel {
-  constructor(initRoutes, pathUpdatedCallback) {
+  constructor(initRoutes, pathUpdatedCallback, defaultViewClass) {
     this.contentEl = document.getElementById('content-holder');
     this.pageTitleBase = document.title.split(' | ')[0];
     this.curPath = null;
@@ -10,6 +10,7 @@ class AreaModel {
     this.isTransitioning = false;
     this.easyScroll = new EasyScroll();
     this.pathUpdatedCallback = pathUpdatedCallback;
+    this.defaultViewClass = defaultViewClass || 'BaseView';
     initRoutes(this.index.bind(this));
   }
 
@@ -102,7 +103,7 @@ class AreaModel {
     let pageTitle = newContentEl.getAttribute('data-page-title') || null;
     this.formatDocumentTitle(pageTitle);
     // create page object
-    let pageType = newContentEl.getAttribute('data-view-type') || 'BaseView';
+    let pageType = newContentEl.getAttribute('data-view-type') || this.defaultViewClass;
     if(this.prevPath != null) this.contentEl.innerHTML = data;  // don't replace initial html
     this.curAreaObj = new window[pageType](this.contentEl);
   }

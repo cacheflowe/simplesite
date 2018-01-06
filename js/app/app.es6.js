@@ -1,7 +1,7 @@
 class SimpleSite {
 
   constructor() {
-    // DOMUtil.addLoadedClass();
+    DOMUtil.addLoadedClass();
     // if(!this.hasWebGL()) window.location.href = '/help';
     requestAnimationFrame(() => this.init());
   }
@@ -34,12 +34,11 @@ class SimpleSite {
       page('/:section', index);
       page('/:section/:id', index);
       page('/:section/:id/:params', index);
-      page('/music', function(){ page.redirect('/music/discography'); });
       // page('*', notfound);
       page();
     }, (curPath) => {
       _store.set(SimpleSite.URL_UPDATED, curPath);
-    });
+    }, 'BaseView');
   }
 }
 

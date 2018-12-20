@@ -21,3 +21,4 @@
       <section id="content-holder"><?php echo $response->view->html(); // insert ajax content on first page load ?></section>
       <footer id="content-footer">Copyright &copy; simplesite <?php echo date("Y"); ?></footer>
     </div>
+    <div class="loader"></div>

@@ -23,10 +23,10 @@ module.exports = function(grunt) {
 
     babel: {
         options: {
-            sourceMap: false,
-            presets: ['es2015'],
-            minified: false,
-            compact: false
+          sourceMap: false,
+          presets: ['@babel/preset-env'],
+          minified: false,
+          compact: false
         },
         dist: {
             files: [{
@@ -57,23 +57,17 @@ module.exports = function(grunt) {
       build_site: {
         files: {
           'js/app.min.js': [
-              /* Simplesite core */
-              "simplesite/js/vendor/fetch.js",
-              "simplesite/js/vendor/page.js",
-              "js/min/simplesite/js/haxademic/app-store.js",
-              "js/min/simplesite/js/haxademic/dom-util.js",
-              "js/min/simplesite/js/haxademic/easy-scroll.js",
-              "js/min/simplesite/js/area-model.js",
-              "js/min/simplesite/js/base-view.js",
-              "js/min/views/base-view.js",
-              "js/min/app/tracking.js",
-
-              /* Custom site .js */
-              "js/vendor/embetter.js",
-              "js/min/views/fancy-view.js",
-
-              /* Main app file */
-              "js/min/app.js",
+            "simplesite/js/vendor/fetch.js",
+            "simplesite/js/vendor/page.js",
+            "js/min/simplesite/js/haxademic/app-store.js",
+            "js/min/simplesite/js/haxademic/dom-util.js",
+            "js/min/simplesite/js/haxademic/easy-scroll.js",
+            "js/min/simplesite/js/haxademic/lazy-image-loader.js",
+            "js/min/simplesite/js/haxademic/lightbox.js",
+            "js/min/simplesite/js/area-model.js",
+            "js/min/simplesite/js/base-view.js",
+            "js/min/app/tracking.js",
+            "js/min/app/app.js",
             ]
         }
       }
@@ -87,14 +81,17 @@ module.exports = function(grunt) {
       combine: {
         files: {
           'css/app.min.css': [
-            /* Simplesite core */
-            'simplesite/css/vendor/normalize.css',
-            'simplesite/css/vendor/skeleton.css',
-            'simplesite/css/vendor/main.css',
-
-            /* Custom site .css */
+            "simplesite/css/vendor/normalize.css",
+            "simplesite/css/vendor/main.css",
+            "simplesite/css/vendor/skeleton.css",
             "simplesite/css/vendor/embetter.css",
-            "css/app/app.css",
+            "simplesite/css/vendor/lazy-image-loader.css",
+            "simplesite/css/vendor/lightbox.css",
+            "simplesite/css/vendor/loader.css",
+            "simplesite/css/debug.css",
+            "css/app/config.css",
+            "css/app/body.css",
+            "css/app/layout.css",
           ]
         }
       }
@@ -103,20 +100,8 @@ module.exports = function(grunt) {
     postcss: {
       options: {
         map: false, // inline sourcemaps
-        /*processors: [
-          require('autoprefixer')({browsers: 'last 2 versions'}), // add vendor prefixes
-        ],*/
         processors: [
-          require("postcss-import")(),
-          require("postcss-url")(),
-          require("postcss-cssnext")(),
-          // add your "plugins" here
-          // ...
-          // and if you want to compress
-          // Disable autoprefixer, because it's already included in cssnext
-          // require("cssnano")({ autoprefixer: false }),
-          require("postcss-browser-reporter")(),
-          require("postcss-reporter")(),
+          require('autoprefixer')({browsers: 'last 2 versions'}), // add vendor prefixes
         ]
       },
       dist: {

@@ -3,23 +3,30 @@ Simplesite
 
 A boilerplate php (I know) site starter with friendly URLs, pushState support and SEO-friendliness
 
+
+# TODO
+
+* Update haxademic.js
+* Add lazy-load-images script
+* More lightbox
+* Get rid of .nav_item
+* Move grunt-includes to simplesite/php ?
+* Remove Mail.php
+* Add ability to create cached responses in AreaModel so we can get pushState and content swapping without hitting the server again
+* support multiple layouts?
+* Check <head> entires: https://github.com/joshbuchea/HEAD?utm_source=frontendfocus&utm_medium=email
+
 # Setup
 
 **NPM + Packages for Grunt build**
 
-* `npm init`
-* `npm i grunt --save-dev`
-* `npm i -g grunt-cli --save-dev`
-* `npm i grunt-contrib-uglify --save-dev`
-* `npm i grunt-contrib-cssmin --save-dev`
-* `npm i grunt-postcss pixrem autoprefixer cssnano postcss-import postcss-url postcss-cssnext postcss-browser-reporter postcss-reporter --save-dev`
-* `npm i grunt-babel babel-preset-es2015 --save-dev`
-* `npm i grunt-contrib-clean --save-dev`
-* `npm i grunt-contrib-copy --save-dev`
+run `init.sh`
 
 **Push to your new repo**
 
 * `git push -u origin master`
+
+## Heroku setup
 
 **Create the Heroku php app**
 
@@ -66,12 +73,8 @@ SSL w/Cloudflare
 
 
 
-# TODO
+# Sites using SimpleSite
 
-* Move skeleton.css into css.php (also move in gruntfile.js defaults)
-* Move grunt-includes to simplesite/php ?
-* Remove Mail.php
-* Add ability to create cached responses in AreaModel so we can get pushState and content swapping without hitting the server again
-* support multiple layouts?
-* make BaseArea way more simple. use composition to include embetter, imagexpander, etc
-* Check <head> entires: https://github.com/joshbuchea/HEAD?utm_source=frontendfocus&utm_medium=email
+* cacheflowe.com
+* ohheckyeah.com
+* lazwicky.com

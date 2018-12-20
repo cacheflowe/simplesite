@@ -69,7 +69,7 @@ class NewsListingView {
       $this->html .= '<div class="listing-previews">' . "\n";
       for ( $i = 0; $i < count($this->postItems); $i++ ) {
         if(empty($this->postItems[$i]->hide)) {
-          $this->html .= $this->displayNewsItemPreview( $this->postItems[$i], $this->path ) . "\n";
+          $this->html .= $this->displayNewsItemPreview( $this->postItems[$i], $this->path, $i ) . "\n";
         }
       }
       $this->html .= '</div>' . "\n";
@@ -107,8 +107,8 @@ class NewsListingView {
         $this->html .= $this->displayNewsItem( $this->postItems[$i], $this->path );
         // add metadata for single post
         $this->feedTitle = $this->feedTitle . ' | ' . $this->postItems[$i]->title;
-        $this->feedLink = "http://cacheflowe.com".$this->path.'/'.$this->postItems[$i]->friendlyUrl;
-        $this->feedLink = "https://cacheflowe.com".$this->path.'/'.$this->postItems[$i]->friendlyUrl;
+        // $this->feedLink = "http://cacheflowe.com".$this->path.'/'.$this->postItems[$i]->friendlyUrl;
+        // $this->feedLink = "https://cacheflowe.com".$this->path.'/'.$this->postItems[$i]->friendlyUrl;
         $this->feedImage = $this->postItems[$i]->image;
         if(isset($this->postItems[$i]->metaimage) == true) $this->feedImage = $this->postItems[$i]->metaimage; // override meta image if it exists. useful for gif previews
         if(isset($this->postItems[$i]->description) == true) $this->feedDescription = $this->metaTagSafeString($this->postItems[$i]->description);
@@ -127,7 +127,7 @@ class NewsListingView {
     }
   }
 
-  function displayNewsItemPreview( $item, $path ) {
+  function displayNewsItemPreview( $item, $path, $index ) {
     if(empty($item->image) == true) return "";
 
     // create friendlyUrl from title if one doesn't exist in xml
@@ -142,7 +142,15 @@ class NewsListingView {
     } else {
       $html .= '<a href="'.$path.'/'.$item->friendlyUrl.'">';
     }
-    if( !empty( $item->image ) ) $html .= '<div class="content-preview-thumb" style="background-image:url('.$item->image.')"></div>';
+    $linkImg = $item->image;
+    // $linkImg = str_replace("https://cacheflowe.com", "", $linkImg);  // force images to be absolute to local server
+    // $linkImg = str_replace("http://cacheflowe.com", "", $linkImg);   // force images to be absolute to local server
+    // $linkImg = str_replace("http://localhost.cacheflowe.com:3101", "", $linkImg);   // force images to be absolute to local server
+    if($index < 4) {  // lazy load images after the 4th
+      if( !empty( $linkImg ) ) $html .= '<div class="content-preview-thumb" style="background-image:url('.$linkImg.')"></div>';
+    } else {
+      if( !empty( $linkImg ) ) $html .= '<div class="content-preview-thumb" data-src="'.$linkImg.'" data-src-bg="true"></div>';
+    }
     if( !empty( $item->title ) ) $html .= '<div class="content-preview-title">'.$item->title.'</div>';
     $html .= '</a>';
     $html .= '</div>';
@@ -165,7 +173,10 @@ class NewsListingView {
     if($isMusicLayout == false) {
       if( !empty( $item->date ) ) $html .= '<p class="date">'.$item->date.'</p>';
       if( !empty( $item->description ) ) {
-        $desc = str_replace('src="http://cacheflowe.com', "src=\"", $item->description);  // force images to be absolute to local server
+        // $desc = str_replace('src="http://cacheflowe.com', "src=\"", $item->description);  // force images to be absolute to local server
+        // $desc = str_replace('src="https://cacheflowe.com', "src=\"", $desc);  // force images to be absolute to local server
+        $desc = str_replace('http://cacheflowe.com/images/', "/images/", $item->description);  // force images to be absolute to local server
+        $desc = str_replace('https://cacheflowe.com/images/', "/images/", $desc);  // force images to be absolute to local server
         $html .= $desc;
       }
       if( !empty( $item->downloadLink ) ) $html .= '<p><a class="button button-primary" href="'.$item->downloadLink.'">Download</a></p>';

@@ -12,7 +12,7 @@ class SimpleSite {
 
   init() {
     this.appStore = new AppStore();
-    this.appStore.addStateable(this);
+    this.appStore.addListener(this);
     this.tracking = new Tracking();
     // this.stayAwake = new StayAwake();
     this.initRoutes();

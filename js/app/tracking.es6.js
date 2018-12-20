@@ -2,7 +2,7 @@ class Tracking {
 
   constructor() {
     this.debug = true;
-    _store.addStateable(this);
+    _store.addListener(this);
     if(window.ga === undefined) window.ga = () => {};
   }
 

@@ -2,95 +2,13 @@ class FancyView extends BaseView {
 
   constructor(el) {
     super(el);
-    this.findLightboxImages();
-
-    let mediaServices = [
-      window.embetter.services.youtube,
-      window.embetter.services.vimeo,
-      window.embetter.services.soundcloud,
-      window.embetter.services.instagram,
-      window.embetter.services.dailymotion,
-      window.embetter.services.codepen,
-      window.embetter.services.shadertoy,
-      window.embetter.services.video,
-      window.embetter.services.gif
-    ];
-    window.embetter.utils.initMediaPlayers(this.el, mediaServices);
-    // prepLazyLoadImages();
+    window.embetter.utils.initMediaPlayers(this.el, SimpleSite.mediaServices);
     this.buildShareLinks();
+    // prepLazyLoadImages();
+    window.cacheCart.parseLinks(this.el);
     this.buildContactForm();
+    this.lazyImageLoader = new LazyImageLoader(this.el);
 	};
-
-  // lightbox stuff ----------------------------------------------------------------
-
-  findLightboxImages() {
-    this.lightboxDiv = null;
-    this.lightboxImgSrc = null;
-    this.lightboxImageLoader = null;
-    this.lightboxLinks = null;
-
-    this.lightboxLinks = this.el.querySelectorAll('a[rel]');
-    for( var i=0; i < this.lightboxLinks.length; i++ ) {
-      this.lightboxLinks[i].addEventListener('click', (e) => this.handleLightboxLink(e));
-    }
-  };
-
-  handleLightboxLink(e) {
-    e.preventDefault();
-
-    // closest() implementation to find link
-    var clickedEl = e.target;
-    while(clickedEl.nodeName.toLowerCase() !== 'a') {
-      clickedEl = clickedEl.parentNode;
-    }
-
-    // load image
-    this.lightboxImgSrc = clickedEl.href;
-    this.lightboxImageLoader = new Image();
-    this.lightboxImageLoader.onload = this.lightboxImageLoaded;
-    this.lightboxImageLoader.src = this.lightboxImgSrc;
-  };
-
-  lightboxImageLoaded() {
-    // check if we need to let the image display at natural size
-    // console.log('this.lightboxImageLoader.height', this.lightboxImageLoader.height);
-    var containedClass = (this.lightboxImageLoader.height < window.innerHeight - 40 && this.lightboxImageLoader.width < window.innerWidth - 40) ? 'lightbox-image-contained' : '';
-
-    // add elements to body
-    this.lightboxDiv = document.createElement('div');
-    this.lightboxDiv.className = 'lightbox';
-    this.lightboxDiv.innerHTML = '<div class="lightbox-image-holder '+ containedClass +'" style="background-image:url('+ this.lightboxImgSrc +')"></div>';
-    document.body.appendChild(this.lightboxDiv);
-
-    requestAnimationFrame(function(){
-      this.lightboxDiv.className = 'lightbox';
-      requestAnimationFrame(function(){
-        this.lightboxDiv.className = 'lightbox showing';
-      });
-    });
-
-    this.lightboxDiv.addEventListener('click', (e) => this.hideLightbox(e));
-    document.addEventListener('keyup', (e) => this.hideLightbox(e));
-  };
-
-  hideLightbox(e) {
-    if(e.keyCode == null || e.keyCode == 0 || e.keyCode == 27) {  // handle either clicks of esc key press with same event
-      this.lightboxDiv.removeEventListener('click', (e) => this.hideLightbox(e));
-      document.removeEventListener('keyup', (e) => this.hideLightbox(e));
-      this.lightboxDiv.className = 'lightbox';
-      setTimeout(function(){
-        document.body.removeChild(this.lightboxDiv);
-      },300);
-    }
-  };
-
-  disposeLightboxLinks() {
-    if( this.lightboxLinks != null ) {
-      for( var i=0; i < this.lightboxLinks.length; i++ ) {
-        this.lightboxLinks[i].removeEventListener('click', (e) => this.handleLightboxLink(e));
-      }
-    }
-  };
 
 	/* Lazy-load images --------------------------------------*/
   // prepLazyLoadImages() {
@@ -102,22 +20,25 @@ class FancyView extends BaseView {
   //   }
   // };
 
-  /* Share links ----------------------------------------*/
+  /* Share links ---------------------------------------- */
+
   buildShareLinks() {
+    this.shareOut = new ShareOut();
     var shareEl = this.el.querySelector('.share-out-links');
     if(shareEl !== null) {
       var titleEl = this.el.querySelector('h2');
       var summary = (titleEl !== null) ? titleEl.textContent : '';
       var firstImg = this.el.querySelector('img');
       var img = (firstImg !== null) ? firstImg.src : '';
-      window.shareout.setShareLinks(shareEl, document.location.href, summary, img);
+      this.shareOut.setShareLinks(shareEl, document.location.href, summary, img);
     }
   };
 
   disposeShareLinks() {
     var shareEl = this.el.querySelector('.share-out-links');
     if(shareEl !== null) {
-      window.shareout.disposeShareLinks(shareEl);
+      this.shareOut.disposeShareLinks(shareEl);
+      this.shareOut = null;
     }
   };
 
@@ -151,14 +72,14 @@ class FancyView extends BaseView {
   submitForm(e) {
     if(this.validateForm() === true) {
       this.submitButton.setAttribute('disabled', 'disabled');
-      document.body.classList.add('loading');
+      document.body.classList.add('page-loading');
       // fetch('/contact/submit', {method: "POST", body:{email: this.emailInput.value, about: this.aboutInput.value, message: this.messageInput.value}})
       fetch('/contact/submit', {method: "POST", body: new FormData(this.contactForm)})
         .then((response) => {
           return response.text();
         }).then((data) => {
           this.insertContactResponse(data);
-          document.body.classList.remove('loading');
+          document.body.classList.remove('page-loading');
         }).catch(function(ex) {
           console.warn('Submit failed', ex);
         });
@@ -189,8 +110,8 @@ class FancyView extends BaseView {
   }
 
   isValidEmail(email) {
-      var emailRegex = new RegExp(/^[+\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$/i);
-      return emailRegex.test(email);
+    var emailRegex = new RegExp(/^[+\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$/i);
+    return emailRegex.test(email);
   };
 
   validateEmail(email) {
@@ -200,11 +121,11 @@ class FancyView extends BaseView {
 
   /* View lifecycle ----------------------------------------*/
 	dispose() {
-    this.disposeLightboxLinks();
     this.disposeShareLinks();
     this.disposeContactForm();
     window.embetter.utils.disposePlayers();
-    // window.cacheCart.disposeLinks(this.el);
+    window.cacheCart.disposeLinks(this.el);
+    this.lazyImageLoader.dispose();
 	};
 
 }

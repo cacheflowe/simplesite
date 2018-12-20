@@ -284,8 +284,7 @@ class MathUtil {
    *  @use    {@code let angle = MathUtil.getRadiansToTarget( 0, 0, 5, 5 );}
    */
   static getRadiansToTarget( x1, y1, x2, y2 ) {
-    let twoPi = Math.PI * 2;
-    return (twoPi + -Math.PI / 2 + Math.atan2(x2 - x1, y2 - y1)) % twoPi;
+    return (MathUtil.TWO_PI + -Math.PI / 2 + Math.atan2(x2 - x1, y2 - y1)) % MathUtil.TWO_PI;
   }
 
   /**
@@ -311,10 +310,13 @@ class MathUtil {
     return (squareSize/2)*(Math.sqrt(2)-1);
   }
 
-  static saw(rads) {
-    let val = Math.abs((rads % (Math.PI * 2)) - Math.PI);
-    return (val / Math.PI) * 2 - 1;
-  };
+  static rectsIntersect(a, b) {
+    return (a.left <= b.right &&
+            b.left <= a.right &&
+            a.top <= b.bottom &&
+            b.top <= a.bottom);
+  }
+
 }
 
 MathUtil.TWO_PI = Math.PI * 2;

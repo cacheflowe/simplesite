@@ -6,9 +6,6 @@ A boilerplate php (I know) site starter with friendly URLs, pushState support an
 
 # TODO
 
-* Update haxademic.js
-* Add lazy-load-images script
-* More lightbox
 * Get rid of .nav_item
 * Move grunt-includes to simplesite/php ?
 * Remove Mail.php

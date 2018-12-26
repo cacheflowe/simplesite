@@ -51,7 +51,7 @@
     <meta name="twitter:player:height" content="720">
     <meta name="twitter:card" value="player">
     <?php } ?>
-    <?php if($isGif == true) { ?>
+    <?php if(isset($isGif) && $isGif == true) { ?><!-- TODO: Currently not in use... -->
 
     <meta name="twitter:player" content="<?php echo $metadata->get_pageImage(); ?>"/>
     <?php //<!-- <meta name="twitter:player" content="<?php echo preg_replace("/^http:/i", "https:", $metadata->get_pageImage()); ?/>"/> --> ?>

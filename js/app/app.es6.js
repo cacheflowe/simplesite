@@ -38,7 +38,7 @@ class SimpleSite {
       page();
     }, (curPath) => {
       _store.set(SimpleSite.URL_UPDATED, curPath);
-    }, 'BaseView');
+    }, 'BaseView', true);
   }
 }
 

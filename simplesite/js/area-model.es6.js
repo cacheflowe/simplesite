@@ -1,12 +1,12 @@
 class AreaModel {
-  constructor(initRoutes, pathUpdatedCallback, defaultViewClass) {
+  constructor(initRoutes, pathUpdatedCallback, defaultViewClass, cacheResponses) {
     this.contentEl = document.getElementById('content-holder');
     this.pageTitleBase = document.title.split(' | ')[0];
     this.curPath = null;
     this.prevPath = null;
     this.queuedPath = null;
     this.curAreaObj = null;
-    this.cachedResponses = {};
+    this.cachedResponses = (cacheResponses) ? {} : null;
     this.isTransitioning = false;
     this.easyScroll = new EasyScroll();
     this.pathUpdatedCallback = pathUpdatedCallback;
@@ -67,7 +67,7 @@ class AreaModel {
     }
 
     // get area html path based on section
-    if(typeof this.cachedResponses[path] !== "undefined") {
+    if(this.cachedResponses && typeof this.cachedResponses[path] !== "undefined") {
       this.sectionDataLoaded(this.cachedResponses[path], path);
     } else {
       this.fetchPage(path);
@@ -86,7 +86,7 @@ class AreaModel {
   }
 
   sectionDataLoaded(data, path) {
-    this.cachedResponses[path] = data;
+    if(this.cachedResponses) this.cachedResponses[path] = data;
     this.createMainContentObj(data);
     this.showNewContent();
   }

@@ -19,16 +19,7 @@ class AreaModel {
       this.curPath = page.current;
       if (this.curPath == '' || this.curPath == '/') this.curPath = '/home';
       if (this.curPath !== this.prevPath) {
-        if (this.prevPath && this.prevPath.length > 1) {
-          let pathSplit = this.prevPath.substr(1).split('/');
-          if(pathSplit.length > 0) document.body.classList.remove('section-' + pathSplit[0]);
-          if(pathSplit.length > 1) document.body.classList.remove('subsection-' + pathSplit[1]);
-        }
-        if (this.curPath.length > 1) {
-          let pathSplit = this.curPath.substr(1).split('/');
-          if(pathSplit.length > 0) document.body.classList.add('section-' + pathSplit[0]);
-          if(pathSplit.length > 1) document.body.classList.add('subsection-' + pathSplit[1]);
-        }
+        if(this.prevPath == null) this.updateSectionCssClass();
         if (window.scrollY > 20) {
           this.easyScroll.scrollByY(300, window.scrollY);
         }
@@ -110,6 +101,7 @@ class AreaModel {
 
   showNewContent() {
     document.body.classList.remove('page-loading');
+    if (this.curPath !== this.prevPath) this.updateSectionCssClass();
     this.prevPath = this.curPath;
     this.isTransitioning = false;
     if (this.queuedPath) {
@@ -121,6 +113,19 @@ class AreaModel {
     //   hitType: 'pageview',
     //   page: location.pathname
     // })))(this), 200);
+  }
+
+  updateSectionCssClass() {
+    if (this.prevPath && this.prevPath.length > 1) {
+      let pathSplit = this.prevPath.substr(1).split('/');
+      if(pathSplit.length > 0) document.body.classList.remove('section-' + pathSplit[0]);
+      if(pathSplit.length > 1) document.body.classList.remove('subsection-' + pathSplit[1]);
+    }
+    if (this.curPath.length > 1) {
+      let pathSplit = this.curPath.substr(1).split('/');
+      if(pathSplit.length > 0) document.body.classList.add('section-' + pathSplit[0]);
+      if(pathSplit.length > 1) document.body.classList.add('subsection-' + pathSplit[1]);
+    }
   }
 
   stringToDomElement(str) {

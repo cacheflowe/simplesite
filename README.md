@@ -12,6 +12,10 @@ A boilerplate php (I know) site starter with friendly URLs, pushState support an
 * Add ability to create cached responses in AreaModel so we can get pushState and content swapping without hitting the server again
 * support multiple layouts?
 * Check <head> entires: https://github.com/joshbuchea/HEAD?utm_source=frontendfocus&utm_medium=email
+* Remember scroll position when going back?
+* Add paging into RSS view
+* Add `/rss` to any page to retrieve rss data source?
+
 
 # Setup
 

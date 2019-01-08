@@ -23,5 +23,8 @@ $emailConfig = [
   "recipientEmail" => "your@email.com",
   "recipientName" => "First Last"
 ];
+$constants = [
+  "jsonPath" => "./data/json/",
+];
 include('./simplesite/php/simplesite.php');
 ?>

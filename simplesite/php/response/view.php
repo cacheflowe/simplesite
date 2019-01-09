@@ -79,7 +79,7 @@ class View {
         // do the same type of thing here
         $xmlFile = $dataRoot . implode("-", $pathComponents) . ".xml";
         $newsListingView = new NewsListingView($checkDataPath, $path, $pathParams, $pathComponents);
-        $squarePreviewClass = (strpos( $route, '/music/discography' ) !== false || strpos( $route, '/art/' ) !== false || strpos( $route, '/store' ) !== false) ? ' class="content-square-previews"' : '';  // add special class for square previews
+        $squarePreviewClass = (strpos( $path, '/music/discography' ) !== false || strpos( $path, '/art/' ) !== false || strpos( $path, '/store' ) !== false) ? ' class="content-square-previews"' : '';  // add special class for square previews
         $htmlStr = '<div'.$squarePreviewClass.' data-page-title="' . $metadata->get_pageTitle() . '">' . $newsListingView->html . '</div>';
 
       }

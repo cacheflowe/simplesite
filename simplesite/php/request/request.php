@@ -10,6 +10,8 @@ class Request {
     $this->_isAPI = false;
 
     $this->getPath();
+    $this->getPostData();
+    $this->getDevMode();
     $this->setOutputType();
   }
 
@@ -35,8 +37,13 @@ class Request {
     $this->_path = $string_utils->protectYaText( $pathWithoutQuery[0] ); // protectYaText( $_SERVER['QUERY_STRING'] ); //substr(, 1); // $_REQUEST['path'];
     if($this->_path == '' || $this->_path == '/') $this->_path = '/home';
     $this->_pathComponents = explode( '/', substr( $this->_path, 1 ) );	// strip first slash and get array of path components
-    $this->_postBody = file_get_contents('php://input');
+  }
 
+  function getPostData() {
+    $this->_postBody = file_get_contents('php://input');
+  }
+
+  function getDevMode() {
     if(strpos($_SERVER["SERVER_NAME"], "localhost") === 0) $this->isDev = true;
     if(isset( $_REQUEST['notDev'] )) $this->isDev = false;
     if(isset( $_REQUEST['isDev'] )) $this->isDev = true;

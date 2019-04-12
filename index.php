@@ -2,7 +2,9 @@
 $serverConfig = [
   "forceHttps" => true,
   "forceHttpsUrlMatch" => "simplesite.com",
-  "gaID" => "UA-XXXXXXXX-10"
+  "gaID" => "UA-XXXXXXXX-10",
+  "cssVersion" => "0.001",
+  "jsVersion" => "0.001"
 ];
 $metadataProps = [
   "pageSite" => "Simplesite.com",

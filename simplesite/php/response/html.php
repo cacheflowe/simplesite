@@ -70,7 +70,7 @@
     if( $request->isDev() == true ) {
       include './php/includes/css.php';
     } else {
-      print('<link rel="stylesheet" href="/css/app.min.css" type="text/css" media="all" title="interface" />');
+      print('<link rel="stylesheet" href="/css/app.min.css?v=' . $serverConfig["cssVersion"] . '" type="text/css" media="all" title="interface" />');
     }
     ?>
     <?php include './php/includes/head.php'; ?>
@@ -92,7 +92,7 @@
     if( $request->isDev() == true ) {
       include './php/includes/js.php';
     } else {
-      print('<script src="/js/app.min.js"></script>');
+      print('<script src="/js/app.min.js?v=' . $serverConfig["jsVersion"] . '"></script>');
     }
     ?>
   </body>

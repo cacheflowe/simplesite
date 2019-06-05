@@ -12,4 +12,9 @@
 <!-- Custom -->
 <script src="/simplesite/js/vendor/embetter.js"></script>
 <script src="/js/views/fancy-view.es6.js"></script>
+<script src="/js/views/login-view.es6.js"></script>
+<script src="/js/views/schedule-view.es6.js"></script>
+<script src="/js/views/count-view.es6.js"></script>
+<script src="/js/views/image-upload-view.es6.js"></script>
+<script src="/js/views/customtext-view.es6.js"></script>
 <script src="/js/app/app.es6.js"></script>

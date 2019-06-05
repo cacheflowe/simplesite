@@ -21,7 +21,7 @@ class Tracking {
   }
 
   storeUpdated(key, value) {
-    if(key == SimpleSite.URL_UPDATED) this.page(_store.get(SimpleSite.URL_UPDATED));
+    if(key == SimpleSite.CUR_PATH) this.page(_store.get(SimpleSite.CUR_PATH));
   }
 
 }

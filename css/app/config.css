@@ -25,4 +25,20 @@
   --eased-transition-long:               transform 1.25s cubic-bezier(.53,0,.53,1);
   --eased-transition-long-delay:   1.1s  transform 0.40s cubic-bezier(.53,0,.53,1);
   --eased-transition-medium-delay: 0.75s transform 0.75s cubic-bezier(.53,0,.53,1);
+
+  /* skeleton.css config */
+  --skel-button-color: #555;
+  --skel-button-border-radius: 0;
+  --skel-button-border: 1px solid #bbb;
+  --skel-text-input-border: 1px solid #D1D1D1;
+  --skel-text-input-bg: #fff;
+  --skel-text-input-border-color-focus: #339933;
+  --skel-button-border-color-focus: #888;
+  --skel-button-text-color-focus: #333;
+  --skel-button-primary-bg: #33C3F0;
+  --skel-button-primary-text-color: #FFF;
+  --skel-button-primary-focus-bg: #1EAEDB;
+  --skel-link-color: #1EAEDB;
+  --skel-link-color-hover: #999;
+  --skel-light-divider: #E1E1E1;
 }

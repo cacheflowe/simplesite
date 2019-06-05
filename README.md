@@ -6,6 +6,7 @@ A boilerplate php (I know) site starter with friendly URLs, pushState support an
 
 # TODO
 
+* Fix embetter, ShareOut, CacheCart
 * Move to Gulp vs. Grunt
 * Get rid of .nav_item
 * Move grunt-includes to simplesite/php ?

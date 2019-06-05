@@ -2,10 +2,10 @@ class FancyView extends BaseView {
 
   constructor(el) {
     super(el);
-    window.embetter.utils.initMediaPlayers(this.el, SimpleSite.mediaServices);
-    this.buildShareLinks();
+    // window.embetter.utils.initMediaPlayers(this.el, SimpleSite.mediaServices);
+    // this.buildShareLinks();
     // prepLazyLoadImages();
-    window.cacheCart.parseLinks(this.el);
+    // window.cacheCart.parseLinks(this.el);
     this.buildContactForm();
     this.lazyImageLoader = new LazyImageLoader(this.el);
 	};
@@ -121,10 +121,10 @@ class FancyView extends BaseView {
 
   /* View lifecycle ----------------------------------------*/
 	dispose() {
-    this.disposeShareLinks();
+    // this.disposeShareLinks();
     this.disposeContactForm();
-    window.embetter.utils.disposePlayers();
-    window.cacheCart.disposeLinks(this.el);
+    // window.embetter.utils.disposePlayers();
+    // window.cacheCart.disposeLinks(this.el);
     this.lazyImageLoader.dispose();
 	};
 

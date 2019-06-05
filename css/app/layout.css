@@ -1,18 +1,41 @@
-
 #main {
-  background: #fff;
-}
-
-@media (min-width: 550px) {
-  #main {
-    padding: 0 5rem;
-  }
+  padding: 0 5rem;
 }
 
 #content-holder {
   overflow: hidden;
   padding-bottom: 5rem;
   opacity: 1;
+}
+
+#localhost-status {
+  display: none;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  color: #ff5555;
+  background: rgba(255,255,255,0.7);
+  padding: 4px 9px 4px;
+  border-radius: 13px;
+  font-weight: normal;
+  font-size: 10px;
+  pointer-events: none;
+  user-select: none;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+#localhost-status::after {
+  content: "localhost";
+}
+.localhost #localhost-status {
+  display: inline-block;
+}
+
+/* Navigation */
+
+.nav_item {
+  margin: 0 0 15px;
+  /* display: flex;
+  flex-direction: column; */
 }
 
 /* Navigation transition on swappable content */

@@ -26,7 +26,12 @@ $emailConfig = [
   "recipientName" => "First Last"
 ];
 $constants = [
+  "password" => "PASSWORD",
   "jsonPath" => "./data/json/",
+  "uploadPathMentors" => "uploads/mentors/",
+  "uploadPathTakeovers" => "uploads/takeovers/",
+  "scheduleJson" => "schedule.json",
+  "countJson" => "count.json"
 ];
 include('./simplesite/php/simplesite.php');
 ?>

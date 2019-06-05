@@ -1,9 +1,8 @@
 <?php
 
-class StringUtils {
-  function __construct() {}
+class StringUtil {
 
-  public function protectYaText( $text ) {
+  public static function protectYaText( $text ) {
     // security against naughty foreign or local includes. limit to alphanumeric + '/'?
     $text = str_replace( "http", " ", $text );
     $text = str_replace( "../", " ", $text );
@@ -12,16 +11,16 @@ class StringUtils {
     return $text;
   }
 
-  public function makeFriendlyText( $text ) {
+  public static function makeFriendlyText( $text ) {
     $text = strtolower( $text );
     // $text = substr( $text, 0, FRIENDLY_TITLE_CUTOFF ); // shorten it?
-    $text = $this->stripAllExceptAlphanumeric( $text );
+    $text = StringUtils::stripAllExceptAlphanumeric( $text );
     $text = str_replace( " ", '-', $text );
     while( strpos( $text, '--' ) !== false ) { $text = str_replace( "--", '-', $text ); } // make sure dashes in title don't mess up our pretty url
     return $text;
   }
 
-  public function stripAllExceptAlphanumeric( $str ) {
+  public static function stripAllExceptAlphanumeric( $str ) {
     return preg_replace("/[^a-zA-Z0-9-+\s]/", "", $str);
   }
 

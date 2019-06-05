@@ -1,3 +1,7 @@
+<?php
+global $metadata;
+$metadata->set_pageTitle('Simplesite | Grunt Includes');
+?>
 <h1>.js</h1>
 <?php
 $handle = fopen("php/includes/js.php", "r");

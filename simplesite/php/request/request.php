@@ -1,13 +1,13 @@
 <?php
 
 class Request {
-  function __construct($routes) {
-    $this->routes = $routes;
+  function __construct() {
     $this->_path = '';
     $this->_postBody = '';
     $this->_isAjax = false;
     $this->isDev = false;
     $this->_isAPI = false;
+    $this->_needsAuth = false;
 
     $this->getPath();
     $this->getPostData();
@@ -23,20 +23,30 @@ class Request {
   function isAjax() { return $this->_isAjax; }
   function isAPI() { return $this->_isAPI; }
   function isDev() { return $this->isDev; }
+  function needsAuth() { return $this->_needsAuth; }
 
   function setAPI($isAPI) {
     $this->_isAPI = $isAPI;
     if($isAPI == true) $this->_isAjax = true;
   }
 
+  function setAuthRequired($needsAuth) {
+    $this->_needsAuth = $needsAuth;
+  }
+
   function getPath() {
-    global $string_utils;
     // get page/mode and set to empty string if none
     $this->_host = "http://$_SERVER[HTTP_HOST]"; // "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"
     $pathWithoutQuery = explode( "?", $_SERVER["REQUEST_URI"] );
-    $this->_path = $string_utils->protectYaText( $pathWithoutQuery[0] ); // protectYaText( $_SERVER['QUERY_STRING'] ); //substr(, 1); // $_REQUEST['path'];
+    $this->_path = StringUtil::protectYaText( $pathWithoutQuery[0] ); // protectYaText( $_SERVER['QUERY_STRING'] ); //substr(, 1); // $_REQUEST['path'];
     if($this->_path == '' || $this->_path == '/') $this->_path = '/home';
+    if(!Login::isLoggedIn() && $this->_needsAuth) $this->_path = '/login';
     $this->_pathComponents = explode( '/', substr( $this->_path, 1 ) );	// strip first slash and get array of path components
+  }
+
+  function getSectionName() {
+    if(count($this->_pathComponents) > 0) return $this->_pathComponents[0];
+    return null;
   }
 
   function getPostData() {

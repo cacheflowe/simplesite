@@ -25,6 +25,23 @@
 - Media Queries
 */
 
+:root {
+  /* skeleton.css config */
+  --skel-button-color: #555;
+  --skel-button-border-radius: 4px;
+  --skel-button-border: 1px solid #bbb;
+  --skel-text-input-border: 1px solid #D1D1D1;
+  --skel-text-input-bg: #fff;
+  --skel-text-input-border-color-focus: #33C3F0;
+  --skel-button-border-color-focus: #888;
+  --skel-button-text-color-focus: #333;
+  --skel-button-primary-bg: #33C3F0;
+  --skel-button-primary-text-color: #FFF;
+  --skel-button-primary-focus-bg: #1EAEDB;
+  --skel-link-color: #1EAEDB;
+  --skel-link-color-hover: #999;
+  --skel-light-divider: #E1E1E1;
+}
 
 /* Grid
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -158,9 +175,9 @@ p {
 /* Links
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 a {
-  color: #1EAEDB; }
+  color: var(--skel-link-color); }
 a:hover {
-  color: #0FA0CE; }
+  color: var(--skel-link-color-hover); }
 
 
 /* Buttons
@@ -173,7 +190,7 @@ input[type="button"] {
   display: inline-block;
   height: 38px;
   padding: 0 30px;
-  color: #555;
+  color: var(--skel-button-color);
   text-align: center;
   font-size: 11px;
   font-weight: 600;
@@ -183,8 +200,8 @@ input[type="button"] {
   text-decoration: none;
   white-space: nowrap;
   background-color: transparent;
-  border-radius: 4px;
-  border: 1px solid #bbb;
+  border-radius: var(--skel-button-border-radius);
+  border: var(--skel-button-border);
   cursor: pointer;
   box-sizing: border-box; }
 .button:hover,
@@ -197,17 +214,17 @@ button:focus,
 input[type="submit"]:focus,
 input[type="reset"]:focus,
 input[type="button"]:focus {
-  color: #333;
-  border-color: #888;
+  color: var(--skel-button-text-color-focus);
+  border-color: var(--skel-button-border-color-focus);
   outline: 0; }
 .button.button-primary,
 button.button-primary,
 input[type="submit"].button-primary,
 input[type="reset"].button-primary,
 input[type="button"].button-primary {
-  color: #FFF;
-  background-color: #33C3F0;
-  border-color: #33C3F0; }
+  color: var(--skel-button-primary-text-color);
+  background-color: var(--skel-button-primary-bg);
+  border-color: var(--skel-button-primary-bg); }
 .button.button-primary:hover,
 button.button-primary:hover,
 input[type="submit"].button-primary:hover,
@@ -218,9 +235,9 @@ button.button-primary:focus,
 input[type="submit"].button-primary:focus,
 input[type="reset"].button-primary:focus,
 input[type="button"].button-primary:focus {
-  color: #FFF;
-  background-color: #1EAEDB;
-  border-color: #1EAEDB; }
+  color: var(--skel-button-primary-text-color);
+  background-color: var(--skel-button-primary-focus-bg);
+  border-color: var(--skel-button-primary-focus-bg); }
 
 
 /* Forms
@@ -236,9 +253,9 @@ textarea,
 select {
   height: 38px;
   padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
-  background-color: #fff;
-  border: 1px solid #D1D1D1;
-  border-radius: 4px;
+  background-color: var(--skel-text-input-bg);
+  border: var(--skel-text-input-border);
+  border-radius: var(--skel-button-border-radius);
   box-shadow: none;
   box-sizing: border-box; }
 /* Removes awkward default styles on some inputs for iOS */
@@ -266,7 +283,7 @@ input[type="url"]:focus,
 input[type="password"]:focus,
 textarea:focus,
 select:focus {
-  border: 1px solid #33C3F0;
+  border: 1px solid var(--skel-text-input-border-color-focus);
   outline: 0; }
 label,
 legend {
@@ -312,8 +329,8 @@ code {
   font-size: 90%;
   white-space: nowrap;
   background: #F1F1F1;
-  border: 1px solid #E1E1E1;
-  border-radius: 4px; }
+  border: 1px solid var(--skel-light-divider);
+  border-radius: var(--skel-button-border-radius); }
 pre > code {
   display: block;
   padding: 1rem 1.5rem;
@@ -326,7 +343,7 @@ th,
 td {
   padding: 12px 15px;
   text-align: left;
-  border-bottom: 1px solid #E1E1E1; }
+  border-bottom: 1px solid var(--skel-light-divider); }
 th:first-child,
 td:first-child {
   padding-left: 0; }
@@ -377,7 +394,7 @@ hr {
   margin-top: 3rem;
   margin-bottom: 3.5rem;
   border-width: 0;
-  border-top: 1px solid #E1E1E1; }
+  border-top: 1px solid var(--skel-light-divider); }
 
 
 /* Clearing

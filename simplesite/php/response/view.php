@@ -102,6 +102,13 @@ class View {
 			$htmlStr = ob_get_clean();
 		}
 
+    // needs auth
+    if($request->needsAuth() && Login::isLoggedIn() == false && $pathComponents[0] != 'login') {
+      ob_start();
+			include $pagesRoot . 'login.php';
+			$htmlStr = ob_get_clean();
+    }
+
 		$this->htmlStr = $htmlStr;
   }
 

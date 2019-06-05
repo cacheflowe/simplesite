@@ -35,9 +35,8 @@ class NewsListingView {
 
   function fillEmptyFriendlyUrl( $item ) {
     // create friendlyUrl from title if one doesn't exist in xml
-    global $string_utils;
     if(empty($item->friendlyUrl) == true) {
-      $item->friendlyUrl = $string_utils->makeFriendlyText($item->title);
+      $item->friendlyUrl = StringUtil::makeFriendlyText($item->title);
     }
   }
 

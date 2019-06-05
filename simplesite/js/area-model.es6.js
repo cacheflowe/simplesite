@@ -1,5 +1,5 @@
 class AreaModel {
-  constructor(initRoutes, pathUpdatedCallback, defaultViewClass, cacheResponses) {
+  constructor(initRoutes, pathUpdatedCallback, defaultViewClass, cacheResponses=true, allowsCurPathReloading=false) {
     this.contentEl = document.getElementById('content-holder');
     this.pageTitleBase = document.title.split(' | ')[0];
     this.curPath = null;
@@ -7,6 +7,7 @@ class AreaModel {
     this.queuedPath = null;
     this.curAreaObj = null;
     this.cachedResponses = (cacheResponses) ? {} : null;
+    this.allowsCurPathReloading = allowsCurPathReloading;
     this.isTransitioning = false;
     this.easyScroll = new EasyScroll();
     this.pathUpdatedCallback = pathUpdatedCallback;
@@ -18,7 +19,7 @@ class AreaModel {
     if (!this.isTransitioning) {
       this.curPath = page.current;
       if (this.curPath == '' || this.curPath == '/') this.curPath = '/home';
-      if (this.curPath !== this.prevPath) {
+      if (this.curPath !== this.prevPath || this.allowsCurPathReloading) {
         if(this.prevPath == null) this.updateSectionCssClass();
         if (window.scrollY > 20) {
           this.easyScroll.scrollByY(300, window.scrollY);

@@ -55,6 +55,7 @@
 .ready .loader {
   transition: opacity 0.15s linear;
 }
-body.page-loading .loader {
+body.page-loading .loader,
+body.data-loading .loader {
   opacity: 1;
 }

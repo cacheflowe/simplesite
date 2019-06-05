@@ -14,7 +14,7 @@ class StringUtil {
   public static function makeFriendlyText( $text ) {
     $text = strtolower( $text );
     // $text = substr( $text, 0, FRIENDLY_TITLE_CUTOFF ); // shorten it?
-    $text = StringUtils::stripAllExceptAlphanumeric( $text );
+    $text = StringUtil::stripAllExceptAlphanumeric( $text );
     $text = str_replace( " ", '-', $text );
     while( strpos( $text, '--' ) !== false ) { $text = str_replace( "--", '-', $text ); } // make sure dashes in title don't mess up our pretty url
     return $text;

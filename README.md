@@ -8,7 +8,6 @@ A boilerplate php (I know) site starter with friendly URLs, pushState support an
 
 * Fix embetter, ShareOut, CacheCart
 * Move to Gulp vs. Grunt
-* Get rid of .nav_item
 * Move grunt-includes to simplesite/php ?
 * Remove Mail.php
 * Add ability to create cached responses in AreaModel so we can get pushState and content swapping without hitting the server again
@@ -19,7 +18,7 @@ A boilerplate php (I know) site starter with friendly URLs, pushState support an
 * Add `/rss` to any page to retrieve rss data source?
 
 
-# Setup
+# Setup to use Grunt for minifying css/js)
 
 **NPM + Packages for Grunt build**
 

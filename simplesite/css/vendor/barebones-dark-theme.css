@@ -1,0 +1,64 @@
+/* ---- Themes ---- */
+/* using data-theme attributes to allow switching via javascript */
+html[data-theme="dark"] {
+	/* dark theme: light background, dark text, blue accent */
+	--theme-hue: 0;					/* black */
+	--accent-hue: 194;			/* blue */
+
+	--text-color-richer: hsl(var(--theme-hue), 0%, 95%);		/* 		*/
+	--text-color-normal: hsl(var(--theme-hue), 0%, 80%);		/* text color; button:hover:focus color */
+	--text-color-softer: hsl(var(--theme-hue), 0%, 67%);		/* button color; button:hover border */
+
+	--accent-color: hsl(var(--accent-hue), 76%, 49%);				/* link; button-primary bg+border; textarea,select:focus border */
+	--accent-color-hover: hsl(var(--accent-hue), 86%, 57%);	/* link hover; button-primary:hover:focus bg+border */
+
+	--border-color: hsl(var(--theme-hue), 0%, 27%);					/* button border */
+	--border-color-softer: hsl(var(--theme-hue), 0%, 20%);	/* textarea,select,code,td,hr border	 */
+
+	--background-color: hsl(var(--theme-hue), 0%, 12%);			/* body background; textarea,select background */
+	--background-color-softer: hsl(var(--theme-hue), 0%, 18%);
+	--code-background: hsl(var(--theme-hue), 0%, 5%);				/* code background*/
+
+	--button-primary-color: white;
+}
+
+/* when prefers-color-scheme supported, these can be in single media query with above */
+html[data-theme="dark"]	img.value-img {
+	filter: invert(0.8);
+}
+html[data-theme="dark"] img {
+	opacity: .90;
+	transition: opacity .5s ease-in-out;
+}
+
+/* add a transition to ease into new themes */
+/* looks best in Mozilla, text transitions late in Safari/Chrome */
+html.transition-theme,
+html.transition-theme *,
+html.transition-theme *:before,
+html.transition-theme *:after {
+  transition: all 350ms !important;
+  transition-delay: 0 !important;
+}
+
+.dark-theme-toggle {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+	padding: 10px;
+	margin: 0;
+	line-height: 0;
+	border-radius: 50%;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+	border: 0;
+	background: rgba(255,255,255,0.7);
+}
+.dark-theme-toggle::after {
+  content: "🌙";
+}
+html[data-theme="dark"] .dark-theme-toggle::after {
+  content: "☀️";
+}
+html[data-theme="dark"] .dark-theme-toggle {
+	box-shadow: 0 1px 2px rgba(255,255,255,0.3);
+}

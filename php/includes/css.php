@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="/simplesite/css/vendor/normalize.css">
 <link rel="stylesheet" href="/simplesite/css/vendor/barebones.css">
+<link rel="stylesheet" href="/simplesite/css/vendor/barebones-dark-theme.css">
 <link rel="stylesheet" href="/simplesite/css/vendor/skeleton-legacy.css">
 <link rel="stylesheet" href="/simplesite/css/vendor/embetter.css">
 <link rel="stylesheet" href="/simplesite/css/vendor/lazy-image-loader.css">

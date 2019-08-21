@@ -16,6 +16,7 @@ class SimpleSite {
     this.tracking = new Tracking();
     this.initRoutes();
     this.initLocalhost();
+    this.initDarkThemeToggle();
   }
 
   initLocalhost() {
@@ -41,9 +42,29 @@ class SimpleSite {
       _store.set(SimpleSite.CUR_PATH, curPath);
     }, 'BaseView', false, true);
   }
+
+  initDarkThemeToggle() {
+    document.body.addEventListener('click', (e) => {
+      if(e.target && e.target.classList.contains('dark-theme-toggle')) {
+        // set class
+        document.documentElement.classList.add('transition-theme');
+
+        if(document.documentElement.hasAttribute("data-theme")) {
+          requestAnimationFrame(() => document.documentElement.removeAttribute("data-theme"));
+          window.localStorage.removeItem('dark-theme');
+        } else {
+          requestAnimationFrame(() => document.documentElement.setAttribute("data-theme", "dark"));
+          window.localStorage.setItem('dark-theme', 'true');
+        }
+      }
+    });
+    // set initial state on window load
+    if(window.localStorage.getItem('dark-theme') == 'true') document.documentElement.setAttribute("data-theme", "dark");
+  }
+
 }
 
-SimpleSite.CUR_PATH = 'CUR_PATH';
-SimpleSite.SET_CUR_PATH = 'SET_CUR_PATH';
+SimpleSite.CUR_PATH = 'CUR_PATH';           // getter
+SimpleSite.SET_CUR_PATH = 'SET_CUR_PATH';   // setter
 
 window.simplesite = new SimpleSite();

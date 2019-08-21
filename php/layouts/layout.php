@@ -18,4 +18,5 @@
       <footer id="content-footer">Copyright &copy; simplesite <?php echo date("Y"); ?></footer>
     </div>
     <div class="loader"></div>
+    <button class="dark-theme-toggle"></button>
     <div id="localhost-status"></div>

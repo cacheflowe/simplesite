@@ -8,6 +8,7 @@ class SoundFFT {
     this.context = context;
     this.audioNode = audioNode;
     this.debug = false;
+
     // send sound node to analyser. the main destination output remains intact
     this.analyser = this.context.createAnalyser();
     this.analyser.fftSize = 512;
@@ -158,6 +159,10 @@ class SoundFFT {
     this.ctx.fillStyle = this.debugBlack;
     this.ctx.strokeStyle = this.debugWhite;
     this.ctx.lineWidth = 2;
+  }
+
+  getDebugCanvas() {
+    return this.canvas;
   }
 
   drawDebug() {

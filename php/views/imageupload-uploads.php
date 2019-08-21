@@ -13,9 +13,11 @@ if(file_exists($imageUploadPath)) {
     $filePath = $imageUploadPath . $file;
     $active = ($filePath == $curActiveImage) ? "active" : "";
     print("<div class='image-container'>");
-    print("<img src='/$imageUploadPath$file'>");
-    print("<button class='$active btn-check' data-action='activate' data-image-path='$filePath' data-image-key='$imageKey'></button>");
-    print("<button class='btn-delete' data-action='delete' data-image-path='$filePath'></button>");
+    print("<img src='/$imageUploadPath$file' width='100%'>");
+    print("<div class='grid-container halves'>");
+    print("<button class='$active btn-check' data-action='activate' data-image-path='$filePath' data-image-key='$imageKey'>Select</button>");
+    print("<button class='btn-delete' data-action='delete' data-image-path='$filePath'>Delete</button>");
+    print("</div>");
     print("</div>");
   }
   if(count($uploaded_files) == 0) {

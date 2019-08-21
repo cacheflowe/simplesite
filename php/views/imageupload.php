@@ -66,7 +66,7 @@ if(isset($_FILES["image_upload"])) {
   </form>
   <p id="form-result"></p>
   <h1>Uploads</h1>
-  <div id="uploads-container" class="content-columns-three collapses"></div>
+  <div id="uploads-container" class="grid-container thirds"></div>
 </div>
 <?php
 }

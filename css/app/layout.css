@@ -8,14 +8,6 @@
   opacity: 1;
 }
 
-/* Navigation */
-
-.nav_item {
-  margin: 0 0 15px;
-  /* display: flex;
-  flex-direction: column; */
-}
-
 /* Navigation transition on swappable content */
 
 .ready #content-holder {

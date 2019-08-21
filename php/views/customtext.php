@@ -19,10 +19,10 @@ $formVal2 = ($scheduleCustomTextLine2 != null && strlen($scheduleCustomTextLine2
     <div class="row">
       <input class="six columns" type="text" data-type="customtext" name="customtext" id="customtext" placeholder="Custom Text Line 1" value='<?php echo $formVal; ?>'>
       <input class="six columns" type="text" data-type="customtext" name="customtext-line-2" id="customtext-line-2" placeholder="Line 2 (optional)" value='<?php echo $formVal2; ?>'>
-    <div>
+    </div>
     <div class="row">
-      <button type="submit" class="btn-update six columns" data-customtext-submit="true" data-customtext-clear="true">Clear</button>
-      <button type="submit" class="btn-update six columns button-update" data-customtext-submit="true">Update</button>
+      <button type="submit" class="button-primary six columns" data-customtext-submit="true" data-customtext-clear="true">Clear</button>
+      <button type="submit" class="button-primary six columns" data-customtext-submit="true">Update</button>
     <div>
     </div>
   </form>

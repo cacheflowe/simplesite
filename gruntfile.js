@@ -82,8 +82,8 @@ module.exports = function(grunt) {
         files: {
           'css/app.min.css': [
             "simplesite/css/vendor/normalize.css",
-            "simplesite/css/vendor/main.css",
-            "simplesite/css/vendor/skeleton.css",
+            "simplesite/css/vendor/barebones.css",
+            "simplesite/css/vendor/skeleton-legacy.css",
             "simplesite/css/vendor/embetter.css",
             "simplesite/css/vendor/lazy-image-loader.css",
             "simplesite/css/vendor/lightbox.css",

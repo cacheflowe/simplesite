@@ -15,7 +15,7 @@ $metadata->set_pageTitle('Simplesite | Contact');
 		    <div><input type="text" name="about" id="about-input" value="" /></div>
 		    <div>Message:</div>
 		    <div><textarea name="message" id="message-input" value="" cols="30" rows="4"></textarea></div>
-  			<div><input type="button" value="send" id="contact-submit" /></div>
+  			<div><input type="button" value="Send" id="contact-submit" class="button-primary" /></div>
   		</form>
 		</div>
 	</div>

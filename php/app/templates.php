@@ -22,7 +22,7 @@ class Templates {
 
   public static function daySelect($index, $curDay) {
     $html = "";
-    $html .= '<select style="" class="one columns" data-type="day" name="day-' . $index . '" id="day-' . $index . '">';
+    $html .= '<select style="" class="two columns" data-type="day" name="day-' . $index . '" id="day-' . $index . '">';
       foreach (range(1, 31) as $day) {
         $selected = "";
         if($day == $curDay) $selected = "selected";

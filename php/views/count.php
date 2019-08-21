@@ -46,11 +46,11 @@ if (count($request->pathComponents()) > 1 && $request->pathComponents()[1] == 'a
 
 ?>
 <div data-view-type="CountView" data-page-title="<?php global $metadata; echo $metadata->get_pageTitle(); ?>">
-  <h1>Recycle Count</h1>
+  <h1>Count</h1>
   <div id="counter">
-    <span id="count"><?php print($curCount); ?></span>
+    <h3><span id="count"><?php print($curCount); ?></span></h3>
   </div>
-  <div id="count-btns">
+  <div id="count-btns" class="grid-container quarters">
     <button class="btn-count" data-count-add="-10">- 10</button>
     <button class="btn-count" data-count-add="-1">- 1</button>
     <button class="btn-count button-update" data-count-add="1">+ 1</button>

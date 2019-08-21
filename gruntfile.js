@@ -89,6 +89,7 @@ module.exports = function(grunt) {
             "simplesite/css/vendor/lightbox.css",
             "simplesite/css/vendor/loader.css",
             "simplesite/css/debug.css",
+            "simplesite/css/localhost-status.css",
             "css/app/config.css",
             "css/app/body.css",
             "css/app/layout.css",

@@ -31,6 +31,11 @@ html[data-theme="dark"] img {
 	transition: opacity .5s ease-in-out;
 }
 
+/* barebones reset */
+html {
+  --grid-max-width: 100%;
+}
+
 /* add a transition to ease into new themes */
 /* looks best in Mozilla, text transitions late in Safari/Chrome */
 html.transition-theme,

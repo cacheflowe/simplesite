@@ -23,7 +23,6 @@ $formVal2 = ($scheduleCustomTextLine2 != null && strlen($scheduleCustomTextLine2
     <div class="row">
       <button type="submit" class="button-primary six columns" data-customtext-submit="true" data-customtext-clear="true">Clear</button>
       <button type="submit" class="button-primary six columns" data-customtext-submit="true">Update</button>
-    <div>
     </div>
   </form>
 </div>

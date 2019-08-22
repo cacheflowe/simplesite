@@ -39,7 +39,7 @@ $events = $scheduleData["events"];
       <?php
         $index++;
       }
-      print('<div class="row"><button type="submit" class="button-primary">Update</button></div>');
+      print('<button type="submit" class="button-primary">Update</button>');
     } else {
       print("<p>No events stored.</p>");
     }

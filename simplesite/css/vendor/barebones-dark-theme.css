@@ -31,9 +31,12 @@ html[data-theme="dark"] img {
 	transition: opacity .5s ease-in-out;
 }
 
-/* barebones reset */
+/* barebones grid reset */
 html {
   --grid-max-width: 100%;
+}
+.container, .row {
+  max-width: 100%;
 }
 
 /* add a transition to ease into new themes */

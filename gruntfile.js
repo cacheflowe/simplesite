@@ -83,8 +83,8 @@ module.exports = function(grunt) {
           'css/app.min.css': [
             "simplesite/css/vendor/normalize.css",
             "simplesite/css/vendor/barebones.css",
-            "simplesite/css/vendor/barebones-dark-theme.css",
             "simplesite/css/vendor/skeleton-legacy.css",
+            "simplesite/css/vendor/barebones-dark-theme.css",
             "simplesite/css/vendor/embetter.css",
             "simplesite/css/vendor/lazy-image-loader.css",
             "simplesite/css/vendor/lightbox.css",

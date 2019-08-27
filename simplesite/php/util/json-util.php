@@ -14,11 +14,11 @@ class JsonUtil {
     }
 
     public static function writeJsonToFile($path, $data) {
-      file_put_contents($path, json_encode($data, JSON_PRETTY_PRINT));
+      file_put_contents($path, json_encode($data, JSON_PRETTY_PRINT | JSON_NUMERIC_CHECK));
     }
 
     public static function jsonDataObjToString($data) {
-      return json_encode($data, JSON_PRETTY_PRINT);
+      return json_encode($data, JSON_PRETTY_PRINT | JSON_NUMERIC_CHECK);
     }
 
     public static function setJsonOutput() {

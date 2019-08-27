@@ -5,6 +5,7 @@
         <a class="button" href="/">Home</a>
         <a class="button" href="/collection">Collection</a>
         <a class="button" href="/about">About</a>
+        <a class="button" href="/config">Config</a>
         <a class="button" href="/events">Events</a>
         <a class="button" href="/schedule">Schedule</a>
         <a class="button" href="/count">Count</a>

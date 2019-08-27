@@ -1,5 +1,10 @@
 #main {
-  padding: 0 5rem;
+  padding: 0 2rem;
+}
+@media (min-width: 580px) {
+  #main {
+    padding: 0 5rem;
+  }
 }
 
 #content-holder {
@@ -19,23 +24,36 @@ body.page-loading #content-holder {
 }
 
 
-/* Layout columns */
+/* Form layout */
 
-.content-columns-row {
+#form-config {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 2rem;
   margin-bottom: 2rem;
 }
-.content-columns-two {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
-  grid-gap: 2rem;
+
+.config-card {
+  background-color: var(--background-color-softer);
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  /* box-shadow: 1px 2px 4px var(--border-color); */
+  border: 1px solid var(--border-color);
 }
-.content-columns-three {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
-  grid-gap: 2rem;
+
+.config-card .config-card-title {
+  padding: 0 4px 10px;
 }
-@media (max-width: 550px) {
-  .content-columns-two.collapses {
-    grid-template-columns: repeat(auto-fit, minmax(90%, 1fr));
-  }
+
+.config-card input,
+.config-card textarea,
+.config-card select,
+.config-card fieldset {
+  margin-bottom: 0;
+  width: 100%;
+}
+
+.config-card .toggle {
+  display: block;
 }

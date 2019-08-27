@@ -1,0 +1,9 @@
+{
+    "config": {
+        "showWeather": true,
+        "showClock": false,
+        "colorBg": "#c5cc33",
+        "colorAccent": "#000000",
+        "slideTitlePrefix": "String tester #8"
+    }
+}

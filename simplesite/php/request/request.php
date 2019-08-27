@@ -19,7 +19,9 @@ class Request {
   function host() { return $this->_host; }
   function path() { return $this->_path; }
   function pathComponents() { return $this->_pathComponents; }
+  function pathComponentsSize() { return count($this->_pathComponents); }
   function postBody() { return $this->_postBody; }
+  function postedJson() { return json_decode($this->postBody(), true); }
   function isAjax() { return $this->_isAjax; }
   function isAPI() { return $this->_isAPI; }
   function isDev() { return $this->isDev; }
@@ -54,9 +56,11 @@ class Request {
   }
 
   function getDevMode() {
+    global $serverConfig;
     if(strpos($_SERVER["SERVER_NAME"], "localhost") === 0) $this->isDev = true;
     if(isset( $_REQUEST['notDev'] )) $this->isDev = false;
     if(isset( $_REQUEST['isDev'] )) $this->isDev = true;
+    if($serverConfig['alwaysDev'] == true) $this->isDev = true;
   }
 
   function setOutputType() {

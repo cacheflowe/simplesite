@@ -53,6 +53,56 @@ class Templates {
     return $html;
   }
 
+  public static function getToggle($inputId, $defaultState=false) {
+    $checked = ($defaultState == true) ? "checked" : "";
+    $html = "";
+    $html .= '<label class="toggle" for="'. $inputId .'">';
+    $html .= '  <input type="checkbox" id="'. $inputId .'"' . $checked .' />';
+    $html .= '  <span class="toggle-slider round"></span>';
+    $html .= '</label>';
+    return $html;
+  }
+
+  public static function configFormElement($key, $value) {
+    $dataType = gettype($value);
+    $html = "";
+    $html .= '<div class="config-card">';
+    $html .= '  <div class="config-card-title">' . $key . ' ( ' . $dataType . ' )</div>';
+    $html .= '  <div>';
+    if($dataType == "boolean") {
+      $html .= Templates::getToggle($key, $value);
+    } else if($dataType == "integer" || $dataType == "double") {
+      $html .= Templates::getNumericInput($key, $value);
+    } else if($dataType == "string") {
+      if(StringUtil::isHexColor($value)) {
+        $html .= Templates::getColorInput($key, $value);
+      } else {
+        $html .= Templates::getTextInput($key, $value);
+      }
+    }
+    $html .= '  </div>';
+    $html .= '</div>';
+    return $html;
+  }
+
+  public static function getTextInput($inputId, $defaultValue="") {
+    $html = "";
+    $html .= '<input type="text" id="'. $inputId .'" value="' . $defaultValue . '" />';
+    return $html;
+  }
+
+  public static function getNumericInput($inputId, $defaultValue="") {
+    $html = "";
+    $html .= '<input type="number" id="'. $inputId .'" value="' . $defaultValue . '" />';
+    return $html;
+  }
+
+  public static function getColorInput($inputId, $defaultValue="") {
+    $html = "";
+    $html .= '<input type="color" id="'. $inputId .'" value="' . $defaultValue . '" />';
+    return $html;
+  }
+
 }
 
 ?>

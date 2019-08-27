@@ -53,6 +53,20 @@ class FileUtil {
       return $files;
     }
 
+    public static function getDirectoryTree($outerDir, $level, &$files){
+        $dirs = array_diff( scandir( $outerDir ), Array( ".", ".." ) );
+        $dir_array = Array();
+        foreach ($dirs as $dir) {
+            if (is_dir($outerDir . "/"  . $dir)) {
+                $dir_array[$dir] = FileUtil::getDirectoryTree( $outerDir . "/" . $dir, $level+1, $files);
+            } else {
+                $files[] = $outerDir . "/" . $dir;  // add to single files array
+                $dir_array[$dir] = $dir;
+            }
+        }
+        return $dir_array;
+    }
+
 }
 
 ?>

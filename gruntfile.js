@@ -66,6 +66,11 @@ module.exports = function(grunt) {
             "js/min/simplesite/js/haxademic/lightbox.js",
             "js/min/simplesite/js/area-model.js",
             "js/min/simplesite/js/base-view.js",
+            "js/min/views/fancy-view.js",
+            "js/min/views/count-view.js",
+            "js/min/views/customtext-view.js",
+            "js/min/views/login-view.js",
+            "js/min/views/schedule-view.js",
             "js/min/app/tracking.js",
             "js/min/app/app.js",
             ]

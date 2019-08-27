@@ -16,6 +16,7 @@ class SimpleSite {
     this.tracking = new Tracking();
     this.initRoutes();
     this.initLocalhost();
+    this.initToasts();
     this.initDarkThemeToggle();
   }
 
@@ -27,6 +28,10 @@ class SimpleSite {
 
   storeUpdated(key, value) {
     if(key == SimpleSite.SET_CUR_PATH) page(value);
+    if(key == SimpleSite.LOADER_SHOW && value == true) document.body.classList.add('data-loading');
+    if(key == SimpleSite.LOADER_SHOW && value == false) document.body.classList.remove('data-loading');
+    if(key == SimpleSite.ALERT_ERROR) this.notyf.error(value);
+    if(key == SimpleSite.ALERT_SUCCESS) this.notyf.success(value);
   }
 
   initRoutes() {
@@ -41,6 +46,10 @@ class SimpleSite {
     }, (curPath) => {
       _store.set(SimpleSite.CUR_PATH, curPath);
     }, 'BaseView', false, true);
+  }
+
+  initToasts() {
+    this.notyf = new Notyf({duration:5000});
   }
 
   initDarkThemeToggle() {
@@ -64,7 +73,10 @@ class SimpleSite {
 
 }
 
-SimpleSite.CUR_PATH = 'CUR_PATH';           // getter
-SimpleSite.SET_CUR_PATH = 'SET_CUR_PATH';   // setter
+SimpleSite.CUR_PATH = 'CUR_PATH';
+SimpleSite.SET_CUR_PATH = 'SET_CUR_PATH';
+SimpleSite.LOADER_SHOW = 'LOADER_SHOW';
+SimpleSite.ALERT_SUCCESS = 'ALERT_SUCCESS';
+SimpleSite.ALERT_ERROR = 'ALERT_ERROR';
 
 window.simplesite = new SimpleSite();

@@ -24,6 +24,10 @@ class StringUtil {
     return preg_replace("/[^a-zA-Z0-9-+\s]/", "", $str);
   }
 
+  public static function isHexColor( $str ) {
+    return(preg_match('/^#[a-f0-9]{6}$/i', $str));
+  }
+
 }
 
 ?>

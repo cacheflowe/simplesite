@@ -40,7 +40,7 @@
 }
 
 input:checked + .toggle-slider {
-  background-color: var(--snkrsRed);
+  background-color: #00EE00;
 }
 
 input:checked + .toggle-slider:before {

@@ -31,7 +31,8 @@ $constants = [
   "uploadPathMentors" => "uploads/mentors/",
   "uploadPathTakeovers" => "uploads/takeovers/",
   "scheduleJson" => "schedule.json",
-  "countJson" => "count.json"
+  "countJson" => "count.json",
+  "configJson" => "config.json",
 ];
 include('./simplesite/php/simplesite.php');
 ?>

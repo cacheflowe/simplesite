@@ -2,12 +2,13 @@ class LoginView extends FancyView {
 
   constructor(el) {
     super(el);
-    this.initLogin();
+    this.loginForm = this.el.querySelector('#login-form');
+    if(this.loginForm) this.initLogin();
+    document.body.classList.add('logged-out');
 	}
 
   initLogin() {
-    this.loginForm = this.el.querySelector('#login-form');
-    if(this.loginForm) {
+     {
       this.loginHandler = this.formSubmitted.bind(this);
       this.loginForm.addEventListener('submit', this.loginHandler);
     }
@@ -17,7 +18,7 @@ class LoginView extends FancyView {
     e.preventDefault();
 
     this.loginForm.classList.remove('error');
-    document.body.classList.add('data-loading');
+    _store.set(SimpleSite.LOADER_SHOW, true);
     let userPasswordAttempt = this.loginForm.querySelector('#password').value;
 
     fetch(this.loginForm.getAttribute('action'), {
@@ -34,15 +35,16 @@ class LoginView extends FancyView {
           if(curPath == '/login') {
             _store.set(SimpleSite.SET_CUR_PATH, '/');     // go home from generic /login
           } else {
-            _store.set(SimpleSite.SET_CUR_PATH, curPath); // reload the protected page
+            _store.set(SimpleSite.RELOAD_VIEW, true);     // reload the protected page
           }
+          document.body.classList.remove('logged-out');
         } else {
           this.loginForm.classList.add('error');
         }
-        document.body.classList.remove('data-loading');
+        _store.set(SimpleSite.LOADER_SHOW, false);
       }).catch(function(ex) {
         alert('Fetch failed ' + ex.message);
-        document.body.classList.remove('data-loading');
+        _store.set(SimpleSite.LOADER_SHOW, false);
       });
   }
 

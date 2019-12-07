@@ -1,9 +1,18 @@
 {
     "config": {
-        "showWeather": true,
-        "showClock": false,
         "colorBg": "#c5cc33",
-        "colorAccent": "#000000",
-        "slideTitlePrefix": "String tester #8"
+        "colorAccent": "#ff0f73",
+        "checkinInterval": 123,
+        "screenshotInterval": 1200,
+        "webAppDataInterval": 600,
+        "configDataInterval": 600,
+        "version": 2
+    },
+    "labels": {
+        "checkinInterval": "Dashboard check-in interval (seconds)",
+        "screenshotInterval": "Dashboard screenshot interval (seconds)",
+        "webAppDataInterval": "Check for new app data interval (seconds)",
+        "configDataInterval": "Check for new app config interval (seconds)",
+        "version": "Version (increment to relaunch app)"
     }
 }

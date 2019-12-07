@@ -1,5 +1,6 @@
 <?php
 $serverConfig = [
+  "alwaysDev" => false,
   "forceHttps" => true,
   "forceHttpsUrlMatch" => "simplesite.com",
   "gaID" => "UA-XXXXXXXX-10",

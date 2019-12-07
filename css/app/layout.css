@@ -1,19 +1,183 @@
-#main {
-  padding: 0 2rem;
+/* Main nav + main content container layout w/mobile drawer */
+
+#main-nav {
+  transition: margin-left 0.3s ease;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  margin-left: calc(var(--navWidth) * -1 - 1px);
+  width: var(--navWidth);
+  background: var(--background-color-softer);
+  border-right: 1px solid var(--border-color);
+  z-index: 4;
 }
-@media (min-width: 580px) {
-  #main {
-    padding: 0 5rem;
+
+@media (max-width: 767px) {
+  .main-nav-drawer-open #main-nav {
+    margin-left: 0;
   }
 }
+
+#main-nav-links {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+#main-nav-links a,
+#main-nav-links button,
+#main-nav-links button.dark-theme-toggle {
+  transition: all 0.2s ease;
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+  display: block;
+  background-color: var(--background-color);
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 16px;
+  text-align: left;
+  line-height: 1.6;
+  border-bottom: 3px solid var(--border-color-softer);
+  outline: 0;
+}
+
+#main-nav-links .section-header {
+  width: 100%;
+  height: 24px;
+  margin: 1rem 1rem 1rem 0;
+  background-color: var(--background-color-richer);
+}
+
+.section-boulder #main-nav-links a[href="/boulder"],
+.section-pylon #main-nav-links a[href="/pylon"],
+.section-demodesk #main-nav-links a[href="/demodesk"],
+.section-topotable #main-nav-links a[href="/topotable"],
+.section-dashboard #main-nav-links a[href="/dashboard"],
+.section-docs #main-nav-links a[href*="/docs"] {
+  background-color: var(--code-background);
+  border-bottom: 3px solid var(--accent-color);
+}
+
+
+/* Client-specific for header link and dark theme toggle override */
+
+#main-nav-links > a:first-of-type {
+  padding: 0;
+}
+#main-nav-links a:first-of-type img {
+  display: block;
+}
+
+#main-nav-links .dark-theme-toggle {
+  position: relative;
+  top: auto;
+  right: auto;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* main content container */
+
+#main {
+  transition: margin-left 0.3s ease, width 0.3s ease, padding 0.3s ease;
+  margin-left: 0;
+  width: 100%;
+  padding: var(--main-padding);
+}
+
+/* mobile drawer action */
+
+#main-nav-toggle {
+  transition: top 0.3s ease, left 0.3s ease;
+  position: absolute;
+  left: calc(100% + var(--padding));
+  z-index: 4;
+  padding: 0 1rem;
+  font-size: 24px;
+  width: auto;
+  top: 1.5rem;
+  outline: 0;
+  border: 0;
+  background-color: var(--border-color-softer);
+}
+
+#main-nav-toggle:active {
+  outline: 0;
+}
+
+#main-nav-toggle::after {
+  content: "☰";
+}
+
+.main-nav-drawer-open #main-nav-toggle::after {
+  content: "X";
+}
+
+.main-nav-drawer-open #main-nav-toggle {
+  left: calc(100% + 2rem);
+  top: 2rem;
+}
+
+/* content blocker layer - initialized by MainMenuToggle.es6 */
+
+#content-blocker {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: var(--fade-anim);
+  opacity: 0;
+  visibility: hidden;
+}
+.main-nav-drawer-open #content-blocker {
+  transition: var(--fade-anim-showing);
+  opacity: 1;
+  visibility: visible;
+}
+
+body.main-nav-drawer-open {
+  overflow: hidden;
+}
+
+/* Drawer helpers */
+
+@media (min-width: 768px) {
+  #main-nav {
+    margin-left: 0;
+  }
+  #main {
+    margin-left: var(--navWidth);
+    width: calc(100% - var(--navWidth));
+  }
+  #main-nav #main-nav-toggle {
+    top: -5rem;
+  }
+}
+
+/* Content element & loading hide animation */
 
 #content-holder {
   overflow: hidden;
   padding-bottom: 5rem;
   opacity: 1;
+  max-width: 860px;
 }
 
-/* Navigation transition on swappable content */
+.section-dashboard #content-holder,
+.subsection-uploads #content-holder {
+  max-width: 100%;
+}
 
 .ready #content-holder {
   transition: opacity 0.3s linear;
@@ -23,37 +187,6 @@ body.page-loading #content-holder {
   opacity: 0;
 }
 
-
-/* Form layout */
-
-#form-config {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 2rem;
-  margin-bottom: 2rem;
-}
-
-.config-card {
-  background-color: var(--background-color-softer);
-  padding: 10px;
-  width: 100%;
-  border-radius: 5px;
-  /* box-shadow: 1px 2px 4px var(--border-color); */
-  border: 1px solid var(--border-color);
-}
-
-.config-card .config-card-title {
-  padding: 0 4px 10px;
-}
-
-.config-card input,
-.config-card textarea,
-.config-card select,
-.config-card fieldset {
-  margin-bottom: 0;
-  width: 100%;
-}
-
-.config-card .toggle {
-  display: block;
+.loader {
+  z-index: 6;
 }

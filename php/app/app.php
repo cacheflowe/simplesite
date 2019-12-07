@@ -3,11 +3,17 @@
 // includes/globals
 include './php/app/data.php';
 include './php/app/templates.php';
+include './php/app/json-edit.php';
+include './php/app/dashboard.php';
 global $request;
 global $constants;
 
-// Login::setAuthRequired();
+if(isset($constants["password"])) {
+  Login::setAuthRequired();
+}
 
+
+// Below is legacy for schedule CMS forms
 // schedule data handling
 function getScheduleJsonData() {
   global $constants;

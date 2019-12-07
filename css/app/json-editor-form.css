@@ -1,0 +1,54 @@
+
+/* maxlength count */
+
+form#json-editor-form label {
+  position: relative;
+  padding-right: 60px;  /* make room for character count below */
+}
+
+form#json-editor-form label::after {
+  content: attr(data-maxlength);
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  bottom: 2px;
+  font-size: 12px;
+  font-weight: normal;
+  border-radius: 4px;
+  color: var(--text-color-softer);
+}
+form#json-editor-form label.overflow::after {
+  color: #f00;
+}
+
+/* shared styles */
+
+.json-editor-config,
+.json-editor-slide {
+  background-color: var(--background-color-softer);
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+.json-editor-config-props {
+  margin-bottom: 2rem;
+}
+#json-editor-form textarea,
+#json-editor-form input,
+#json-editor-form button,
+#json-editor-form select,
+#json-editor-form textarea,
+#json-editor-form input {
+  width: 100%;
+}
+#json-editor-form textarea {
+  height: 200px;
+}
+
+.json-editor-asset-preview img,
+.json-editor-asset-preview video {
+  width: 100%;
+}
+
+.json-editor-slide-actions button {
+  width: 100%;
+}

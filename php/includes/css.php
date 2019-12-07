@@ -11,4 +11,9 @@
 <!-- <link rel="stylesheet" href="/simplesite/css/debug.css"> -->
 <link rel="stylesheet" href="/css/app/config.css">
 <link rel="stylesheet" href="/css/app/body.css">
+<link rel="stylesheet" href="/css/app/json-editor-form.css">
+<!-- <link rel="stylesheet" href="/css/app/dashboard.css"> -->
 <link rel="stylesheet" href="/css/app/layout.css">
+<link rel="stylesheet" href="/css/app/config-form.css">
+<link rel="stylesheet" href="/css/app/login-form.css">
+<link rel="stylesheet" href="/css/app/upload-form.css">

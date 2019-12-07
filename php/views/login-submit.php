@@ -4,9 +4,9 @@ include('./php/app/app.php');
 JsonUtil::setJsonOutput();
 $didLogIn = Login::checkPostedLoginPassword();
 if($didLogIn) {
-  echo '{"success": true}';
+  JsonUtil::printSuccessMessage(true);
 } else {
-  echo '{"success": false}';
+  JsonUtil::printFailMessage(false);
 }
 
 ?>

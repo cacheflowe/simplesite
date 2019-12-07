@@ -28,7 +28,7 @@ html[data-theme="dark"]	img.value-img {
 }
 html[data-theme="dark"] img {
 	opacity: .90;
-	transition: opacity .5s ease-in-out;
+	/* transition: opacity .5s ease-in-out; */
 }
 
 /* barebones grid reset */

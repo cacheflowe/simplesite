@@ -16,8 +16,7 @@ class SimpleSite {
     this.tracking = new Tracking();
     this.initRoutes();
     this.initLocalhost();
-    this.initToasts();
-    this.initDarkThemeToggle();
+    this.initExtras();
   }
 
   initLocalhost() {
@@ -28,6 +27,7 @@ class SimpleSite {
 
   storeUpdated(key, value) {
     if(key == SimpleSite.SET_CUR_PATH) page(value);
+    if(key == SimpleSite.RELOAD_VIEW) _store.set(SimpleSite.SET_CUR_PATH, _store.get(SimpleSite.CUR_PATH));
     if(key == SimpleSite.LOADER_SHOW && value == true) document.body.classList.add('data-loading');
     if(key == SimpleSite.LOADER_SHOW && value == false) document.body.classList.remove('data-loading');
     if(key == SimpleSite.ALERT_ERROR) this.notyf.error(value);
@@ -48,6 +48,14 @@ class SimpleSite {
     }, 'BaseView', false, true);
   }
 
+  // extras
+
+  initExtras() {
+    this.initToasts();
+    this.initDarkThemeToggle();
+    this.mainMenuToggle = new MainMenuToggle();
+  }
+
   initToasts() {
     this.notyf = new Notyf({duration:5000});
   }
@@ -55,9 +63,9 @@ class SimpleSite {
   initDarkThemeToggle() {
     document.body.addEventListener('click', (e) => {
       if(e.target && e.target.classList.contains('dark-theme-toggle')) {
-        // set class
+        // set transition class
         document.documentElement.classList.add('transition-theme');
-
+        // do the toggle and store it for later
         if(document.documentElement.hasAttribute("data-theme")) {
           requestAnimationFrame(() => document.documentElement.removeAttribute("data-theme"));
           window.localStorage.removeItem('dark-theme');
@@ -75,6 +83,7 @@ class SimpleSite {
 
 SimpleSite.CUR_PATH = 'CUR_PATH';
 SimpleSite.SET_CUR_PATH = 'SET_CUR_PATH';
+SimpleSite.RELOAD_VIEW = 'RELOAD_VIEW';
 SimpleSite.LOADER_SHOW = 'LOADER_SHOW';
 SimpleSite.ALERT_SUCCESS = 'ALERT_SUCCESS';
 SimpleSite.ALERT_ERROR = 'ALERT_ERROR';

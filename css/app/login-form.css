@@ -1,0 +1,33 @@
+/* Login form
+
+#login-form, #login-reset {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: auto;
+  position: fixed;
+  padding: 0 30px;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}*/
+
+#login-error {
+  color: var(--c1);
+  /* display: none; */
+  text-align: center;
+  font-style: italic;
+  opacity: 0;
+  transition: all 0.1s ease-out;
+  /* height: 0; */
+}
+form.error #login-error {
+  opacity: 1;
+  /* display: block; */
+  /* height: 30px; */
+}
+
+.logged-out .needs-login {
+  display: none;
+}

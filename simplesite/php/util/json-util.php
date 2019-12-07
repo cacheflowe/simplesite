@@ -30,6 +30,31 @@ class JsonUtil {
       header('Content-Type: application/json');
       header('Access-Control-Allow-Origin: *');
     }
+
+    public static function printJsonObj($jsonObj) {
+      print(JSONUtil::jsonDataObjToString($jsonObj));
+    }
+
+    public static function printSuccessMessage($msg) {
+      $jsonObj = new stdClass();
+      $jsonObj->success = $msg;
+      JSONUtil::printJsonObj($jsonObj);
+    }
+
+    public static function printFailMessage($msg) {
+      $jsonObj = new stdClass();
+      $jsonObj->fail = $msg;
+      JSONUtil::printJsonObj($jsonObj);
+    }
+
+    public static function backupJsonFile($filePath) {
+      // result: moves /data/json/boulder-1.json to /data/json/backup/boulder-1-2019-09-05.json
+      $path = FileUtil::dirFromPath($filePath);
+      $fileName = FileUtil::fileNameFromPath($filePath);
+      $fileNameBackup = $path . "/backup/" . str_replace(".json", '-' . DateUtil::createTimestamp() . ".json", $fileName);
+      FileUtil::makeDirs(dirname($fileNameBackup));
+      return copy($filePath, $fileNameBackup);
+    }
 }
 
 ?>

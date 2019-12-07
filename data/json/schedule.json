@@ -2,58 +2,65 @@
     "schedule": [
         {
             "title": "Event 1",
-            "month": "5",
-            "day": "31"
+            "month": 5,
+            "day": 31
         },
         {
             "title": "Event 2",
-            "month": "6",
-            "day": "8"
+            "month": 6,
+            "day": 8
         },
         {
             "title": "Event 3",
-            "month": "6",
-            "day": "15"
+            "month": 6,
+            "day": 15
         },
         {
             "title": "Event 4",
-            "month": "6",
-            "day": "22"
+            "month": 6,
+            "day": 22
         },
         {
             "title": "Event 5",
-            "month": "6",
-            "day": "29"
+            "month": 6,
+            "day": 29
         },
         {
             "title": "Event 6",
-            "month": "7",
-            "day": "6"
+            "month": 7,
+            "day": 6
         },
         {
-            "title": "Event 7",
-            "month": "7",
-            "day": "13"
+            "title": "Event 8",
+            "month": 7,
+            "day": 13
         }
     ],
     "events": [
         {
+            "title": "Test",
+            "month": 5,
+            "day": 6,
+            "timeStart": 11,
+            "timeEnd": -1
+        },
+        {
             "title": "Opening",
-            "month": "5",
-            "day": "31",
-            "timeStart": "11",
-            "timeEnd": "-1"
+            "month": 5,
+            "day": 31,
+            "timeStart": 11,
+            "timeEnd": -1
         },
         {
             "title": "Test",
-            "month": "6",
-            "day": "5",
-            "timeStart": "11",
-            "timeEnd": "-1"
+            "month": 7,
+            "day": 5,
+            "timeStart": 5,
+            "timeEnd": 0.25
         }
     ],
     "takeovers": null,
     "mentors": "uploads\/mentors\/mentor-chuck.png",
-    "customtext": "Slay",
-    "customtext-line-2": "All Day"
+    "customtext": null,
+    "customtext-line-2": null
 }

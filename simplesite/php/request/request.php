@@ -19,6 +19,7 @@ class Request {
   function host() { return $this->_host; }
   function path() { return $this->_path; }
   function pathComponents() { return $this->_pathComponents; }
+  function lastPathComponent() { return basename($this->_path); }
   function pathComponentsSize() { return count($this->_pathComponents); }
   function postBody() { return $this->_postBody; }
   function postedJson() { return json_decode($this->postBody(), true); }

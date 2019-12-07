@@ -1,0 +1,27 @@
+{
+    "config": {
+        "weatherApiURL": true
+    },
+    "slides": [
+        {
+            "assetURL": "_uploads\/demodesk\/bg-pattern.jpg",
+            "textLine1": "",
+            "hideFooter": false,
+            "textLine2": "",
+            "textParagraphEN": "Currently, the project has more than 60 timelapse cameras placed throughout the river basin, from its headwaters in the Colorado Rockies to the river\u2019s confluence with the Missouri River at Nebraska\u2019s eastern border. Each camera tells one part of the story as water makes a journey of roughly 900 miles through the heart of North America.",
+            "textParagraphES": "En la actualidad, el proyecto cuenta con m\u00e1s de 60 c\u00e1maras r\u00e1pidas dispuestas por la cuenca del r\u00edo, desde su nacimiento, en las Monta\u00f1as Rocosas de Colorado, hasta su confluencia con el r\u00edo Missouri en la frontera oriental de Nebraska. Cada c\u00e1mara cuenta una parte de la historia a medida que el agua emprende un recorrido de unos 1450 km por el coraz\u00f3n de Norteam\u00e9rica."
+        },
+        {
+            "assetURL": "_uploads\/demodesk\/cursor.png",
+            "textLine1": "",
+            "hideFooter": false,
+            "textLine2": "",
+            "textParagraphEN": "This timelapse was created by the Platte Basin Timelapse project (PBT). Founded in 2011, PBT combines art and research to create multimedia content telling the stories of the Platte River.",
+            "textParagraphES": "Esta pel\u00edcula en c\u00e1mara r\u00e1pida fue creada por el proyecto Platte Basin Timelapse (C\u00e1mara de secuencia acelerada de la cuenca del r\u00edo Platte; PBT, en ingl\u00e9s). Fundado en 2011, el PBT combina arte e investigaci\u00f3n para crear contenido multimedia que cuenta las historias del r\u00edo Platte."
+        }
+    ],
+    "maxlength": {
+        "textLine1": 40,
+        "textLine2": 60
+    }
+}

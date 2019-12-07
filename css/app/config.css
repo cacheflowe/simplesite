@@ -1,21 +1,16 @@
 :root {
+  /* Typography */
   --siteFont: Avenir, "Century Gothic", CenturyGothic, "Segoe UI", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  /* Github: font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
- Helvetica, Arial, sans-serif,
- "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; */
-  --image-border-color: #222;
-  --site-theme-red: #B50000;
-  --site-theme-red-active: #e82431;
-  --site-theme-orange: #CD5C0D;
-  --site-theme-orange-active: #f38233;
-  --site-theme-green: #004F0A;
-  --site-theme-green-active: #239b56;
-  --site-theme-blue: #04807C;
-  --site-theme-blue-active: #37b3af;
-  --color-bg-dark: #222;
-  --color-bg-darkest: #111;
-  --max-width: 860px;
-  --font-size-caption: 12px;
+
+  /* Navigation & layout sizes */
+  --navWidth: 250px;
+  --padding: 2rem;
+  --main-padding: 4rem 2rem;
+
+  --accent1: #5d7a1d;
+  --accent2: #e58411;
+
+  /* Transitions */
   --fade-anim:                           transform 0s linear 0.35s, visibility 0s linear 0.35s, opacity 0.35s linear;
   --fade-anim-showing:                   visibility 0s linear, opacity 0.35s linear;
   --fade-anim-showing-delayed:           transform 0s linear, visibility 0s linear, 1.65s opacity 0.35s linear;
@@ -25,20 +20,29 @@
   --eased-transition-long:               transform 1.25s cubic-bezier(.53,0,.53,1);
   --eased-transition-long-delay:   1.1s  transform 0.40s cubic-bezier(.53,0,.53,1);
   --eased-transition-medium-delay: 0.75s transform 0.75s cubic-bezier(.53,0,.53,1);
+}
 
-  /* skeleton.css config */
-  --skel-button-color: #555;
-  --skel-button-border-radius: 0;
-  --skel-button-border: 1px solid #bbb;
-  --skel-text-input-border: 1px solid #D1D1D1;
-  --skel-text-input-bg: #fff;
-  --skel-text-input-border-color-focus: #339933;
-  --skel-button-border-color-focus: #888;
-  --skel-button-text-color-focus: #333;
-  --skel-button-primary-bg: #33C3F0;
-  --skel-button-primary-text-color: #FFF;
-  --skel-button-primary-focus-bg: #1EAEDB;
-  --skel-link-color: #1EAEDB;
-  --skel-link-color-hover: #999;
-  --skel-light-divider: #E1E1E1;
+
+/* barebones.css override */
+
+html,
+html[data-theme="dark"] {
+  --theme-hue: 0;					/* white */
+  --accent-hue: 78;			/* dbg green: #50661B   HSB: 78, 74, 40 */
+  --accent-color: #50661B;				/* #33C3F0 		link; button-primary bg+border; textarea,select:focus border */
+  --accent-color-hover: hsl(var(--accent-hue), 160%, 23%);	/* #1EAEDB 		link hover; button-primary:hover:focus bg+border */
+}
+
+/* responsive variables example */
+
+@media all and (min-width: 450px) {
+  :root {
+    --padding: 4rem;
+    --main-padding: 4rem;
+  }
+}
+@media all and (min-width: 768px) {
+  :root {
+    --main-padding: 0 4rem;
+  }
 }

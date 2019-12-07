@@ -67,6 +67,59 @@ class FileUtil {
         return $dir_array;
     }
 
+    public static function fileSizeFromBytes($bytes) {
+      // primarily would come from file upload info
+      $kb = $bytes / 1024;
+      if($kb < 1000) {
+        return round($kb) . "kb";
+      } else {
+        return round($kb / 1024, 1) . "mb";
+      }
+    }
+
+    public static function fileSizeFromPath($filePath) {
+      return FileUtil::fileSizeFromBytes(filesize($filePath));
+    }
+
+    public static function fileCreatedTime($filePath) {
+      return date("F d Y H:i:s", filemtime($filePath));
+    }
+
+    public static function fileExtension($filePath) {
+      return pathinfo($filePath, PATHINFO_EXTENSION);
+    }
+
+    public static function fileNameFromPath($filePath) {
+      return basename($filePath);
+    }
+
+    public static function dirFromPath($filePath) {
+      return dirname($filePath);
+    }
+
+    public static function filesAreIdentical($filePath1, $filePath2) {
+      if( !file_exists($filePath1)) return false;
+      if( !file_exists($filePath2)) return false;
+      if (filetype($filePath1) !== filetype($filePath2)) return false;
+      if (filesize($filePath1) !== filesize($filePath2)) return false;
+      if (! $fp1 = fopen($filePath1, 'rb')) return false;
+      if (! $fp2 = fopen($filePath2, 'rb')) {
+          fclose($fp1);
+          return false;
+      }
+      $same = true;
+      while (! feof($fp1) and ! feof($fp2))
+          if (fread($fp1, 4096) !== fread($fp2, 4096))
+          {
+              $same = false;
+              break;
+          }
+      if (feof($fp1) !== feof($fp2)) $same = false;
+      fclose($fp1);
+      fclose($fp2);
+      return $same;
+    }
+
 }
 
 ?>

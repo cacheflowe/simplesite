@@ -7,8 +7,22 @@ class FancyView extends BaseView {
     // prepLazyLoadImages();
     // window.cacheCart.parseLinks(this.el);
     this.buildContactForm();
+    this.addImageZooming();
     this.lazyImageLoader = new LazyImageLoader(this.el);
 	};
+
+	/* Image zooming --------------------------------------*/
+
+  addImageZooming() {
+    this.mediumZoom = mediumZoom('[data-zoomable]', {
+      margin: 24,
+      background: '#999',
+    });
+  }
+
+  removeImageZooming() {
+    this.mediumZoom.detach();
+  }
 
 	/* Lazy-load images --------------------------------------*/
   // prepLazyLoadImages() {
@@ -126,6 +140,7 @@ class FancyView extends BaseView {
     // window.embetter.utils.disposePlayers();
     // window.cacheCart.disposeLinks(this.el);
     this.lazyImageLoader.dispose();
+    this.removeImageZooming();
 	};
 
 }

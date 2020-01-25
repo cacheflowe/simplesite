@@ -6,8 +6,12 @@ A boilerplate php (I know) site starter with friendly URLs, pushState support an
 
 # TODO
 
-* Fix embetter, ShareOut, CacheCart
+* Fix square thumbnail in news-listing-view - make it a css responsibility w/section/subsection classes added to body
+  * news-listing-view should be in the client implementation, not the core
 * Move to Gulp vs. Grunt
+* Bring back in:
+  * Config CMS demo w/grid & config card
+* Fix embetter, ShareOut, CacheCart
 * Move grunt-includes to simplesite/php ?
 * Remove Mail.php
 * Add ability to create cached responses in AreaModel so we can get pushState and content swapping without hitting the server again

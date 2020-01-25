@@ -19,7 +19,7 @@ class Metadata {
     $this->pageKeywords = (isset($options['pageKeywords'])) ? $options['pageKeywords'] : "### Keywords Here ###";
     $this->pageVideo = (isset($options['pageVideo'])) ? $options['pageVideo'] : null;
     $this->pageType = (isset($options['pageType'])) ? $options['pageType'] : "website";
-    $this->twitterUser = (isset($options['twitterUser'])) ? $options['twitterUser'] : "@twitterUser";
+    $this->twitterUser = (isset($options['twitterUser'])) ? $options['twitterUser'] : null;
     $this->isGif = false;
     $this->checkGif();
   }

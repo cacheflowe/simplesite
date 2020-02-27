@@ -118,12 +118,14 @@ class AreaModel {
 
   updateSectionCssClass() {
     if (this.prevPath && this.prevPath.length > 1) {
-      let pathSplit = this.prevPath.substr(1).split('/');
+      let pathNoQuery = this.prevPath.split("?")[0];    // strip queryparams so they don't end up in classnames
+      var pathSplit = pathNoQuery.substr(1).split('/');
       if(pathSplit.length > 0) document.body.classList.remove('section-' + pathSplit[0]);
       if(pathSplit.length > 1) document.body.classList.remove('subsection-' + pathSplit[1]);
     }
     if (this.curPath.length > 1) {
-      let pathSplit = this.curPath.substr(1).split('/');
+      let pathNoQuery = this.curPath.split("?")[0];
+      var pathSplit = pathNoQuery.substr(1).split('/');
       if(pathSplit.length > 0) document.body.classList.add('section-' + pathSplit[0]);
       if(pathSplit.length > 1) document.body.classList.add('subsection-' + pathSplit[1]);
     }

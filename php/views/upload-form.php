@@ -106,7 +106,7 @@ if($request->lastPathComponent() == "upload") {
   $html = "";
   if(file_exists($uploadsBasePath)) {
     // list files in upload path
-    $uploadedFiles = FileUtil::get_files_sorted($uploadsBasePath);
+    $uploadedFiles = FileUtil::getFilesSorted($uploadsBasePath);
     foreach($uploadedFiles as $file) {
       $filePath = $uploadsBasePath . $file;
       $fileType = FileUtil::fileExtension($file);
@@ -141,7 +141,7 @@ if($request->lastPathComponent() == "upload") {
   $jsonObj = array();
   if(file_exists($uploadsBasePath)) {
     // list files in upload path
-    $uploadedFiles = FileUtil::get_files_sorted($uploadsBasePath);
+    $uploadedFiles = FileUtil::getFilesSorted($uploadsBasePath);
     foreach($uploadedFiles as $file) {
       $filePath = $uploadsBasePath . $file;
       $fileType = FileUtil::fileExtension($file);

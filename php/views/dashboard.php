@@ -1,16 +1,21 @@
 <?php
 include('./php/app/app.php');
 
-// get dashboard data
-$dashboard = new Dashboard($request, "data/json/dashboard.json");
+// init dashboard object
+$dashboard = new Dashboard($request, "data/dashboard/", 24, true);
 
 ?>
 
 <div data-view-type="DashboardView" data-page-title="<?php global $metadata; echo $metadata->get_pageTitle(); ?>">
   <h1>Dashboard</h1>
-    <div class="dashboard-props">
+    <div class="dashboard-items">
       <?php
-        print($dashboard->listCards());
+        $dashboard->checkActions();
+        if(isset($_GET['detail'])) {
+          print($dashboard->listProjectCheckins($_GET['detail']));
+        } else {
+          print($dashboard->listProjects());
+        }
       ?>
     </div>
 </div>

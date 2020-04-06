@@ -25,7 +25,6 @@
   </div>
 </nav>
 <div id="main">
-  <h1>SimpleSite</h1>
   <section id="content-holder"><?php echo $response->view->html(); // insert ajax content on first page load ?></section>
   <footer id="content-footer">Copyright &copy; simplesite <?php echo date("Y"); ?></footer>
 </div>

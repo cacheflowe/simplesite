@@ -17,13 +17,21 @@ class LoginView extends FancyView {
   formSubmitted(e) {
     e.preventDefault();
 
+    // reset form
     this.loginForm.classList.remove('error');
     _store.set(SimpleSite.LOADER_SHOW, true);
-    let userPasswordAttempt = this.loginForm.querySelector('#password').value;
 
+    // grab form data & build post object
+    let passwordInputEl = this.loginForm.querySelector('#password');
+    let userPasswordVal = passwordInputEl.value;
+    let userPasswordKey = passwordInputEl.getAttribute('name');
+    let bodyObj = {};
+    bodyObj[userPasswordKey] = userPasswordVal;
+
+    // submit request
     fetch(this.loginForm.getAttribute('action'), {
       method: this.loginForm.getAttribute('method'),
-      body: userPasswordAttempt
+      body: JSON.stringify(bodyObj)
     })
       .then(function(response) {
         return response.text();

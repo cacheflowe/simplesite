@@ -34,6 +34,8 @@ class CountView extends BaseSiteView {
             setTimeout(() => countEl.classList.add('updated'), 10);
             // hide loader
             document.body.classList.remove('data-loading');
+            // notyf
+            _store.set(SimpleSite.ALERT_SUCCESS, "Count updated");
           }).catch(function(ex) {
             formResult.innerHTML = '<span style="color:red;">Fetch upload failed</span>';
             document.body.classList.remove('data-loading');

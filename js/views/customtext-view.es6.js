@@ -25,11 +25,13 @@ class CustomText extends BaseSiteView {
         let submitVal2 = (inputText2.length > 0) ? inputText2 : null;
 
         // add clear button check
+        var updating = true;
         if(e.target.hasAttribute('data-customtext-clear')) {
           customtextEl.value = '';
           customtextEl2.value = '';
           submitVal = null;
           submitVal2 = null;
+          updating = false;
         }
 
         // send request
@@ -42,8 +44,13 @@ class CustomText extends BaseSiteView {
           }).then((data) => {
             data = JSON.parse(data);
             document.body.classList.remove('data-loading');
+            // notyf
+            if(updating) _store.set(SimpleSite.ALERT_SUCCESS, "Custom text updated");
+            else         _store.set(SimpleSite.ALERT_SUCCESS, "Custom text cleared");
           }).catch(function(ex) {
+            console.log(ex);
             document.body.classList.remove('data-loading');
+            _store.set(SimpleSite.ALERT_ERROR, "Custom text not updated");
           });
 
       }

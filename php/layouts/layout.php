@@ -7,7 +7,6 @@
     <a href="/about">About</a>
     <a href="/contact">Contact</a>
     <a href="/test/feed">RSS feed</a>
-    <a href="/grunt-includes">Grunt Includes</a>
     <div class="section-header">CMS</div>
     <a href="/config">Config</a>
     <a href="/events">Events</a>

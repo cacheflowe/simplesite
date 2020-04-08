@@ -18,6 +18,7 @@ $scheduleData["customtext-line-2"] = $customtextLine2;
 writeScheduleJsonData($scheduleData);
 
 // output success
-echo "{\"success\": \"Updated customtext: $customtext\"}";
+JsonUtil::setJsonOutput();
+JsonUtil::printSuccessMessage("Updated customtext: $customtext");
 
 ?>

@@ -68,7 +68,19 @@
     <?php
     // include javascripts
     if( $request->isDev() == true ) {
-      include './php/includes/css.php';
+      function includeCssDir($dir) {
+        $jsFiles = array();
+        $dirRelative = "." . $dir;
+        FileUtil::getDirectoryTree($dirRelative, 0, $jsFiles);
+        foreach($jsFiles as $file) {
+          if(strpos($file, 'app.min.css') === false) {
+            $fileFixedPath = str_replace('.'.$dir.'/', $dir, $file);
+            print('<link rel="stylesheet" href="'.$fileFixedPath.'" type="text/css" media="all" />' . "\n");
+          }
+        }
+      }
+      includeCssDir('/simplesite/css/');
+      includeCssDir('/css/');
     } else {
       print('<link rel="stylesheet" href="/css/app.min.css?v=' . $serverConfig["cssVersion"] . '" type="text/css" media="all" title="interface" />');
     }
@@ -87,10 +99,24 @@
   </head>
   <body>
     <?php include './php/layouts/layout.php'; ?>
+
     <?php
     // include javascripts
     if( $request->isDev() == true ) {
-      include './php/includes/js.php';
+      // dev mode loads all javascripts 
+      function includeJavascriptsDir($dir) {
+        $jsFiles = array();
+        $dirRelative = "." . $dir;
+        FileUtil::getDirectoryTree($dirRelative, 0, $jsFiles);
+        foreach($jsFiles as $file) {
+          if(strpos($file, 'app.min.js') === false) {
+            $fileFixedPath = str_replace('.'.$dir.'/', $dir, $file);
+            print('<script src="'.$fileFixedPath.'"></script>' . "\n");
+          }
+        }
+      }
+      includeJavascriptsDir('/simplesite/js/');
+      includeJavascriptsDir('/js/');
     } else {
       print('<script src="/js/app.min.js?v=' . $serverConfig["jsVersion"] . '"></script>');
     }

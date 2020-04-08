@@ -8,8 +8,6 @@ A boilerplate php (I know) site starter with friendly URLs, pushState support an
 
 - Static publishing
   - How to handle links between pages? Need to add ".html" to simplesite paths
-- Switch to Gulp from Grunt
-  - Make dev mode js.php & css.php includes pull from directories like gulp does
 - Add Public Sans as default custom font - remove Poppins
 
 - Make uploader a legit class & replace "demodesk" view
@@ -19,7 +17,6 @@ A boilerplate php (I know) site starter with friendly URLs, pushState support an
 * Bring back in:
   * Config CMS demo w/grid & config card
 * Fix embetter, ShareOut, CacheCart
-* Move grunt-includes to simplesite/php ?
 * Remove Mail.php
 * [DONE?] Add ability to create cached responses in AreaModel so we can get pushState and content swapping without hitting the server again
 * support multiple layouts?
@@ -29,11 +26,9 @@ A boilerplate php (I know) site starter with friendly URLs, pushState support an
 * Add `/rss` to any page to retrieve rss data source?
 
 
-# Setup to use Grunt for minifying css/js)
+# Setup to use Gulp for minifying css/js)
 
-**NPM + Packages for Grunt build**
-
-run `init.sh`
+run `gulp-init.sh`
 
 **Push to your new repo**
 

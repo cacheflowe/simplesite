@@ -1,4 +1,4 @@
-class FancyView extends BaseView {
+class BaseSiteView extends BaseView {
 
   constructor(el) {
     super(el);
@@ -145,4 +145,4 @@ class FancyView extends BaseView {
 
 }
 
-window.FancyView = FancyView;
+window.BaseSiteView = BaseSiteView;

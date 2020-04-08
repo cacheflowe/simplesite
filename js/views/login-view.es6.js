@@ -1,4 +1,4 @@
-class LoginView extends FancyView {
+class LoginView extends BaseSiteView {
 
   constructor(el) {
     super(el);

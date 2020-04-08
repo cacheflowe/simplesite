@@ -1,4 +1,4 @@
-class DashboardView extends FancyView {
+class DashboardView extends BaseSiteView {
 
   constructor(el) {
     super(el);

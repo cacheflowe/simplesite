@@ -1,4 +1,4 @@
-class ScheduleView extends FancyView {
+class ScheduleView extends BaseSiteView {
 
   constructor(el) {
     super(el);

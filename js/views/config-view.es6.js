@@ -1,4 +1,4 @@
-class ConfigView extends FancyView {
+class ConfigView extends BaseSiteView {
 
   constructor(el) {
     super(el);

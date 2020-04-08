@@ -1,7 +1,7 @@
 <nav id="main-nav">
   <button id="main-nav-toggle"></button>
   <div id="main-nav-links">
-    <a href="/"><img src="/images/preview.png"></a>
+    <a href="/"><img src="/images/preview.png" alt="Site logo"></a>
     <a href="/">Home</a>
     <a href="/collection">Collection</a>
     <a href="/about">About</a>

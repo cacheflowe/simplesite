@@ -1,4 +1,4 @@
-class CustomText extends FancyView {
+class CustomText extends BaseSiteView {
 
   constructor(el) {
     super(el);

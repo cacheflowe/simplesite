@@ -1,4 +1,4 @@
-class JsonEditorView extends FancyView {
+class JsonEditorView extends BaseSiteView {
 
   constructor(el) {
     super(el);

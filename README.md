@@ -7,9 +7,13 @@ A boilerplate php (I know) site starter with friendly URLs, pushState support an
 # TODO
 
 - Static publishing
+  - How to handle links between pages? Need to add ".html" to simplesite paths
 - Switch to Gulp from Grunt
+  - Make dev mode js.php & css.php includes pull from directories like gulp does
 - Add Public Sans as default custom font - remove Poppins
 
+- Make uploader a legit class & replace "demodesk" view
+- Add notyf toast message to /count & /custom-text demos on save
 * Fix square thumbnail in news-listing-view - make it a css responsibility w/section/subsection classes added to body
   * news-listing-view should be in the client implementation, not the core
 * Bring back in:

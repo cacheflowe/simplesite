@@ -1,4 +1,4 @@
-class CountView extends FancyView {
+class CountView extends BaseSiteView {
 
   constructor(el) {
     super(el);

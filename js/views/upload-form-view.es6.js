@@ -1,4 +1,4 @@
-class UploadView extends FancyView {
+class UploadView extends BaseSiteView {
 
   constructor(el) {
     super(el);

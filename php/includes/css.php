@@ -7,7 +7,9 @@
 <link rel="stylesheet" href="/simplesite/css/vendor/loader.css">
 <link rel="stylesheet" href="/simplesite/css/vendor/notyf.min.css">
 <link rel="stylesheet" href="/simplesite/css/vendor/toggle.css">
-<link rel="stylesheet" href="/simplesite/css/localhost-status.css">
+<link rel="stylesheet" href="/simplesite/css/simplesite/debug.css">
+<link rel="stylesheet" href="/simplesite/css/simplesite/loader.css">
+<link rel="stylesheet" href="/simplesite/css/simplesite/localhost-status.css">
 <!-- <link rel="stylesheet" href="/simplesite/css/debug.css"> -->
 <link rel="stylesheet" href="/css/app/config.css">
 <link rel="stylesheet" href="/css/app/body.css">

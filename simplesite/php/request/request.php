@@ -5,9 +5,10 @@ class Request {
     $this->_path = '';
     $this->_postBody = '';
     $this->_isAjax = false;
-    $this->isDev = false;
+    $this->_isDev = false;
     $this->_isAPI = false;
     $this->_needsAuth = false;
+    $this->_publishStatic = false;
 
     $this->getPath();
     $this->getPostData();
@@ -25,8 +26,9 @@ class Request {
   function postedJson() { return json_decode($this->postBody(), true); }
   function isAjax() { return $this->_isAjax; }
   function isAPI() { return $this->_isAPI; }
-  function isDev() { return $this->isDev; }
+  function isDev() { return $this->_isDev; }
   function needsAuth() { return $this->_needsAuth; }
+  function publishStatic() { return $this->_publishStatic; }
 
   function setAPI($isAPI) {
     $this->_isAPI = $isAPI;
@@ -35,6 +37,10 @@ class Request {
 
   function setAuthRequired($needsAuth) {
     $this->_needsAuth = $needsAuth;
+  }
+
+  function setPublishStatic($publishStatic) {
+    $this->_publishStatic = $publishStatic;
   }
 
   function getPath() {
@@ -58,10 +64,10 @@ class Request {
 
   function getDevMode() {
     global $serverConfig;
-    if(strpos($_SERVER["SERVER_NAME"], "localhost") === 0) $this->isDev = true;
-    if(isset( $_REQUEST['notDev'] )) $this->isDev = false;
-    if(isset( $_REQUEST['isDev'] )) $this->isDev = true;
-    if($serverConfig['alwaysDev'] == true) $this->isDev = true;
+    if(strpos($_SERVER["SERVER_NAME"], "localhost") === 0) $this->_isDev = true;
+    if(isset( $_REQUEST['notDev'] )) $this->_isDev = false;
+    if(isset( $_REQUEST['isDev'] )) $this->_isDev = true;
+    if($serverConfig['alwaysDev'] == true) $this->_isDev = true;
   }
 
   function setOutputType() {
@@ -75,6 +81,10 @@ class Request {
     }
     if(isset( $_REQUEST['api'] )) {
       $this->_isAPI = true;
+    }
+    // also check if we should publish the static page
+    if(isset( $_REQUEST['publish_static'] )) {
+      $this->_publishStatic = true;
     }
   }
 }

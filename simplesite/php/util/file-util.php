@@ -7,6 +7,31 @@ class FileUtil {
       return is_dir($dirpath) || mkdir($dirpath, $mode, true);
     }
 
+    public static function copyRecursive($source, $dest){
+      // from: https://stackoverflow.com/a/11947935/352456
+      if(is_dir($source)) {
+        FileUtil::makeDirs($dest);
+        $dir_handle=opendir($source);
+        while($file=readdir($dir_handle)){
+            if($file!="." && $file!=".."){
+                if(is_dir($source."/".$file)){
+                    if(!is_dir($dest."/".$file)){
+                      echo('DEST: '.$dest."/".$file."<br>");
+                      FileUtil::makeDirs($dest."/".$file);
+                    }
+                    FileUtil::copyRecursive($source."/".$file, $dest."/".$file);
+                } else {
+                    copy($source."/".$file, $dest."/".$file);
+                }
+            }
+        }
+        closedir($dir_handle);
+      } else {
+        // if(!is_dir(FileUtil::dirFromPath($dest))) FileUtil::makeDirs($dest);
+        copy($source, $dest);
+      }
+  }
+
     // rm -rf
     public static function deleteDir($dir) {
       if (is_dir($dir)) {
@@ -37,6 +62,14 @@ class FileUtil {
       // clean up the file resource
       fclose( $ifp );
       // return $output_file;
+    }
+
+    public static function getTextFromFile($path) {
+      return file_get_contents($path);
+    }
+
+    public static function writeTextToFile($path, $data) {
+      file_put_contents($path, $data);
     }
 
     public static function getFilesSorted($path, $reverse=true) {

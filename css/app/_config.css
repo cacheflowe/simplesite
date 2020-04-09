@@ -1,6 +1,23 @@
+@font-face{
+  font-family: PublicSans-Light;
+  src: url(/fonts/PublicSans-Light.ttf) format("truetype");
+  font-style: normal;
+}
+@font-face{
+  font-family: PublicSans-Medium;
+  src: url(/fonts/PublicSans-Medium.ttf) format("truetype");
+  font-style: normal;
+}
+@font-face{
+  font-family: PublicSans-Bold;
+  src: url(/fonts/PublicSans-Bold.ttf) format("truetype");
+  font-style: normal;
+}
+
 :root {
   /* Typography */
-  --siteFont: Avenir, "Century Gothic", CenturyGothic, "Segoe UI", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --siteFont: PublicSans-Light, Avenir, "Century Gothic", CenturyGothic, "Segoe UI", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --headerFont: PublicSans-Medium, Avenir, "Century Gothic", CenturyGothic, "Segoe UI", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   /* Navigation & layout sizes */
   --navWidth: 250px;

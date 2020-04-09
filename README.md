@@ -38,7 +38,6 @@ run `gulp-init.sh`
 - Push loader over if nav drawer is showing
 - Add Embetter demo
 - Look at <img loading=lazy> 
-- Add Public Sans as default custom font - remove Poppins
 - Make uploader a legit class & replace "demodesk" view
 - Fix square thumbnail in news-listing-view - make it a css responsibility w/section/subsection classes added to body
   - news-listing-view should be in the client implementation, not the core

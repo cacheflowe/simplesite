@@ -1,8 +1,5 @@
 <?php
-    // TODO: 
-    // - Copy js/css/assets directories recusively
     // NOTE:
-    // - Static sites should be built as such up front with relative pathing. there's not a reasonable way to turn cacheflowe.com into a statuc site right now
     // create array of pages to generate static copies of
     $dirs = array();
     $dirs[] = 'css';
@@ -13,14 +10,18 @@
     $pages = array();
     $pages[] = '/home';
     $pages[] = '/about';
-    $pages[] = '/count';
+    $pages[] = '/collection/one';
 ?>
-<div data-view-type="BaseView" data-page-title="<?php global $metadata; echo $metadata->get_pageTitle(); ?>">
+<div data-view-type="BaseSiteView" data-page-title="<?php global $metadata; echo $metadata->get_pageTitle(); ?>">
   <h1>Publish</h1>
+  <p><b>Deleting previous version...</b></p>
+  <?php
+    FileUtil::deleteDir('_static/');
+  ?>
   <p><b>Publishing static content...</b></p>
   <p><b>Copying directories...</b></p>
   <ul>
-    <?php 
+    <?php
       foreach ($dirs as $dir) {
         // create/copy directories
         FileUtil::copyRecursive($dir, '_static/' . $dir);
@@ -38,12 +39,15 @@
         $pageContents = file_get_contents($originalPage);
         // transform path to friendly static html filename
         $filename = substr($page, 1);
+        // create dir
+        $newPageDir = '_static/' . $filename;
+        FileUtil::makeDirs($newPageDir);
         // write to file
-        $pagePublishPath = '_static/' . $filename . '.html';
+        $pagePublishPath = $newPageDir . '/index.html';
         FileUtil::writeTextToFile($pagePublishPath, $pageContents);
         // log links to static pages
         print('<li>'. $originalPage .'');
-        print('<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" href="'. $pagePublishPath .'">'. $pagePublishPath .'</a></li>');
+        print('<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" href="'. $newPageDir .'">'. $newPageDir .'</a></li>');
       }
     ?>
   </ul>

@@ -8,8 +8,9 @@ A boilerplate .php + .js site framework with friendly URLs, pushState support an
 - Server-side rendering that switches to fetch() requests (and pushState URL updates) after initial load
 - Automatic connection & disposal of Javascript views to main html content
 - Automatic js & css includes that mirror the compiled minified Gulp build
-  - This allows easy switching between dev & production modes
+  - This allows easy switching between dev & production modes, and easy dropping in of new js/css files
   - ...but has the caveat of *all js/css directories being included in alphabetical order*, with simplesite core files included first
+  - The main app.es6.js example ensures that it's not initialized until all scripts are loaded, so we should be good in this regard of .js load order
 - Per-page overrides of `head` metadata, with robust defaults and automatic content extraction to prefill metadata per-page
 - Basic login authentication for protected pages
 - Basic CMS functionality examples
@@ -33,11 +34,12 @@ run `gulp-init.sh`
 --- 
 ## TODO
 
+- Extract main nav css/js to make it more modular
 - Static publishing
-  - How to handle links between pages? Need to add ".html" to simplesite paths
+  - How to handle links between pages? Is this already handled?
+  - Can AreaModel handle loading an entire static page and just pull out the content area?
 - Push loader over if nav drawer is showing
 - Add Embetter demo
-- Look at <img loading=lazy> 
 - Make uploader a legit class & replace "demodesk" view
 - Fix square thumbnail in news-listing-view - make it a css responsibility w/section/subsection classes added to body
   - news-listing-view should be in the client implementation, not the core
@@ -49,8 +51,12 @@ run `gulp-init.sh`
 - support multiple layouts?
 - Check <head> entires: https://github.com/joshbuchea/HEAD
 - Remember scroll position when going back?
+
+Maybe?
+
 - Add paging into RSS view
 - Add `/rss` to any page to retrieve rss data source?
+- Look at <img loading=lazy> - it's not ready yet
 
 
 

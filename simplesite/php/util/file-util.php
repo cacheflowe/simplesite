@@ -16,7 +16,6 @@ class FileUtil {
             if($file!="." && $file!=".."){
                 if(is_dir($source."/".$file)){
                     if(!is_dir($dest."/".$file)){
-                      echo('DEST: '.$dest."/".$file."<br>");
                       FileUtil::makeDirs($dest."/".$file);
                     }
                     FileUtil::copyRecursive($source."/".$file, $dest."/".$file);
@@ -27,7 +26,6 @@ class FileUtil {
         }
         closedir($dir_handle);
       } else {
-        // if(!is_dir(FileUtil::dirFromPath($dest))) FileUtil::makeDirs($dest);
         copy($source, $dest);
       }
   }

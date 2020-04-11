@@ -1,4 +1,65 @@
-/* Main nav + main content container layout w/mobile drawer */
+/**************************
+CONTENT ELEMENTS
+**************************/
+
+h1 {
+  font-family: var(--headerFont);
+  border-bottom: 4px solid var(--border-color);
+  margin-top: 2rem;
+  padding-bottom: 4px;
+}
+
+h2 {
+  font-family: var(--headerFont);
+  border-bottom: 1px solid var(--border-color);
+  margin-top: 2rem;
+  padding-bottom: 2px;
+}
+
+h3 {
+  font-family: var(--headerFont);
+}
+
+h5 {
+  font-family: var(--headerFont);
+  margin-bottom: 0;
+}
+
+p img,
+#main-nav img {
+  max-width: 100%;
+}
+
+hr {
+  margin: -1rem 0 1rem;
+}
+
+/**************************
+Inline alerts
+**************************/
+
+.alert-message {
+  padding: 1rem 1rem 1rem 4rem;
+  position: relative;
+  background: var(--background-color-softer);
+  border: 2px solid var(--accent-color);
+}
+.alert-message::after {
+  content: '⚠️';
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+}
+.in-sci-py .alert-message::after {
+  content: '✔️';
+}
+.alert-message p:last-of-type {
+  margin-bottom: 0;
+}
+
+/**************************
+Main nav + main content container layout w/mobile drawer
+**************************/
 
 #main-nav {
   transition: margin-left 0.3s ease;

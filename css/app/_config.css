@@ -1,3 +1,7 @@
+/**************************
+FONTS
+**************************/
+
 @font-face{
   font-family: PublicSans-Light;
   src: url(/fonts/PublicSans-Light.ttf) format("truetype");
@@ -13,6 +17,10 @@
   src: url(/fonts/PublicSans-Bold.ttf) format("truetype");
   font-style: normal;
 }
+
+/**************************
+VARS
+**************************/
 
 :root {
   /* Typography */
@@ -39,8 +47,9 @@
   --eased-transition-medium-delay: 0.75s transform 0.75s cubic-bezier(.53,0,.53,1);
 }
 
-
-/* barebones.css override */
+/**************************
+barebones.css override
+**************************/
 
 html,
 html[data-theme="dark"] {
@@ -50,7 +59,9 @@ html[data-theme="dark"] {
   --accent-color-hover: hsl(var(--accent-hue), 160%, 23%);	/* #1EAEDB 		link hover; button-primary:hover:focus bg+border */
 }
 
-/* responsive variables example */
+/**************************
+responsive variables example
+**************************/
 
 @media all and (min-width: 450px) {
   :root {
@@ -62,4 +73,32 @@ html[data-theme="dark"] {
   :root {
     --main-padding: 0 4rem;
   }
+}
+
+/**************************
+ELEMENTS
+**************************/
+
+* {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-touch-callout: none;
+  box-sizing: border-box;
+  -moz-font-feature-settings: "liga" 0; /* Ligature fix for Firefox */
+}
+
+body {
+  font-family: var(--siteFont);
+  /* font-size: 1.6rem;
+  line-height: 1.6;
+  background: #fff;
+  color: #000; */
+  width: 100%;
+  height: 100vh;
+  /* overflow-x: hidden; */
+  opacity: 1;
+  transition: opacity 0.3s linear;
+}
+
+a {
+  text-decoration: none;
 }

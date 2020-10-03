@@ -15,8 +15,8 @@ class BaseView {
   }
 
   dispose() {
-    this.el = null;
     this.el.removeEventListener('click', this.viewClickHandler);
+    this.el = null;
   }
 
 }

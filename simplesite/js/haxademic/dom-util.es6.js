@@ -22,6 +22,11 @@ class DOMUtil {
     return null;
   }
 
+  static stringToElement(str) {
+    let doc = new DOMParser().parseFromString(str, 'text/html');
+    return doc.body.firstElementChild;
+  }
+
   static stringToDomElement(str) {
     let div = document.createElement('div');
     div.innerHTML = str;
@@ -48,4 +53,15 @@ class DOMUtil {
         rect.top < (window.innerHeight || document.documentElement.clientHeight);
   }
 
+  static dispatchResize() {
+    window.dispatchEvent(new Event('resize'));
+  }
+
+  static loadJavascript(url, callback) {
+    var script = document.createElement("script");
+    if(callback) script.addEventListener('load', callback);
+    script.src = url;
+    document.head.appendChild(script);
+    return script;
+  }
 }

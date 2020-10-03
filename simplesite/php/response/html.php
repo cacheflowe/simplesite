@@ -103,7 +103,7 @@
     <?php
     // include javascripts
     if( $request->isDev() == true ) {
-      // dev mode loads all javascripts 
+      // dev mode loads all javascripts
       function includeJavascriptsDir($dir) {
         $jsFiles = array();
         $dirRelative = "." . $dir;

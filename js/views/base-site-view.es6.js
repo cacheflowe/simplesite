@@ -11,6 +11,12 @@ class BaseSiteView extends BaseView {
     this.lazyImageLoader = new LazyImageLoader(this.el);
 	};
 
+  /* Click handling --------------------------------------*/
+
+  viewClicked(e) {
+    // overridden automatic click-handling from BaseView
+  }
+
 	/* Image zooming --------------------------------------*/
 
   addImageZooming() {
@@ -135,6 +141,7 @@ class BaseSiteView extends BaseView {
 
   /* View lifecycle ----------------------------------------*/
 	dispose() {
+    super.dispose();
     // this.disposeShareLinks();
     this.disposeContactForm();
     // window.embetter.utils.disposePlayers();

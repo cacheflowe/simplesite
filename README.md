@@ -16,7 +16,7 @@ A boilerplate .php + .js site framework with friendly URLs, pushState support an
 - Basic CMS functionality examples
 - Image lazy-loading
 
---- 
+---
 
 ## Setup to use Gulp for minifying css/js)
 
@@ -31,9 +31,11 @@ run `gulp-init.sh`
 * Add `?notDev` to load production js/css
 
 
---- 
+---
 ## TODO
 
+- Figure out Rollup in Gulp for minimized module-based compiling: https://rollupjs.org/guide/en/
+  * Look at `terser` and/or `esbuild`
 - Extract main nav css/js to make it more modular
 - Static publishing
   - How to handle links between pages? Is this already handled?
